@@ -18,9 +18,7 @@ public class Rutina {
     public String getNombre() {
         return nombre;
     }
-    public void agregarSerie(Serie serie){
-        this.series.add(serie);
-    }
+
 
     public Date getFecha() {
         return fecha;
@@ -30,5 +28,37 @@ public class Rutina {
         this.nombre = nombre;
     }
 
+    public void agregarSerie(Serie serie){
+        this.series.add(serie);
+    }
 
+    public void mostrarRutina(){
+        System.out.println("--" + this.getNombre());
+        mostrarSeriesPorEjercicio();
+    }
+    //metodo para imprimir la rutina, printea el nombre del ejercicio solo si es dintinto al de la serie anterior
+    public void mostrarSeriesPorEjercicio(){
+        if (series == null || series.isEmpty()) {
+            System.out.println("La rutina está vacía.");
+            return;
+        }
+        String ejercicioAnterior = "";
+
+        for (Serie serie : series){
+            String nombreEjercicio = serie.getEjercicio().getNombre();
+
+            if (!nombreEjercicio.equals(ejercicioAnterior)) {
+                System.out.println("Ejercicio: " + nombreEjercicio);
+                ejercicioAnterior = nombreEjercicio;
+            }
+
+            System.out.println( serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "--" + this.getNombre() + "\n" + this.series;
+    }
 }
