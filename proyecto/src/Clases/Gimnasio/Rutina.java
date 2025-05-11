@@ -34,6 +34,7 @@ public class Rutina {
 
     public void mostrarRutina(){
         System.out.println("--" + this.getNombre());
+        System.out.println(this.getFecha());
         mostrarSeriesPorEjercicio();
     }
     //metodo para imprimir la rutina, printea el nombre del ejercicio solo si es dintinto al de la serie anterior
