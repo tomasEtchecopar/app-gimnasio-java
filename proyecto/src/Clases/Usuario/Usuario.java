@@ -1,8 +1,11 @@
 package Clases.Usuario;
 
 public class Usuario extends Persona{
-    public Usuario(String nombreApellido, String mail, String contrasenia, int edad, double peso, int alturaCM, boolean premium) {
-        super(nombreApellido, mail, contrasenia, edad, peso, alturaCM, premium);
+    public Usuario(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura) {
+        super(usuario, contrasenia, nombre, apellido, edad, peso, altura);
+    }
+
+    public Usuario() {
     }
 
 

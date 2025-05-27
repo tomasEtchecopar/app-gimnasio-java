@@ -1,5 +1,7 @@
 package Clases.Gimnasio;
 
+import java.util.Objects;
+
 public class Ejercicio {
     private String nombre;
     private String descripcion;
@@ -29,6 +31,17 @@ public class Ejercicio {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Ejercicio ejercicio = (Ejercicio) o;
+        return Objects.equals(nombre, ejercicio.nombre) && Objects.equals(descripcion, ejercicio.descripcion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, descripcion);
+    }
 
     @Override
     public String toString() {

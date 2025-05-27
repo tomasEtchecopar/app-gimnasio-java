@@ -1,6 +1,6 @@
 package Clases.Usuario;
 
-public class Persona{
+public abstract class Persona{
     private String usuario;
     private String contrasenia;
     private String nombre;
@@ -8,8 +8,9 @@ public class Persona{
     private int edad;
     private double peso; // en kg
     private double altura; // en cm
+    boolean premium;
 
-    public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura) {
+    public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.nombre = nombre;
@@ -17,6 +18,7 @@ public class Persona{
         this.edad = edad;
         this.peso = peso;
         this.altura = altura;
+        this.premium = premium;
     }
 
     public Persona() {

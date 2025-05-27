@@ -12,9 +12,10 @@ public class Admin extends Persona{
     borrarEjercicio();
      */
 
-    @Override
-    public void borrarUsuario() {
 
+
+    @Override
+    private void borrarUsuario() {
     }
 
     @Override
