@@ -29,6 +29,7 @@ public class Ejercicio {
         this.descripcion = descripcion;
     }
 
+
     @Override
     public String toString() {
         return "-" + this.getNombre() + "\n" + this.getDescripcion();
