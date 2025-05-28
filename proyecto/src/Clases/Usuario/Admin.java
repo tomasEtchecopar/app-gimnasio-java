@@ -1,9 +1,15 @@
 package Clases.Usuario;
 
-public class Admin extends Persona{
-    public Admin(String nombreApellido, String mail, String contrasenia) {
-        super(nombreApellido, mail, contrasenia);
+import Clases.Acciones;
+
+public class Admin extends Persona  {
+    public Admin(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
+        super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
+
+    public Admin() {
+    }
+
 
     /*
     agregarRutina();
@@ -14,12 +20,5 @@ public class Admin extends Persona{
 
 
 
-    @Override
-    private void borrarUsuario() {
-    }
 
-    @Override
-    public void editarUsuario() {
-
-    }
 }

@@ -1,22 +1,14 @@
 package Clases.Usuario;
 
-public class Usuario extends Persona{
-    public Usuario(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura) {
-        super(usuario, contrasenia, nombre, apellido, edad, peso, altura);
+import Clases.Acciones;
+
+public class Usuario extends Persona  {
+    public Usuario(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
+        super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
 
     public Usuario() {
     }
 
 
-
-    @Override
-    public void borrarUsuario() {
-
-    }
-
-    @Override
-    public void editarUsuario() {
-
-    }
 }

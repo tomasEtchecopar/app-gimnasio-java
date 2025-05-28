@@ -11,7 +11,7 @@ public class Lectora<T>{
     public Lectora(String nombreArchivo) {
         datos = new ArrayList<>();
         this.nombreArchivo = nombreArchivo;
-        datos = leerJSON(nombreArchivo);
+        //datos = leerJSON(nombreArchivo);
     }
 
 
