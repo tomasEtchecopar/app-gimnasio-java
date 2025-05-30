@@ -1,6 +1,7 @@
 package Clases.Menu;
 
 import Clases.Lectora;
+import Clases.Usuario.Usuario;
 
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class MainMenu {
             throw new IllegalArgumentException("Opcion incorrecta. Debe ingresar 1 o 2.");
         }
         switch(opcion){
-            case 1->
+            case 1-> registrarse(teclado);
         }
         return true; // para cortar el bucle de run()
     }
@@ -40,6 +41,32 @@ public class MainMenu {
     private static void registrarse(Scanner teclado) throws IllegalArgumentException{
         System.out.println("Bienvenido a nuestra app! A continuacion podrá llenar el formulario de registro:");
         System.out.println("Ingrese nombre de usuario: ");
+        String usuario = teclado.nextLine();
+        System.out.println("Ingrese contrasenia: ");
+        String contrasenia = teclado.nextLine();
+        System.out.println("Ingrese su nombre: ");
+        String nombre = teclado.nextLine();
+        System.out.println("Ingrese su apellido: ");
+        String apellido = teclado.nextLine();
+        System.out.println("Ingrese su edad");
+        int edad = teclado.nextInt();
+        teclado.nextLine();
+        System.out.println("Ingrese su peso (en kg): ");
+        double peso = teclado.nextDouble();
+        teclado.nextLine();
+        System.out.println("Ingrese su altura (en cm): ");
+        double altura = teclado.nextDouble();
+        teclado.nextLine();
+        System.out.println("Es usuario premium? Ingrese s o n");
+        boolean premium=false;
+        if("s" == teclado.nextLine().equalsIgnoreCase().charAt(0)){
+            premium=true;
+        }
 
+        try {
+            Usuario usuario1 = new Usuario(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
