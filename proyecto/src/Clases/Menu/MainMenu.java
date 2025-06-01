@@ -65,7 +65,7 @@ public class MainMenu {
         try {
             Usuario usuario1 = new Usuario(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium); //instancio el usuario
             JSONPersona.agregarUsuario(usuario1); // lo agrego al json
-        } catch (IllegalArgumentException | JSONException e) {
+        } catch (IllegalArgumentException | JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

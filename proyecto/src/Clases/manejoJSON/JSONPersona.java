@@ -9,25 +9,23 @@ import org.json.JSONTokener;
 public class JSONPersona {
     private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
 
-    public static void crearArchivoUsuarios(Persona persona) throws JSONException {
+    public static void crearArchivoUsuarios(Persona persona) throws JSONException, IllegalAccessException {
         JSONObject Jpersona = new JSONObject();
 
-        Jpersona.put("usuario", persona.getUsuario());
-        Jpersona.put("contrasenia", persona.getContrasenia());
-        Jpersona.put("nombre", persona.getNombre());
-        Jpersona.put("apellido", persona.getApellido());
-        Jpersona.put("edad", persona.getEdad());
-        Jpersona.put("peso", persona.getPeso());
-        Jpersona.put("altura", persona.getAltura());
-        Jpersona.put("premium", persona.isPremium());
-        JSONUtiles.grabar(Jpersona, ARCHIVO);
+
+        Jpersona = JSONUtiles.objetoToJSONOBJECT(persona);
+        JSONArray archivo = new JSONArray();
+        archivo.put(Jpersona);
+
+        JSONUtiles.grabar(archivo, ARCHIVO);
     }
-    public static void agregarUsuario(Persona persona) throws JSONException {
-        JSONTokener archivo = JSONUtiles.leer(ARCHIVO);
-        if(archivo==null){
+    public static void agregarUsuario(Persona persona) throws JSONException, IllegalAccessException {
+        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+        if(tokenerArchivo==null){
             crearArchivoUsuarios(persona);
+        }else{
+            JSONArray archivo = new JSONArray(tokenerArchivo);
         }
-        // chequear si el usuario ya esta cargado en el archivo, tirar excepcion
 
     }
 }

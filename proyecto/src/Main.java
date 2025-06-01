@@ -5,7 +5,12 @@ import Clases.Menu.MainMenu;
 
 public class Main {
     public static void main(String[] args) {
-        MainMenu.run();
+        try{
+            MainMenu.run();
+        } catch (Exception e) { // por si se lanza alguna excepcion no capturada en nuestro codigo
+            System.err.println("Excepción capturada en main");
+            e.printStackTrace();
+        }
     }
 
 }

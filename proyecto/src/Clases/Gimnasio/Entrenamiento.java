@@ -23,6 +23,7 @@ public class Entrenamiento extends Rutina{
     }
 
     //mostrado
+    @Override
     public void mostrarRutina(){
         System.out.println("--" + this.getNombre());
         System.out.println(this.getFecha());
@@ -30,23 +31,26 @@ public class Entrenamiento extends Rutina{
     }
 
     //metodo para imprimir la rutina, printea el nombre del ejercicio solo si es dintinto al de la serie anterior
+    @Override
     public void mostrarSeriesPorEjercicio(){
         if (this.getSeries() == null || this.getSeries().isEmpty()) {
             System.out.println("La rutina está vacía.");
-            return;
         }
-        String ejercicioAnterior = "";
+        else {
+            String ejercicioAnterior = "";
 
-        for (Serie serie : this.getSeries()){
-            String nombreEjercicio = serie.getEjercicio().getNombre();
+            for (Serie serie : this.getSeries()) {
+                String nombreEjercicio = serie.getEjercicio().getNombre();
 
-            if (!nombreEjercicio.equals(ejercicioAnterior)) {
-                System.out.println("Ejercicio: " + nombreEjercicio);
-                ejercicioAnterior = nombreEjercicio;
+                if (!nombreEjercicio.equals(ejercicioAnterior)) {
+                    System.out.println("Ejercicio: " + nombreEjercicio);
+                    ejercicioAnterior = nombreEjercicio;
+                }
+
+                System.out.println(serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
             }
-
-            System.out.println( serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
         }
+
 
     }
 }
