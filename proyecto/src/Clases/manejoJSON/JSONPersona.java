@@ -7,9 +7,11 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 public class JSONPersona {
-    private static final String ARCHIVO = "src/datos/usuarios.json";
+    private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
+
     public static void crearArchivoUsuarios(Persona persona) throws JSONException {
         JSONObject Jpersona = new JSONObject();
+
         Jpersona.put("usuario", persona.getUsuario());
         Jpersona.put("contrasenia", persona.getContrasenia());
         Jpersona.put("nombre", persona.getNombre());
@@ -18,13 +20,14 @@ public class JSONPersona {
         Jpersona.put("peso", persona.getPeso());
         Jpersona.put("altura", persona.getAltura());
         Jpersona.put("premium", persona.isPremium());
-        //falta cargar historial
-
+        JSONUtiles.grabar(Jpersona, ARCHIVO);
     }
     public static void agregarUsuario(Persona persona) throws JSONException {
-        JSONArray archivo= new JSONArray(JSONUtiles.leer(ARCHIVO));
-        //chequear si existe el archivo
-        //despues chequear si el usuario ya esta cargado en el archivo, tirar excepcion
+        JSONTokener archivo = JSONUtiles.leer(ARCHIVO);
+        if(archivo==null){
+            crearArchivoUsuarios(persona);
+        }
+        // chequear si el usuario ya esta cargado en el archivo, tirar excepcion
 
     }
 }

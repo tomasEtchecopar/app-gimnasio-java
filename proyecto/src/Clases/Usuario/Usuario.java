@@ -7,8 +7,6 @@ public class Usuario extends Persona  {
         super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
 
-    public Usuario() {
-    }
 
 
 }

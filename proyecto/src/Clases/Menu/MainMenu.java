@@ -2,6 +2,8 @@ package Clases.Menu;
 
 import Clases.Lectora;
 import Clases.Usuario.Usuario;
+import Clases.manejoJSON.JSONPersona;
+import org.json.JSONException;
 
 import java.util.Scanner;
 
@@ -32,7 +34,7 @@ public class MainMenu {
             throw new IllegalArgumentException("Opcion incorrecta. Debe ingresar 1 o 2.");
         }
         switch(opcion){
-            case 1-> registrarse(teclado);
+            case 2-> registrarse(teclado);
         }
         return true; // para cortar el bucle de run()
     }
@@ -58,14 +60,12 @@ public class MainMenu {
         double altura = teclado.nextDouble();
         teclado.nextLine();
         System.out.println("Es usuario premium? Ingrese s o n");
-        boolean premium=false;
-        if("s" == teclado.nextLine().equalsIgnoreCase().charAt(0)){
-            premium=true;
-        }
+        boolean premium= teclado.nextLine().toLowerCase().charAt(0) == 's';
 
         try {
-            Usuario usuario1 = new Usuario(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
-        } catch (IllegalArgumentException e) {
+            Usuario usuario1 = new Usuario(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium); //instancio el usuario
+            JSONPersona.agregarUsuario(usuario1); // lo agrego al json
+        } catch (IllegalArgumentException | JSONException e) {
             throw new RuntimeException(e);
         }
     }

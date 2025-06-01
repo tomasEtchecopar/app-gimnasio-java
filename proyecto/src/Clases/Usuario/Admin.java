@@ -7,8 +7,6 @@ public class Admin extends Persona  {
         super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
 
-    public Admin() {
-    }
 
 
     /*

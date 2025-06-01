@@ -4,10 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class JSONUtiles {
     public static void grabar(JSONObject array, String archivo) {
@@ -28,12 +25,19 @@ public class JSONUtiles {
     public static JSONTokener leer(String archivo) {
         JSONTokener tokener = null;
 
-        try {
-            tokener = new JSONTokener(new FileReader(archivo));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        //chequea si el archivo existe
+        if(existeArchivo(archivo)) {
+            try {
+                tokener = new JSONTokener(new FileReader(archivo));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return tokener;
+    }
+    public static boolean existeArchivo(String archivo){
+        File file = new File(archivo);
+        return file.exists();
     }
 
 }
