@@ -58,7 +58,16 @@ public abstract class Persona{
         this.historial = historial;
     }
 
+    public Persona(String usuario, String contrasenia) throws IllegalArgumentException{
+        if(usuario==null || contrasenia ==null){
+            throw new IllegalArgumentException("Usuario o contrasenia vacios");
+        }
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+    }
 
+    public Persona() {
+    }
 
     public String getUsuario() {
         return usuario;

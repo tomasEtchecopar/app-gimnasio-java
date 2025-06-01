@@ -2,6 +2,10 @@ import Clases.Gimnasio.Ejercicio;
 import Clases.Gimnasio.Rutina;
 import Clases.Gimnasio.Serie;
 import Clases.Menu.MainMenu;
+import Clases.Usuario.Admin;
+import Clases.manejoJSON.JSONPersona;
+import Clases.manejoJSON.JSONUtiles;
+import org.json.JSONException;
 
 public class Main {
     public static void main(String[] args) {
