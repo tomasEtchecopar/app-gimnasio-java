@@ -1,5 +1,11 @@
 package Clases.Usuario;
 
+import Clases.Gimnasio.Entrenamiento;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public abstract class Persona{
     private String usuario;
     private String contrasenia;
@@ -8,9 +14,19 @@ public abstract class Persona{
     private int edad;
     private double peso; // en kg
     private double altura; // en cm
+    private List<Entrenamiento> historial;
     boolean premium;
 
-    public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
+    public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) throws IllegalArgumentException {
+        if(usuario==null || contrasenia ==null){
+            throw new IllegalArgumentException("Usuario o contrasenia vacios");
+        }
+        if(edad%1 !=0){
+            throw new IllegalArgumentException("La edad debe ser un numero entero");
+        }
+        if(edad<0 ||peso<0 || altura<0){
+            throw new IllegalArgumentException("Ninguno de los campos numericos pueden ser negativos");
+        }
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.nombre = nombre;
@@ -19,6 +35,35 @@ public abstract class Persona{
         this.peso = peso;
         this.altura = altura;
         this.premium = premium;
+        this.historial = new ArrayList<>();
+    }
+    public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium, List<Entrenamiento> historial) throws IllegalArgumentException {
+        if(usuario==null || contrasenia ==null){
+            throw new IllegalArgumentException("Usuario o contrasenia vacios");
+        }
+        if(edad%1 !=0){
+            throw new IllegalArgumentException("La edad debe ser un numero entero");
+        }
+        if(edad<0 ||peso<0 || altura<0){
+            throw new IllegalArgumentException("Ninguno de los campos numericos pueden ser negativos");
+        }
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.peso = peso;
+        this.altura = altura;
+        this.premium = premium;
+        this.historial = historial;
+    }
+
+    public Persona(String usuario, String contrasenia) throws IllegalArgumentException{
+        if(usuario==null || contrasenia ==null){
+            throw new IllegalArgumentException("Usuario o contrasenia vacios");
+        }
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
     }
 
     public Persona() {
@@ -56,6 +101,14 @@ public abstract class Persona{
         this.apellido = apellido;
     }
 
+    public List<Entrenamiento> getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(List<Entrenamiento> historial) {
+        this.historial = historial;
+    }
+
     public int getEdad() {
         return edad;
     }
@@ -78,6 +131,31 @@ public abstract class Persona{
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
+    //manejo de historial
+    public void agregarEntrenamiento(Entrenamiento entrenamiento){
+        this.historial.add(entrenamiento);
+    }
+
+    //se compara unicamente el usuario.
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return Objects.equals(usuario, persona.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(usuario);
     }
 
     @Override

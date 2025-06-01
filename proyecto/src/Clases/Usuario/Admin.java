@@ -1,25 +1,17 @@
 package Clases.Usuario;
 
-public class Admin extends Persona{
-    public Admin(String nombreApellido, String mail, String contrasenia) {
-        super(nombreApellido, mail, contrasenia);
+import Clases.Acciones;
+
+
+public class Admin extends Persona  {
+    public Admin(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
+        super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
 
-    /*
-    agregarRutina();
-    borrarRutina();
-    agregarEjercicio();
-    borrarEjercicio();
-     */
-
-
-
-    @Override
-    private void borrarUsuario() {
+    public Admin(String usuario, String contrasenia) throws IllegalArgumentException {
+        super(usuario, contrasenia);
     }
 
-    @Override
-    public void editarUsuario() {
-
+    public Admin() {
     }
 }
