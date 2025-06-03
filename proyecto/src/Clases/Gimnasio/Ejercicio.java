@@ -11,6 +11,9 @@ public class Ejercicio {
         this.descripcion = descripcion;
     }
 
+    public Ejercicio() {
+    }
+
     public Ejercicio(String nombre) {
         this.nombre = nombre;
     }
@@ -35,12 +38,12 @@ public class Ejercicio {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Ejercicio ejercicio = (Ejercicio) o;
-        return Objects.equals(nombre, ejercicio.nombre) && Objects.equals(descripcion, ejercicio.descripcion);
+        return Objects.equals(nombre, ejercicio.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre, descripcion);
+        return Objects.hashCode(nombre);
     }
 
     @Override

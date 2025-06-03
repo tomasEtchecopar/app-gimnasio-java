@@ -1,6 +1,7 @@
 package Clases.Usuario;
 
 import Clases.Acciones;
+import Clases.Gimnasio.Ejercicio;
 
 
 public class Admin extends Persona  {
@@ -14,4 +15,5 @@ public class Admin extends Persona  {
 
     public Admin() {
     }
+
 }
