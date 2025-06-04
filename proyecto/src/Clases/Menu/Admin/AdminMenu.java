@@ -1,24 +1,26 @@
-package Clases.Menu;
+package Clases.Menu.Admin;
 
 import Clases.Gimnasio.Ejercicio;
-import Clases.Usuario.Persona;
+import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Menu.Interfaces.MenuUsuario;
 import Clases.manejoJSON.JSONEjercicio;
 import org.json.JSONException;
 
 import java.util.Map;
 import java.util.Scanner;
 
-import static Clases.Menu.LecturaTeclado.leerEntero;
+import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
 
-public class AdminMenu {
+public class AdminMenu implements MenuUsuario {
 
-    public static void mostrar(Scanner teclado, Persona usuario) {
+    @Override
+    public void mostrar(Scanner teclado) {
         int opcion = -1;
         while (opcion != 6) {
             System.out.println("=============================");
             System.out.println("\t\tAPP DE ENTRENAMIENTO ");
             System.out.println("=============================");
-            System.out.println("Bienvenido, " + usuario.getNombre() + "!");
+            System.out.println("Bienvenido, ADMIN!");
             System.out.println("¿Qué te gustaría hacer hoy?");
             System.out.println("1) Menu ejercicios");
             System.out.println("2) Menu rutinas");
@@ -26,13 +28,21 @@ public class AdminMenu {
             System.out.println("4) Ver usuarios");
             System.out.println("5) Actualizar informacion personal");
             System.out.println("6) Cerrar sesion");
-
-            opcion = leerEntero(teclado, 1, 6);
-            switch (opcion) {
-                case 1 -> menuEjercicios(teclado);
-            }
         }
     }
+
+    @Override
+    public int elegirOpcion(Scanner teclado) {
+        return LecturaTeclado.leerEntero(teclado, 1, 6);
+    }
+
+    @Override
+    public void menuCaller(Scanner teclado, int opcion) {
+        switch(opcion){
+            case 1 -> menuEjercicios(teclado);
+        }
+    }
+
 
     /// FUNCIONALIDADES EXCLUSIVAS DEL ADMIN
     private static void menuEjercicios(Scanner teclado){

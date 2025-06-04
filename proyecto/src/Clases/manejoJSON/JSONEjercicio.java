@@ -2,7 +2,6 @@ package Clases.manejoJSON;
 
 import Clases.Gimnasio.Ejercicio;
 import Excepciones.EjercicioYaExisteException;
-import Excepciones.UsuarioYaExisteException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

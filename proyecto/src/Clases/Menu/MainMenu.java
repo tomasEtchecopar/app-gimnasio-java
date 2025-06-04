@@ -1,6 +1,10 @@
 package Clases.Menu;
 
 
+import Clases.Menu.Admin.AdminMenu;
+import Clases.Menu.Interfaces.MenuUsuario;
+import Clases.Menu.Usuario.UsuarioMenu;
+import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Persona;
 
 import java.util.Scanner;
@@ -36,10 +40,10 @@ public class MainMenu {
         if(usuario==null){
             throw new IllegalArgumentException("El usuario (NULL) no es valido.");
         }
-        switch(usuario.getNombre()){
-            case "admin" -> AdminMenu.mostrar(teclado, usuario);
-            default -> UsuarioMenu.mostrar(teclado, usuario);
-        }
+
+        MenuUsuario menuDelUsuario = usuario.getUsuario().equals("admin") ? new AdminMenu() :  new UsuarioMenu();
+        menuDelUsuario.mostrar(teclado);
+        menuDelUsuario.menuCaller(teclado, menuDelUsuario.elegirOpcion(teclado));;
     }
 
 
