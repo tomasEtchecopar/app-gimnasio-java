@@ -3,6 +3,7 @@ package Clases.Menu.Utiles;
 import java.util.Scanner;
 
 public class LecturaTeclado {
+
     public static int leerEntero(Scanner teclado, int min, int max) {
         int opcion;
         do {
@@ -15,6 +16,7 @@ public class LecturaTeclado {
         } while (opcion < min || opcion > max);
         return opcion;
     }
+
     public static boolean leerBooleanSN(Scanner teclado) {
         String linea;
         do {

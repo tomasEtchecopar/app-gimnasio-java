@@ -3,7 +3,10 @@ package Clases.Menu.Usuario;
 import Clases.Gimnasio.Plantilla;
 import Clases.Menu.Interfaces.MenuUsuario;
 import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.manejoJSON.JSONPlantilla;
+import org.json.JSONException;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,15 +25,22 @@ public class MenuEntrenamineto implements MenuUsuario {
 
     @Override
     public void menuCaller(Scanner teclado, int opcion) {
-
+        switch(opcion){
+            case 1->entrenamientoDesdePlantilla(teclado);
+        }
     }
 
     private void entrenamientoDesdePlantilla(Scanner teclado){
-        List<Plantilla> plantillas = new ArrayList<>(); //TODO: lectura y escritura del json plantillas
+        List<Plantilla> plantillas = new ArrayList<>();
+        try {
+            plantillas = JSONPlantilla.getFromJSON();
+        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Seleccione una plantilla");
         for (int i = 0; i < plantillas.size(); i++) {
             Plantilla p = plantillas.get(i);
-            System.out.println((i+1) + p);
+            System.out.println((i+1) + ". " + p.getNombre());
         }
 
 

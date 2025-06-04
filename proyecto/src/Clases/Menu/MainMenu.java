@@ -20,9 +20,7 @@ public class MainMenu {
             System.out.println("1. Iniciar Sesion.");
             System.out.println("2. Registrarse");
             System.out.println("3. Salir");
-            int opcion = -1;
-
-            opcion = LecturaTeclado.leerEntero(teclado, 1, 3);
+            int opcion =  LecturaTeclado.leerEntero(teclado, 1, 3);
 
             switch (opcion) {
                 case 1 -> {
@@ -32,8 +30,8 @@ public class MainMenu {
                 case 2 -> RegistroMenu.mostrar(teclado);
                 case 3 -> salir = true;
             }
-            teclado.close();
         }
+        teclado.close();
     }
 
     private static void mainMenu(Scanner teclado, Persona usuario) throws IllegalArgumentException{

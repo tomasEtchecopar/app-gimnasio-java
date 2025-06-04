@@ -1,16 +1,10 @@
 package Clases.Menu.Admin;
 
-import Clases.Gimnasio.Ejercicio;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Menu.Interfaces.MenuUsuario;
-import Clases.manejoJSON.JSONEjercicio;
-import org.json.JSONException;
-import Clases.Menu.Admin.MenuEjerciciosAdmin;
 
-import java.util.Map;
+
 import java.util.Scanner;
-
-import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
 
 public class AdminMenu implements MenuUsuario {
 
@@ -46,9 +40,6 @@ public class AdminMenu implements MenuUsuario {
             case 1 -> MenuEjerciciosAdmin.menuEjercicios(teclado);
         }
     }
-
-
-    /// FUNCIONALIDADES EXCLUSIVAS DEL ADMIN
 
 
 }

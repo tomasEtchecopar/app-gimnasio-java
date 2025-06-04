@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,8 +39,13 @@ public class JSONEjercicio{
         }
     }
 
-    public static Map<String, Ejercicio> getFromJSON() throws JSONException {
-        JSONArray Jejercicios = new JSONArray(JSONUtiles.leer(ARCHIVO));
+    public static Map<String, Ejercicio> getFromJSON() throws JSONException, FileNotFoundException {
+        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+
+        if(tokenerArchivo==null){
+            throw new FileNotFoundException("El archivo no se encuntra en el directorio especificado");
+        }
+        JSONArray Jejercicios = new JSONArray(tokenerArchivo);
         Map<String, Ejercicio> ejercicios = new HashMap<>();
 
         for (int i = 0; i < Jejercicios.length(); i++) {
