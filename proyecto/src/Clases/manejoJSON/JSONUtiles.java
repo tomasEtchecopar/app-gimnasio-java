@@ -54,10 +54,11 @@ public class JSONUtiles {
         //obtengo la clase del objeto
         Class<?> clase = objeto.getClass();
 
-        //obtengo todos los atributos declarados
+
 
         while (clase != null && clase != Object.class) { //recorro la jerarquia de clases hasta llegar a Object
             Field[] campos = clase.getDeclaredFields();
+            //obtengo todos los atributos declarados
             for (Field campo : campos) {
                 campo.setAccessible(true); //hago accesible el atributo (incluso si es private)
                 Object valor = campo.get(objeto);//obtengo el valor del campo

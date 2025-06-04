@@ -11,6 +11,12 @@ public class Serie {
         this.peso = peso;
     }
 
+    public Serie(Ejercicio ejercicio, int repeticiones) {
+        this.ejercicio = ejercicio;
+        this.repeticiones = repeticiones;
+        this.peso = Double.NaN;
+    }
+
     public Ejercicio getEjercicio() {
         return ejercicio;
     }

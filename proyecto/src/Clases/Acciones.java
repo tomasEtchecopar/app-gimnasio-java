@@ -1,7 +1,7 @@
 package Clases;
 
 public interface Acciones {
-    /* funcionalidades premium
+        /* funcionalidades premium
     agregarRutina();
     borrarRutina();
     agregarEjercicio();
