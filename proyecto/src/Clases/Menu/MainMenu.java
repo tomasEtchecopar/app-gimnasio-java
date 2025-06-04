@@ -43,7 +43,8 @@ public class MainMenu {
 
         MenuUsuario menuDelUsuario = usuario.getUsuario().equals("admin") ? new AdminMenu() :  new UsuarioMenu();
         menuDelUsuario.mostrar(teclado);
-        menuDelUsuario.menuCaller(teclado, menuDelUsuario.elegirOpcion(teclado));;
+        menuDelUsuario.menuCaller(teclado, menuDelUsuario.elegirOpcion(teclado));
+
     }
 
 

@@ -24,16 +24,14 @@ public class AdminMenu implements MenuUsuario {
             System.out.println("¿Qué te gustaría hacer hoy?");
             System.out.println("1) Menu ejercicios");
             System.out.println("2) Menu rutinas");
-            System.out.println("3) ");
-            System.out.println("4) Ver usuarios");
-            System.out.println("5) Actualizar informacion personal");
-            System.out.println("6) Cerrar sesion");
+            System.out.println("3) Menu usuarios");
+            System.out.println("4) Cerrar sesion");
         }
     }
 
     @Override
     public int elegirOpcion(Scanner teclado) {
-        return LecturaTeclado.leerEntero(teclado, 1, 6);
+        return LecturaTeclado.leerEntero(teclado, 1, 4);
     }
 
     @Override
