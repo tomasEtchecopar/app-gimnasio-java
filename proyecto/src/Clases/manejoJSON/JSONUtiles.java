@@ -55,7 +55,6 @@ public class JSONUtiles {
         Class<?> clase = objeto.getClass();
 
 
-
         while (clase != null && clase != Object.class) { //recorro la jerarquia de clases hasta llegar a Object
             Field[] campos = clase.getDeclaredFields();
             //obtengo todos los atributos declarados

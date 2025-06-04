@@ -29,8 +29,8 @@ public class JSONEjercicio{
         }else{
             JSONArray archivo = new JSONArray(tokenerArchivo);
             if(!existeEjercicio(archivo, ejercicio)) {
-                JSONObject Jpersona = JSONUtiles.objetoToJSONOBJECT(ejercicio);
-                archivo.put(Jpersona);
+                JSONObject JEjercicio = JSONUtiles.objetoToJSONOBJECT(ejercicio);
+                archivo.put(JEjercicio);
                 JSONUtiles.grabar(archivo, ARCHIVO);
             }else{
                 throw new EjercicioYaExisteException("El ejercicio ya se encuentra creado.");

@@ -28,8 +28,11 @@ public class UsuarioMenu implements MenuUsuario {
 
     @Override
     public void menuCaller(Scanner teclado, int opcion) {
+        MenuUsuario menuElegido = null;
         switch(opcion){
-
+            case 1 -> menuElegido = new MenuEntrenamineto();
         }
+        menuElegido.mostrar(teclado);
+        menuElegido.menuCaller(teclado, menuElegido.elegirOpcion(teclado));
     }
 }
