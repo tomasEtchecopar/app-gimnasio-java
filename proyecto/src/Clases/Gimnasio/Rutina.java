@@ -2,6 +2,7 @@ package Clases.Gimnasio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /// CLASE RUTINA: clase abstracta para almacenar un conjunto de ejercicios y catalogar al mismo con un nombre.
@@ -52,6 +53,18 @@ public abstract class Rutina {
     //metodos abstractos
     public abstract void mostrarRutina();
     public abstract void mostrarSeriesPorEjercicio();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Rutina rutina = (Rutina) o;
+        return Objects.equals(nombre, rutina.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nombre);
+    }
 
     //toString
     @Override

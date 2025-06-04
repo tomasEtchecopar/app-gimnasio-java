@@ -1,5 +1,6 @@
 package Clases.manejoJSON;
 
+import Clases.Gimnasio.Plantilla;
 import Clases.Usuario.Admin;
 import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
