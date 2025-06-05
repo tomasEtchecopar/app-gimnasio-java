@@ -30,7 +30,7 @@ public class MenuEntrenamineto implements MenuUsuario {
         System.out.println("Seleccione una plantilla");
         for (int i = 0; i < plantillas.size(); i++) {
             Plantilla p = plantillas.get(i);
-            System.out.println((i+1) + p);
+            System.out.println((i+1) +""+ p);
         }
 
 

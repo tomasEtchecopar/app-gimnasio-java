@@ -2,6 +2,8 @@ package Clases.Menu.Admin;
 
 import Clases.Gimnasio.Ejercicio;
 import Clases.manejoJSON.JSONEjercicio;
+import Clases.manejoJSON.JSONUtiles;
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.Map;
@@ -67,8 +69,8 @@ public class MenuEjerciciosAdmin {
                 if(ej.getNombre().equals(ejercicio)){
                     ejercicios.remove(ejercicio);
                 }
-                JSONEjercicio.escribirJSON(ej);
             }
+            JSONEjercicio.sobreescribirJSONEjercicios(ejercicios);
         }catch (JSONException | IllegalAccessException e){
             throw new RuntimeException(e);
         }

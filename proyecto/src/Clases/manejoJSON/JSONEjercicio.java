@@ -51,6 +51,7 @@ public class JSONEjercicio{
                 System.out.println(e.getMessage());
             }
         }
+
         return ejercicios;
     }
 
@@ -67,4 +68,14 @@ public class JSONEjercicio{
         return ret;
     }
 
+    public static void sobreescribirJSONEjercicios(Map<String, Ejercicio> mapa) throws JSONException, IllegalAccessException {
+        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+
+        JSONArray archivo = new JSONArray(tokenerArchivo);
+        for(Ejercicio e : mapa.values()){
+            JSONObject JEjercicio = JSONUtiles.objetoToJSONOBJECT(e);
+            archivo.put(JEjercicio);
+            JSONUtiles.grabar(archivo, ARCHIVO);
+        }
+    }
 }
