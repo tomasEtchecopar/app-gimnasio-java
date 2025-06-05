@@ -20,5 +20,16 @@
         "contrasenia": "12345",
         "nombre": "Tomas",
         "edad": 20
+    },
+    {
+        "premium": false,
+        "peso": 102,
+        "altura": 185,
+        "apellido": "Farias",
+        "historial": [],
+        "usuario": "juanseba",
+        "contrasenia": "1234",
+        "nombre": "Juan",
+        "edad": 21
     }
 ]
