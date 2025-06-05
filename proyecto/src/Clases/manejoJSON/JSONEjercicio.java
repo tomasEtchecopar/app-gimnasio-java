@@ -10,6 +10,7 @@ import org.json.JSONTokener;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class JSONEjercicio{
     private static final String ARCHIVO = "src/datos/ejercicios.json";
@@ -78,8 +79,7 @@ public class JSONEjercicio{
         JSONArray jEjercicios = new JSONArray();
 
         for(Ejercicio e : mapa.values()){
-            jEjercicios.put(e);
-            System.out.println(e);
+            jEjercicios.put(JSONUtiles.objetoToJSONOBJECT(e));
         }
 
         JSONUtiles.grabar(jEjercicios, ARCHIVO);
@@ -110,6 +110,13 @@ public class JSONEjercicio{
         } catch (JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public static void editarEjercicio(Map<String, Ejercicio> ejercicios) {
+        try {
+            JSONEjercicio.sobreescribirJSONEjercicios(ejercicios);
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

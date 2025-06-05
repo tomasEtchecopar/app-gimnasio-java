@@ -12,7 +12,7 @@ public class AdminMenu implements MenuUsuario {
     @Override
     public void mostrar(Scanner teclado, Persona usuario) {
         int opcion=-1;
-        while (opcion != 6) {
+        while (opcion != 4) {
             System.out.println("=============================");
             System.out.println("\tAPP DE ENTRENAMIENTO ");
             System.out.println("=============================");
