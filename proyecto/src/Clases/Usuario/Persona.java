@@ -147,6 +147,19 @@ public abstract class Persona implements Acciones {
     public double getIMC(){
         return this.isPremium()? this.getPeso()/(this.getAltura()/100) : 0;
     }
+    public int tieneSobrepeso(){
+        int sobrepeso;
+        if(this.getIMC()<18.5){
+            sobrepeso=-1; //PESO BAJO
+        }
+        else if(this.getIMC()<30){
+            sobrepeso = 0; // PESO IDEAL
+        }
+        else{
+            sobrepeso =1;
+        }
+        return sobrepeso;
+    }
     //manejo de historial
     public void agregarEntrenamiento(Entrenamiento entrenamiento){
         this.historial.add(entrenamiento);

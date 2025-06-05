@@ -11,7 +11,7 @@ public class UsuarioMenu implements MenuUsuario {
     @Override
     public void mostrar(Scanner teclado, Persona usuario) {
         int opcion = -1;
-        while (opcion != 6) {
+        while (opcion != 5) {
             System.out.println("=============================");
             System.out.println("\t\tAPP DE ENTRENAMIENTO ");
             System.out.println("=============================");
@@ -48,12 +48,20 @@ public class UsuarioMenu implements MenuUsuario {
                 if(usuario.getIMC()==0){
                     System.out.println("Para acceder a su indice de masa corporal necesita ser un usuario premium");
                 }else{
-                    System.out.println("Indice de masa corporal: " +usuario.getIMC());
+                    System.out.println("Indice de masa corporal: " + usuario.getIMC());
+                    switch(usuario.tieneSobrepeso()){
+                        case 1 -> System.out.println("Sobrepeso");
+                        case 0 -> System.out.println("Peso ideal");
+                        case -1-> System.out.println("Peso bajo");
+                    }
 
                 }
             }
             case 4 -> System.out.println("Aun no implementado");
         }
+
+        System.out.println("Si desea continuar presione ENTER");
+        teclado.nextLine();
 
     }
 }
