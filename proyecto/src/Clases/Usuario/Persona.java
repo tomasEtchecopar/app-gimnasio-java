@@ -143,10 +143,15 @@ public abstract class Persona implements Acciones {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
+
+    public double getIMC(){
+        return this.isPremium()? this.getPeso()/(this.getAltura()/100) : 0;
+    }
     //manejo de historial
     public void agregarEntrenamiento(Entrenamiento entrenamiento){
         this.historial.add(entrenamiento);
     }
+
 
     @Override
     public void verHistorial() {
