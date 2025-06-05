@@ -50,7 +50,5 @@ public class Entrenamiento extends Rutina{
                 System.out.println(serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
             }
         }
-
-
     }
 }

@@ -1,12 +1,15 @@
 package Clases.Usuario;
 
+import Clases.Acciones;
 import Clases.Gimnasio.Entrenamiento;
 
+import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
-public abstract class Persona{
+public abstract class Persona implements Acciones {
     private String usuario;
     private String contrasenia;
     private String nombre;
@@ -148,6 +151,20 @@ public abstract class Persona{
         this.historial.add(entrenamiento);
     }
 
+    @Override
+    public void verHistorial() {
+        List<Entrenamiento> lista = this.getHistorial();
+        if (lista.isEmpty() || lista==null) {
+            System.out.println("El historial esta vacio");
+            return;
+        }
+        for (Entrenamiento ent : lista) {
+            System.out.println("------------------------------");
+            ent.mostrarRutina();
+        }
+    }
+
+
     //se compara unicamente el usuario.
     @Override
     public boolean equals(Object o) {
@@ -173,4 +190,5 @@ public abstract class Persona{
                 ", altura=" + altura +
                 '}';
     }
+
 }

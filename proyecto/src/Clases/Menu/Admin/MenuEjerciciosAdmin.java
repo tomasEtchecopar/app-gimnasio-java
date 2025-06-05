@@ -28,15 +28,12 @@ public class MenuEjerciciosAdmin {
             switch(opcion){
                 case 1 -> mostrarEjercicios();
                 case 2 -> {
-                    try {
-                        JSONEjercicio.escribirJSON(cargarEjercicioPorTeclado(teclado));
-                    } catch (JSONException | IllegalAccessException e) {
-                        throw new RuntimeException(e);
-                    }
+                    Ejercicio ejercicioNuevo = cargarEjercicioPorTeclado(teclado);
+                    JSONEjercicio.guardarEjercicio(ejercicioNuevo);
                 }
                 case 3 -> {
                     System.out.println("\n Ingrese el ejercicio a borrar: ");
-                    borrarEjercicio(teclado.nextLine());
+                    JSONEjercicio.borrarEjercicio(teclado.nextLine());
                 }
                 default -> System.out.println("\n Ocurrio un error\n\n");
             }
@@ -44,15 +41,15 @@ public class MenuEjerciciosAdmin {
     }
 
     public static void mostrarEjercicios(){
-        try {
-            Map<String, Ejercicio> ejercicios = JSONEjercicio.getFromJSON();
-            for(Ejercicio ej : ejercicios.values()){
-                System.out.println("--------------------\n");
-                System.out.println("Nombre: " + ej.getNombre());
-                System.out.println("Descripcion: " +ej.getDescripcion());
-            }
-        } catch (JSONException | FileNotFoundException e) {
-            throw new RuntimeException(e);
+        Map<String, Ejercicio> ejercicios = JSONEjercicio.leerEjercicios();
+        if(ejercicios.isEmpty()){
+            System.out.println("No hay ejercicios en ejercicios.json");
+            return;
+        }
+        for(Ejercicio ej : ejercicios.values()){
+            System.out.println("--------------------\n");
+            System.out.println("Nombre: " + ej.getNombre());
+            System.out.println("Descripcion: " +ej.getDescripcion());
         }
     }
 
@@ -64,16 +61,5 @@ public class MenuEjerciciosAdmin {
         return new Ejercicio(nombre, descripcion);
     }
 
-    public static void borrarEjercicio(String ejercicio){
-        try{
-            Map<String, Ejercicio> ejercicios = JSONEjercicio.getFromJSON();
 
-            ejercicios.entrySet().removeIf(entry -> entry.getValue().getNombre().equals(ejercicio));
-
-            JSONEjercicio.sobreescribirJSONEjercicios(ejercicios);
-        }catch (JSONException | IllegalAccessException | FileNotFoundException e){
-            throw new RuntimeException(e);
-        }
-
-    }
 }
