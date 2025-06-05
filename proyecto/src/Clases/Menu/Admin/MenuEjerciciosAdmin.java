@@ -6,6 +6,8 @@ import Clases.manejoJSON.JSONUtiles;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import javax.swing.text.html.HTMLDocument;
+import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -49,7 +51,7 @@ public class MenuEjerciciosAdmin {
                 System.out.println("Nombre: " + ej.getNombre());
                 System.out.println("Descripcion: " +ej.getDescripcion());
             }
-        } catch (JSONException e) {
+        } catch (JSONException | FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -65,13 +67,11 @@ public class MenuEjerciciosAdmin {
     public static void borrarEjercicio(String ejercicio){
         try{
             Map<String, Ejercicio> ejercicios = JSONEjercicio.getFromJSON();
-            for(Ejercicio ej : ejercicios.values()){
-                if(ej.getNombre().equals(ejercicio)){
-                    ejercicios.remove(ejercicio);
-                }
-            }
+
+            ejercicios.entrySet().removeIf(entry -> entry.getValue().getNombre().equals(ejercicio));
+
             JSONEjercicio.sobreescribirJSONEjercicios(ejercicios);
-        }catch (JSONException | IllegalAccessException e){
+        }catch (JSONException | IllegalAccessException | FileNotFoundException e){
             throw new RuntimeException(e);
         }
 

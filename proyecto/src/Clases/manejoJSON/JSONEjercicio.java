@@ -75,13 +75,13 @@ public class JSONEjercicio{
     }
 
     public static void sobreescribirJSONEjercicios(Map<String, Ejercicio> mapa) throws JSONException, IllegalAccessException {
-        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+        JSONArray jEjercicios = new JSONArray();
 
-        JSONArray archivo = new JSONArray(tokenerArchivo);
         for(Ejercicio e : mapa.values()){
-            JSONObject JEjercicio = JSONUtiles.objetoToJSONOBJECT(e);
-            archivo.put(JEjercicio);
-            JSONUtiles.grabar(archivo, ARCHIVO);
+            jEjercicios.put(e);
+            System.out.println(e);
         }
+
+        JSONUtiles.grabar(jEjercicios, ARCHIVO);
     }
 }
