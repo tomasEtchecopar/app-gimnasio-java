@@ -40,7 +40,18 @@ public class UsuarioMenu implements MenuUsuario {
                 usuario.entrenar(teclado);
             }
             case 2-> usuario.verHistorial();
-            case 3 -> System.out.println("Aun no implementado");
+            case 3 -> {
+                System.out.println("--Estadisticas de "+ usuario.getNombre());
+                System.out.println("Edad: "+ usuario.getEdad());
+                System.out.println("Peso: " +usuario.getPeso());
+                System.out.println("Altura: "+ usuario.getAltura());
+                if(usuario.getIMC()==0){
+                    System.out.println("Para acceder a su indice de masa corporal necesita ser un usuario premium");
+                }else{
+                    System.out.println("Indice de masa corporal: " +usuario.getIMC());
+
+                }
+            }
             case 4 -> System.out.println("Aun no implementado");
         }
 
