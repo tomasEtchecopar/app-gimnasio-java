@@ -14,7 +14,7 @@ public class AdminMenu implements MenuUsuario {
         int opcion=-1;
         while (opcion != 6) {
             System.out.println("=============================");
-            System.out.println("\t\tAPP DE ENTRENAMIENTO ");
+            System.out.println("\tAPP DE ENTRENAMIENTO ");
             System.out.println("=============================");
             System.out.println("Bienvenido, ADMIN!");
             System.out.println("¿Qué te gustaría hacer hoy?");

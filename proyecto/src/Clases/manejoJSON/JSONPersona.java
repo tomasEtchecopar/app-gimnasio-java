@@ -12,6 +12,8 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JSONPersona {
     private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
@@ -39,7 +41,21 @@ public class JSONPersona {
             }
         }
     }
+    private static List<Usuario> getAllUsuarios() throws FileNotFoundException, JSONException, IllegalAccessException {
+        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+        List<Usuario> usuarios = new ArrayList<>();
+        if(tokenerArchivo==null){
+            throw new FileNotFoundException("El archivo no se encuentra en el directorio especificado.");
+        }else{
+            JSONArray Jusuarios = new JSONArray(tokenerArchivo);
 
+            for (int i = 0; i < Jusuarios.length(); i++) {
+                Usuario p = JSONUtiles.jsonObjectToObjeto(Jusuarios.getJSONObject(i), Usuario.class);
+                usuarios.add(p);
+            }
+        }
+        return usuarios;
+    }
     private static Persona getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         Persona p = null;
@@ -96,6 +112,16 @@ public class JSONPersona {
         try {
             JSONPersona.escribirJSON(usuario);
         } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void editarUsuario(Usuario usuario){
+        try {
+            List<Usuario> usuarios = getAllUsuarios();
+            usuarios.remove(usuario);
+            usuarios.add(usuario);
+        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

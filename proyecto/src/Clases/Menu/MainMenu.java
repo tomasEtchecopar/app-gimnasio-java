@@ -47,6 +47,11 @@ public class MainMenu {
         else new UsuarioMenu().mostrar(teclado, usuario);
 
     }
+    public static void limpiarConsola() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println(" ");
+        }
+    }
 
 
 
