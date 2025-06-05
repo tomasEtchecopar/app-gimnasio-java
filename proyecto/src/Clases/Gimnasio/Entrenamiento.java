@@ -2,18 +2,18 @@ package Clases.Gimnasio;
 
 import java.util.Date;
 
-/// CLASE ENTRENAMIENTO: es la que se almacena en el historial del usuario. Tiene un atributo fecha que le facilita la busqueda de entrenamientos al usuario
+/// CLASE ENTRENAMIENTO: es la que se almacena en el historial del usuario.
+/// Tiene un atributo fecha que le facilita la busqueda de entrenamientos al usuario.
 public class Entrenamiento extends Rutina{
     private Date fecha;
 
-    //constructor
+    // Constructor
     public Entrenamiento(String nombre, Date fecha) {
         super(nombre);
         this.fecha = fecha;
     }
-    //getters y setters
 
-
+    // Getters y setters
     public Date getFecha() {
         return fecha;
     }

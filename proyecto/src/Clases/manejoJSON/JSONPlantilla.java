@@ -17,6 +17,7 @@ import java.util.List;
 public class JSONPlantilla {
     private static final String ARCHIVO = "src/datos/plantillas.json"; //ruta del archivo
 
+    // Crea un archivo json mediante una instancia de la clase Plantilla pasada por parametro.
     public static void crearArchivo(Plantilla plantilla) throws JSONException, IllegalAccessException {
         JSONObject Jplantilla = JSONUtiles.objetoToJSONOBJECT(plantilla);
         JSONArray archivo = new JSONArray();
@@ -25,6 +26,7 @@ public class JSONPlantilla {
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
+    // Persiste los datos de la Plantilla en el archivo JSON y controla que la rutina no exista.
     public static void escribirJSON(Plantilla plantilla) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
@@ -42,6 +44,7 @@ public class JSONPlantilla {
 
     }
 
+    // Pasa del JSON a una lista de Plantillas la informacion dentro del archivo.
     public static List<Plantilla> getFromJSON() throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
@@ -61,6 +64,7 @@ public class JSONPlantilla {
         return plantillas;
     }
 
+    // Chequea si la Plantilla ya existe.
     public static boolean existePlantilla(JSONArray archivo, Plantilla plantilla) throws JSONException {
         boolean ret = false;
         for(int i = 0; i<archivo.length();i++){

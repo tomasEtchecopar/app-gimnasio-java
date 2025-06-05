@@ -19,6 +19,7 @@ public class RegistroMenu{
         }
     }
 
+    // Presenta al Usuario las preguntas para registrarse en el sistema.
     public static Usuario formularioRegistro(Scanner teclado){
         System.out.println("Ingrese nombre de usuario: ");
         String usuario = teclado.nextLine();

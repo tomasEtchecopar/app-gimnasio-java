@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JSONEjercicio{
-    private static final String ARCHIVO = "src/datos/ejercicios.json";
+    private static final String ARCHIVO = "src/datos/ejercicios.json"; // Ruta del archivo.
 
-
+    // Crea un JSON de Ejercicios.
     private static void crearArchivo(Ejercicio ejercicio) throws JSONException, IllegalAccessException {
         JSONObject JEjercicio = JSONUtiles.objetoToJSONOBJECT(ejercicio);
         JSONArray archivo = new JSONArray();
@@ -23,6 +23,7 @@ public class JSONEjercicio{
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
+    // Escribe los datos al JSON de ejercicios teniendo en cuenta si ya se ha creado o no.
     public static void escribirJSON(Ejercicio ejercicio) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
@@ -38,7 +39,7 @@ public class JSONEjercicio{
             }
         }
     }
-
+    // Pone en un Mapa todos los ejercicios del JSON.
     public static Map<String, Ejercicio> getFromJSON() throws JSONException, FileNotFoundException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
 
@@ -61,6 +62,7 @@ public class JSONEjercicio{
         return ejercicios;
     }
 
+    // Chequea si el ejercicio existe.
     public static boolean existeEjercicio(JSONArray archivo, Ejercicio ejercicio) throws JSONException {
         boolean ret = false;
         for(int i = 0; i<archivo.length();i++){

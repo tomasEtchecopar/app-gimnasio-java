@@ -6,6 +6,7 @@ public class Ejercicio {
     private String nombre;
     private String descripcion;
 
+    // Definicion de constructores
     public Ejercicio(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -17,6 +18,9 @@ public class Ejercicio {
     public Ejercicio(String nombre) {
         this.nombre = nombre;
     }
+
+
+    // Definicion de Getters y Setters
 
     public String getNombre() {
         return nombre;

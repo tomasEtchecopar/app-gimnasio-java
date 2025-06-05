@@ -5,6 +5,7 @@ import Clases.Gimnasio.Ejercicio;
 
 
 public class Admin extends Persona  {
+    // Constructores
     public Admin(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
         super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
