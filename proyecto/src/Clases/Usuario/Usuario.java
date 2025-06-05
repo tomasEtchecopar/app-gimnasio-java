@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Usuario extends Persona  {
-    // Constructores
     public Usuario(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) throws IllegalArgumentException {
         super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }

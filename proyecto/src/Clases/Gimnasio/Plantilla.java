@@ -6,14 +6,12 @@ public class Plantilla extends Rutina{
         super(nombre);
     }
 
-    // Mostrado de rutina completa.
     @Override
     public void mostrarRutina(){
         System.out.println("--" + this.getNombre());
         mostrarSeriesPorEjercicio();
     }
 
-    // Mostrado de series por ejercicio.
     @Override
     public void mostrarSeriesPorEjercicio(){
         if (this.getSeries() == null || this.getSeries().isEmpty()) {

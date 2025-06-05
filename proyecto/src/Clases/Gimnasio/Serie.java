@@ -5,7 +5,6 @@ public class Serie {
     private int repeticiones;
     private double peso; // en kg
 
-    // Definicion de los Constructores
     public Serie(Ejercicio ejercicio, int repeticiones, double peso) {
         this.ejercicio = ejercicio;
         this.repeticiones = repeticiones;
@@ -18,7 +17,6 @@ public class Serie {
         this.peso = Double.NaN;
     }
 
-    // Getters y Setters
     public Ejercicio getEjercicio() {
         return ejercicio;
     }

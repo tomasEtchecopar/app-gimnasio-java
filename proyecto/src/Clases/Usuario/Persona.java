@@ -20,7 +20,6 @@ public abstract class Persona implements Acciones {
     private List<Entrenamiento> historial;
     boolean premium;
 
-    // Constructores.
     public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) throws IllegalArgumentException {
         if(usuario==null || contrasenia ==null){
             throw new IllegalArgumentException("Usuario o contrasenia vacios");
@@ -41,7 +40,6 @@ public abstract class Persona implements Acciones {
         this.premium = premium;
         this.historial = new ArrayList<>();
     }
-
     public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium, List<Entrenamiento> historial) throws IllegalArgumentException {
         if(usuario==null || contrasenia ==null){
             throw new IllegalArgumentException("Usuario o contrasenia vacios");
@@ -74,7 +72,6 @@ public abstract class Persona implements Acciones {
     public Persona() {
     }
 
-    // Getters y Setters
     public String getUsuario() {
         return usuario;
     }

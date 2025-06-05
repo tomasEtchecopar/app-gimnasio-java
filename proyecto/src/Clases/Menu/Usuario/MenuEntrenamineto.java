@@ -30,7 +30,6 @@ public class MenuEntrenamineto implements MenuUsuario {
         }
     }
 
-    // Le presenta las plantillas disponibles al Usuario para que elija la que quiere usar.
     private void entrenamientoDesdePlantilla(Scanner teclado){
         List<Plantilla> plantillas = new ArrayList<>();
         try {
