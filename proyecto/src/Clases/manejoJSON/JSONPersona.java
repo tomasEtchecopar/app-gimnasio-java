@@ -1,5 +1,6 @@
 package Clases.manejoJSON;
 
+import Clases.Gimnasio.Ejercicio;
 import Clases.Gimnasio.Plantilla;
 import Clases.Usuario.Admin;
 import Clases.Usuario.Persona;
@@ -14,6 +15,7 @@ import org.json.JSONTokener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JSONPersona {
     private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
@@ -41,21 +43,7 @@ public class JSONPersona {
             }
         }
     }
-    private static List<Usuario> getAllUsuarios() throws FileNotFoundException, JSONException, IllegalAccessException {
-        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
-        List<Usuario> usuarios = new ArrayList<>();
-        if(tokenerArchivo==null){
-            throw new FileNotFoundException("El archivo no se encuentra en el directorio especificado.");
-        }else{
-            JSONArray Jusuarios = new JSONArray(tokenerArchivo);
 
-            for (int i = 0; i < Jusuarios.length(); i++) {
-                Usuario p = JSONUtiles.jsonObjectToObjeto(Jusuarios.getJSONObject(i), Usuario.class);
-                usuarios.add(p);
-            }
-        }
-        return usuarios;
-    }
     private static Persona getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         Persona p = null;
@@ -83,6 +71,22 @@ public class JSONPersona {
         return p;
     }
 
+    public static List<Usuario> getAllUsuarios() throws FileNotFoundException, JSONException, IllegalAccessException {
+        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+        List<Usuario> usuarios = new ArrayList<>();
+        if(tokenerArchivo==null){
+            throw new FileNotFoundException("El archivo no se encuentra en el directorio especificado.");
+        }else{
+            JSONArray Jusuarios = new JSONArray(tokenerArchivo);
+
+            for (int i = 0; i < Jusuarios.length(); i++) {
+                Usuario p = JSONUtiles.jsonObjectToObjeto(Jusuarios.getJSONObject(i), Usuario.class);
+                usuarios.add(p);
+            }
+        }
+        return usuarios;
+    }
+
     public static boolean existeUsuario(JSONArray archivo, Persona persona) throws JSONException {
        boolean ret = false;
         for(int i = 0; i<archivo.length();i++){
@@ -96,6 +100,15 @@ public class JSONPersona {
         return ret;
     }
 
+    public static void sobreescribirJSONUsuarios(List<Usuario> usuarios) throws JSONException, IllegalAccessException {
+        JSONArray jUsuarios = new JSONArray();
+
+        for(Usuario u : usuarios){
+            jUsuarios.put(JSONUtiles.objetoToJSONOBJECT(u));
+        }
+
+        JSONUtiles.grabar(jUsuarios, ARCHIVO);
+    }
 
     public static Persona iniciarSesion(String nombreUsuario, String contrasenia){
         Persona usuario=null;
@@ -119,9 +132,32 @@ public class JSONPersona {
     public static void editarUsuario(Usuario usuario){
         try {
             List<Usuario> usuarios = getAllUsuarios();
-            usuarios.remove(usuario);
-            usuarios.add(usuario);
+            usuarios.remove(usuario); //elimina el usuario que contenga el mismo nombre de usuario
+            usuarios.add(usuario); //agrega usuario modificado
+
+            sobreescribirJSONUsuarios(usuarios);
         } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void borrarUsuario(String nombre){
+        try{
+            List<Usuario> usuarios = getAllUsuarios();
+            int index=0;
+            for(int i=0;i<usuarios.size();i++){
+                System.out.println(usuarios.get(i).getNombre());
+                if(usuarios.get(i).getNombre().equalsIgnoreCase(nombre)){
+                    System.out.println("test");
+                    index = i;
+                }
+            }
+
+            usuarios.remove(index);
+
+
+
+        } catch (FileNotFoundException | IllegalAccessException | JSONException e) {
             throw new RuntimeException(e);
         }
     }

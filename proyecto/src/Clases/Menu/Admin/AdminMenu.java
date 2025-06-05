@@ -39,6 +39,8 @@ public class AdminMenu implements MenuUsuario {
     public void menuCaller(Scanner teclado, int opcion, Persona usuario) {
         switch(opcion){
             case 1 -> MenuEjerciciosAdmin.menuEjercicios(teclado);
+            case 3 -> MenuUsuariosAdmin.menuUsuarios(teclado);
+            case 4 -> System.out.printf("Adios!\n\n");
         }
     }
     }

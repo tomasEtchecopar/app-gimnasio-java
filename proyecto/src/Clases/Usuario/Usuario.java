@@ -20,6 +20,9 @@ public class Usuario extends Persona  {
         super(usuario, contrasenia);
     }
 
+    public Usuario(String nombre){
+    }
+
     public Usuario() {
     }
 

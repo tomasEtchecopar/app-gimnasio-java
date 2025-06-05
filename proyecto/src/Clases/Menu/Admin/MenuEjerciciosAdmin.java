@@ -1,6 +1,7 @@
 package Clases.Menu.Admin;
 
 import Clases.Gimnasio.Ejercicio;
+import Clases.Menu.Utiles.Editores;
 import Clases.manejoJSON.JSONEjercicio;
 import org.json.JSONException;
 
@@ -33,7 +34,7 @@ public class MenuEjerciciosAdmin {
                 }
                 case 4 -> {
                     System.out.println("\n Ingrese el ejercicio a editar: ");
-                    editar(teclado, teclado.nextLine());
+                    Editores.editarEjercicios(teclado, teclado.nextLine());
                 }
                 default -> System.out.println("\n Ocurrio un error\n\n");
             }
@@ -59,31 +60,5 @@ public class MenuEjerciciosAdmin {
         System.out.println("Ingrese la descripción: ");
         String descripcion = teclado.nextLine();
         return new Ejercicio(nombre, descripcion);
-    }
-
-    public static void editar(Scanner teclado, String nombre){
-        Map<String, Ejercicio> ejercicios = JSONEjercicio.leerEjercicios();
-        int opcion;
-
-        for(Map.Entry<String, Ejercicio> ejercicioEntry: ejercicios.entrySet()){
-            if(ejercicioEntry.getValue().getNombre().equals(nombre)){
-                System.out.println("\n Que desea editar?\n1. Nombre\n2. Descripcion\n");
-                opcion = teclado.nextInt();
-                teclado.nextLine();
-                switch (opcion){
-                    case 1 -> {
-                        System.out.println("\nIngrese el nuevo nombre: ");
-                        ejercicioEntry.getValue().setNombre(teclado.nextLine());
-                    }
-                    case 2 -> {
-                        System.out.println("\nIngrese la nueva descripcion: ");
-                        ejercicioEntry.getValue().setNombre(teclado.nextLine());
-                    }
-                }
-
-            }
-        }
-
-        JSONEjercicio.editarEjercicio(ejercicios);
     }
 }

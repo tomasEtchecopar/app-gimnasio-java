@@ -6,6 +6,7 @@ import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONPersona;
+import Clases.Menu.Utiles.Editores;
 
 import java.util.Scanner;
 
@@ -59,33 +60,10 @@ public class UsuarioMenu implements MenuUsuario {
 
                 }
             }
-            case 4 -> menuEdicionDeUsuario(teclado, usuario);
+            case 4 -> Editores.menuEdicionDeUsuario(teclado, usuario);
         }
 
         System.out.println("Si desea continuar presione ENTER");
         teclado.nextLine();
-    }
-
-    public static void menuEdicionDeUsuario(Scanner teclado, Persona usuario){
-        int opcion=-1;
-        while(opcion!=6){
-            MainMenu.limpiarConsola();
-            System.out.println("Ingrese que campo desea editar: ");
-            System.out.println("1) Nombre");
-            System.out.println("2) Apellido");
-            System.out.println("3) Edad");
-            System.out.println("4) Peso");
-            System.out.println("5) Altura");
-            System.out.println("6) Volver");
-            opcion = LecturaTeclado.leerEntero(teclado, 1, 6);
-
-            switch(opcion){
-                case 1 ->{
-                    System.out.println("Ingrese nuevo nombre: ");
-                    usuario.setNombre(teclado.nextLine());
-                    JSONPersona.editarUsuario((Usuario) usuario);
-                }
-            }
-        }
     }
 }
