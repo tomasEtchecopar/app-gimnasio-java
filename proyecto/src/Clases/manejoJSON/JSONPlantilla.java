@@ -17,7 +17,7 @@ import java.util.List;
 public class JSONPlantilla {
     private static final String ARCHIVO = "src/datos/plantillas.json"; //ruta del archivo
 
-    public static void crearArchivo(Plantilla plantilla) throws JSONException, IllegalAccessException {
+    private static void crearArchivo(Plantilla plantilla) throws JSONException, IllegalAccessException {
         JSONObject Jplantilla = JSONUtiles.objetoToJSONOBJECT(plantilla);
         JSONArray archivo = new JSONArray();
         archivo.put(Jplantilla);
@@ -25,7 +25,7 @@ public class JSONPlantilla {
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
-    public static void escribirJSON(Plantilla plantilla) throws JSONException, IllegalAccessException {
+    private static void escribirJSON(Plantilla plantilla) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
             crearArchivo(plantilla);
@@ -42,7 +42,7 @@ public class JSONPlantilla {
 
     }
 
-    public static List<Plantilla> getFromJSON() throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
+    private static List<Plantilla> getFromJSON() throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
             throw new FileNotFoundException("El archivo no se encuntra en el directorio especificado");
@@ -61,7 +61,7 @@ public class JSONPlantilla {
         return plantillas;
     }
 
-    public static boolean existePlantilla(JSONArray archivo, Plantilla plantilla) throws JSONException {
+    private static boolean existePlantilla(JSONArray archivo, Plantilla plantilla) throws JSONException {
         boolean ret = false;
         for(int i = 0; i<archivo.length();i++){
             JSONObject p = archivo.getJSONObject(i);
@@ -72,5 +72,15 @@ public class JSONPlantilla {
             }
         }
         return ret;
+    }
+
+    public static List<Plantilla> leerPlantillas(){
+        List<Plantilla> plantillas = new ArrayList<>();
+        try {
+            plantillas = JSONPlantilla.getFromJSON();
+        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+            System.out.println(e.getMessage());
+        }
+        return plantillas;
     }
 }

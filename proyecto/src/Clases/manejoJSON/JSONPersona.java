@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 public class JSONPersona {
     private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
 
-    public static void crearArchivo(Persona persona) throws JSONException, IllegalAccessException {
+    private static void crearArchivo(Persona persona) throws JSONException, IllegalAccessException {
         JSONObject Jpersona = JSONUtiles.objetoToJSONOBJECT(persona);
         JSONArray archivo = new JSONArray();
         archivo.put(Jpersona);
@@ -24,7 +24,7 @@ public class JSONPersona {
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
-    public static void escribirJSON(Persona persona) throws JSONException, IllegalAccessException {
+    private static void escribirJSON(Persona persona) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
             crearArchivo(persona);
@@ -40,7 +40,7 @@ public class JSONPersona {
         }
     }
 
-    public static Persona getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
+    private static Persona getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         Persona p = null;
         if(tokenerArchivo==null){
@@ -78,5 +78,25 @@ public class JSONPersona {
             }
         }
         return ret;
+    }
+
+
+    public static Persona iniciarSesion(String nombreUsuario, String contrasenia){
+        Persona usuario=null;
+        try {
+            usuario = JSONPersona.getFromJSON(new Usuario(nombreUsuario, contrasenia));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return usuario;
+    }
+
+    public static void registro(Usuario usuario){
+        try {
+            JSONPersona.escribirJSON(usuario);
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

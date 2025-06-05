@@ -25,6 +25,18 @@ public class LecturaTeclado {
 
         return linea.equals("s");
     }
+    public static double leerDouble(Scanner teclado, double min, double max){
+        double opcion;
+        do{
+            while(!teclado.hasNextDouble()){
+                System.out.println("Debe ingresar un número valido.");
+                teclado.next();
+            }
+            opcion = teclado.nextDouble();
+            teclado.nextLine();
+        }while(opcion<min || opcion > max);
+        return opcion;
+    }
 
 
 }

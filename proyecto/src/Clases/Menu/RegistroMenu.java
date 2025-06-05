@@ -1,6 +1,7 @@
 package Clases.Menu;
 
 import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONPersona;
 import org.json.JSONException;
@@ -11,13 +12,9 @@ public class RegistroMenu{
 
     public static void mostrar(Scanner teclado) throws IllegalArgumentException{
         System.out.println("Bienvenido a nuestra app! A continuacion podrá llenar el formulario de registro:");
-        Usuario usuario = formularioRegistro(teclado);
-        try {
-            JSONPersona.escribirJSON(usuario); // lo agrego al json
-        } catch (JSONException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        JSONPersona.registro(formularioRegistro(teclado));
     }
+
 
     public static Usuario formularioRegistro(Scanner teclado){
         System.out.println("Ingrese nombre de usuario: ");

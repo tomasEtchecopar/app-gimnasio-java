@@ -2,8 +2,10 @@ package Clases.Usuario;
 
 import Clases.Acciones;
 import Clases.Gimnasio.Entrenamiento;
+import Clases.Menu.Usuario.MenuEntrenamiento;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Usuario extends Persona  {
     public Usuario(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) throws IllegalArgumentException {
@@ -20,4 +22,12 @@ public class Usuario extends Persona  {
 
     public Usuario() {
     }
+
+    @Override
+    public void entrenar(Scanner teclado){
+        Entrenamiento entrenamiento = MenuEntrenamiento.entrenarPorConsola(teclado);
+        this.agregarEntrenamiento(entrenamiento);
+    }
+
+
 }

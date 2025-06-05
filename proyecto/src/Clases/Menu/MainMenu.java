@@ -39,9 +39,12 @@ public class MainMenu {
             throw new IllegalArgumentException("El usuario (NULL) no es valido.");
         }
 
-        MenuUsuario menuDelUsuario = usuario.getUsuario().equals("admin") ? new AdminMenu() :  new UsuarioMenu();
-        menuDelUsuario.mostrar(teclado);
-        menuDelUsuario.menuCaller(teclado, menuDelUsuario.elegirOpcion(teclado));
+        MenuUsuario menuDelUsuario;
+        if (usuario.getUsuario().equals("admin")){
+            menuDelUsuario = new AdminMenu();
+            menuDelUsuario.mostrar(teclado, usuario);
+        }
+        else new UsuarioMenu().mostrar(teclado, usuario);
 
     }
 

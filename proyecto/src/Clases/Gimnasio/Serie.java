@@ -1,9 +1,9 @@
 package Clases.Gimnasio;
 
 public class Serie {
-    Ejercicio ejercicio;
-    int repeticiones;
-    double peso; // en kg
+    private Ejercicio ejercicio;
+    private int repeticiones;
+    private double peso; // en kg
 
     public Serie(Ejercicio ejercicio, int repeticiones, double peso) {
         this.ejercicio = ejercicio;

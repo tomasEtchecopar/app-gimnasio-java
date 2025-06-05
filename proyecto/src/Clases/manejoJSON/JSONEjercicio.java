@@ -23,7 +23,7 @@ public class JSONEjercicio{
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
-    public static void escribirJSON(Ejercicio ejercicio) throws JSONException, IllegalAccessException {
+    private static void escribirJSON(Ejercicio ejercicio) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
             crearArchivo(ejercicio);
@@ -39,7 +39,7 @@ public class JSONEjercicio{
         }
     }
 
-    public static Map<String, Ejercicio> getFromJSON() throws JSONException, FileNotFoundException {
+    private static Map<String, Ejercicio> getFromJSON() throws JSONException, FileNotFoundException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
 
         if(tokenerArchivo==null){
@@ -61,7 +61,7 @@ public class JSONEjercicio{
         return ejercicios;
     }
 
-    public static boolean existeEjercicio(JSONArray archivo, Ejercicio ejercicio) throws JSONException {
+    private static boolean existeEjercicio(JSONArray archivo, Ejercicio ejercicio) throws JSONException {
         boolean ret = false;
         for(int i = 0; i<archivo.length();i++){
             JSONObject JEjercicio = archivo.getJSONObject(i);
@@ -83,5 +83,33 @@ public class JSONEjercicio{
         }
 
         JSONUtiles.grabar(jEjercicios, ARCHIVO);
+    }
+    public static void guardarEjercicio(Ejercicio ejercicio){
+        try {
+            JSONEjercicio.escribirJSON(ejercicio);
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static Map<String, Ejercicio> leerEjercicios(){
+        Map<String, Ejercicio> ejercicios = new HashMap<>();
+        try {
+             ejercicios = getFromJSON();
+        } catch (JSONException | FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return ejercicios;
+    }
+    public static void borrarEjercicio(String nombreEjercicio){
+        Map<String, Ejercicio> ejercicios = JSONEjercicio.leerEjercicios();
+
+        ejercicios.entrySet().removeIf(entry -> entry.getValue().getNombre().equals(nombreEjercicio));
+
+        try {
+            JSONEjercicio.sobreescribirJSONEjercicios(ejercicios);
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
