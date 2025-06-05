@@ -30,7 +30,6 @@ public class RegistroMenu{
         String apellido = teclado.nextLine();
         System.out.println("Ingrese su edad");
         int edad = LecturaTeclado.leerEntero(teclado, 1, 100);
-        teclado.nextLine();
         System.out.println("Ingrese su peso (en kg): ");
         double peso = teclado.nextDouble();
         teclado.nextLine();

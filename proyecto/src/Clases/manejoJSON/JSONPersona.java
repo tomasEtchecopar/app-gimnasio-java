@@ -38,14 +38,13 @@ public class JSONPersona {
                 throw new UsuarioYaExisteException("El nombre de usuario que intenta usar no se encuentra disponible.");
             }
         }
-
     }
 
     public static Persona getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         Persona p = null;
         if(tokenerArchivo==null){
-            throw new FileNotFoundException("El archivo usuarios.json no existe.");
+            throw new FileNotFoundException("El archivo no se encuentra en el directorio especificado.");
         }else{
             JSONArray archivo = new JSONArray(tokenerArchivo);
                 for (int i = 0; i < archivo.length(); i++) {

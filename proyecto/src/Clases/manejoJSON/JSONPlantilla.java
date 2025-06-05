@@ -43,7 +43,11 @@ public class JSONPlantilla {
     }
 
     public static List<Plantilla> getFromJSON() throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
-        JSONArray Jplantillas = new JSONArray(JSONUtiles.leer(ARCHIVO));
+        JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
+        if(tokenerArchivo==null){
+            throw new FileNotFoundException("El archivo no se encuntra en el directorio especificado");
+        }
+        JSONArray Jplantillas = new JSONArray(tokenerArchivo);
         List<Plantilla> plantillas = new ArrayList<>();
         for (int i = 0; i < Jplantillas.length(); i++) {
             Plantilla plantilla = null;
