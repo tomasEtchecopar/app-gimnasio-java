@@ -34,7 +34,7 @@ public class MenuEjerciciosAdmin {
                 }
                 case 4 -> {
                     System.out.println("\n Ingrese el ejercicio a editar: ");
-                    Editores.editarEjercicios(teclado, teclado.nextLine());
+                    Editores.editarEjercicio(teclado, teclado.nextLine());
                 }
                 default -> System.out.println("\n Ocurrio un error\n\n");
             }

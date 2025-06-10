@@ -1,8 +1,5 @@
 package Clases.Usuario;
 
-import Clases.Acciones;
-import Clases.Gimnasio.Ejercicio;
-
 import java.util.Scanner;
 
 

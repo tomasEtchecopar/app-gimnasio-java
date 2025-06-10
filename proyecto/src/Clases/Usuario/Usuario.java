@@ -29,7 +29,7 @@ public class Usuario extends Persona  {
     @Override
     public void entrenar(Scanner teclado){
         Entrenamiento entrenamiento = MenuEntrenamiento.entrenarPorConsola(teclado);
-        this.agregarEntrenamiento(entrenamiento);
+        if(entrenamiento!=null) this.agregarEntrenamiento(entrenamiento);
     }
 
 

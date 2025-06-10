@@ -168,14 +168,14 @@ public abstract class Persona implements Acciones {
 
     @Override
     public void verHistorial() {
-        List<Entrenamiento> lista = this.getHistorial();
-        if (lista.isEmpty() || lista==null) {
+        List<Entrenamiento> lista = new ArrayList<>(this.getHistorial());
+        if (!lista.isEmpty()) {
+            for (Entrenamiento ent : lista) {
+                System.out.println("------------------------------");
+                ent.mostrarRutina();
+            }
+        } else {
             System.out.println("El historial esta vacio");
-            return;
-        }
-        for (Entrenamiento ent : lista) {
-            System.out.println("------------------------------");
-            ent.mostrarRutina();
         }
     }
 
@@ -195,15 +195,7 @@ public abstract class Persona implements Acciones {
 
     @Override
     public java.lang.String toString() {
-        return "Persona{" +
-                "usuario='" + usuario + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", edad=" + edad +
-                ", peso=" + peso +
-                ", altura=" + altura +
-                '}';
+        return "Usuario: " + this.getUsuario() + "\nNombre: " + this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nPeso: "+this.getPeso()+"\nAltura: "+this.getAltura()+"\nEs premium: "+this.isPremium();
     }
 
 }

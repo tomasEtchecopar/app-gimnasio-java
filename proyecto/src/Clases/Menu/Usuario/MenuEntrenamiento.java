@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class MenuEntrenamiento {
+public class    MenuEntrenamiento {
 
     private static Plantilla elegirPlantilla(Scanner teclado){
         List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
@@ -82,7 +82,6 @@ public class MenuEntrenamiento {
         System.out.println("---ENTRENAMIENTO COMPLETO---");
         entrenamiento.mostrarRutina();
         System.out.println("Fecha de entrenamiento: " + entrenamiento.getFecha());
-        System.out.println("Deseas guardar este entrenamiento en tu historial?");
 
         return entrenamiento;
 

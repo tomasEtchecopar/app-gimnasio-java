@@ -66,7 +66,7 @@ public class JSONPersona {
                }
         }
         if(p==null){
-            throw   new UsuarioNoExisteException("El usuario o contrasenia son incorrectos.");
+            throw new UsuarioNoExisteException("El usuario o contrasenia son incorrectos.");
         }
         return p;
     }
@@ -116,7 +116,6 @@ public class JSONPersona {
             usuario = JSONPersona.getFromJSON(new Usuario(nombreUsuario, contrasenia));
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
         return usuario;
     }
