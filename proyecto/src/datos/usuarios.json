@@ -45,13 +45,13 @@
     },
     {
         "premium": true,
-        "peso": 90,
-        "altura": 186,
+        "peso": 105,
+        "altura": 170,
         "apellido": "Etchecopar",
         "historial": [],
         "usuario": "tomi123",
         "contrasenia": "12345",
         "nombre": "Tomas",
-        "edad": 20
+        "edad": 25
     }
 ]

@@ -53,10 +53,31 @@ public class Editores {
                 case 1 ->{
                     System.out.println("Ingrese nuevo nombre: ");
                     usuario.setNombre(teclado.nextLine());
-                    JSONPersona.editarUsuario((Usuario) usuario);
+
+                }
+                case 2 ->{
+                    System.out.println("Ingrese nuevo apellido: ");
+                    usuario.setApellido(teclado.nextLine());
+                }
+                case 3->{
+                    System.out.println("Ingrese nueva edad: ");
+                    usuario.setEdad(LecturaTeclado.leerEntero(teclado, 0, 100));
+                }
+                case 4->{
+                    System.out.println("Ingrese nuevo peso (kg): ");
+                    usuario.setPeso(LecturaTeclado.leerDouble(teclado, 0, 500));
+                }
+                case 5 ->{
+                    System.out.println("Ingrese nueva altura (cm): ");
+                    usuario.setAltura(LecturaTeclado.leerDouble(teclado, 0, 250));
+                }
+                case 6->{
+                    return;
                 }
             }
+            JSONPersona.editarUsuario((Usuario) usuario);
         }
     }
+
 
 }
