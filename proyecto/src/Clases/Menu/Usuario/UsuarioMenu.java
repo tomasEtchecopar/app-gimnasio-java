@@ -19,7 +19,7 @@ public class UsuarioMenu implements MenuUsuario {
             System.out.println("=============================");
             System.out.println("Bienvenido!");
             System.out.println("¿Qué te gustaría hacer hoy?");
-            System.out.println("1) Empezar entrenamiento");
+            System.out.println("1) Entrenamiento");
             System.out.println("2) Ver mi historial de entrenamientos");
             System.out.println("3) Ver estadisticas");
             System.out.println("4) Ver informacion personal");
@@ -39,17 +39,16 @@ public class UsuarioMenu implements MenuUsuario {
     public void menuCaller(Scanner teclado, int opcion, Persona usuario) {
         MainMenu.limpiarConsola();
         switch (opcion) {
-            case 1 -> {
-                usuario.entrenar(teclado);
-            }
+            case 1 -> MenuEntrenamiento.mostrar(teclado, usuario);
             case 2 -> usuario.verHistorial();
             case 3 -> mostrarEstadisticas(usuario);
             case 4 -> System.out.println(usuario);
             case 5 -> Editores.menuEdicionDeUsuario(teclado, usuario);
+            case 6 -> {
+                return;
+            }
         }
-
-        System.out.println("Si desea continuar presione ENTER");
-        teclado.nextLine();
+        LecturaTeclado.continuar(teclado);
     }
 
     public static void mostrarEstadisticas(Persona usuario) {

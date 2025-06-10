@@ -2,6 +2,7 @@ package Clases.Menu.Admin;
 
 import Clases.Gimnasio.Ejercicio;
 import Clases.Gimnasio.GrupoMuscular;
+import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.Editores;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.manejoJSON.JSONEjercicio;
@@ -15,6 +16,7 @@ public class MenuEjerciciosAdmin {
     public static void menuEjercicios(Scanner teclado){
         int opcion=-1;
         while(opcion!=5){
+            MainMenu.limpiarConsola();
             System.out.println("--EJERCICIOS--");
             System.out.println("1) Ver ejercicios");
             System.out.println("2) Agregar Ejercicio");
@@ -39,6 +41,7 @@ public class MenuEjerciciosAdmin {
                 }
                 default -> System.out.println("\n Ocurrio un error\n\n");
             }
+            LecturaTeclado.continuar(teclado);
         }
     }
 

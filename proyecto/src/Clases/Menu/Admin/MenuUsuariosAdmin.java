@@ -1,10 +1,13 @@
 package Clases.Menu.Admin;
 
+import Clases.Menu.MainMenu;
 import Clases.Menu.RegistroMenu;
 import Clases.Menu.Utiles.Editores;
+import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONPersona;
+import com.sun.tools.javac.Main;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
@@ -24,6 +27,7 @@ public class MenuUsuariosAdmin {
                 throw new RuntimeException(e);
             }
 
+            MainMenu.limpiarConsola();
             System.out.println("\n\n--MENU DE USUARIOS--");
             System.out.println("1) Ver Usuarios");
             System.out.println("2) Agregar Usuarios");
@@ -47,7 +51,7 @@ public class MenuUsuariosAdmin {
                 }
                 case 5 -> System.out.printf("Adios!\n");
             }
-
+            LecturaTeclado.continuar(teclado);
         }
     }
 

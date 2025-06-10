@@ -4,6 +4,7 @@ import Clases.Gimnasio.Entrenamiento;
 import Clases.Gimnasio.Plantilla;
 import Clases.Gimnasio.Serie;
 import Clases.Menu.Interfaces.MenuUsuario;
+import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Persona;
 import Clases.manejoJSON.JSONPlantilla;
@@ -12,7 +13,35 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class    MenuEntrenamiento {
+public class MenuEntrenamiento {
+    public static void mostrar(Scanner teclado, Persona usuario) {
+        int opcion = -1;
+        while (opcion != 4) {
+            MainMenu.limpiarConsola();
+            System.out.println("=============================");
+            System.out.println("\tAPP DE ENTRENAMIENTO ");
+            System.out.println("=============================");
+            System.out.println("1) Empezar entrenamiento");
+            System.out.println("2) Ver catalogo de ejercicios");
+            System.out.println("3) Ver catalogo de rutinas");
+            System.out.println("4) Volver");
+            opcion = LecturaTeclado.leerEntero(teclado, 1, 4);
+            menuCaller(teclado, opcion, usuario);
+        }
+    }
+
+    private static void menuCaller(Scanner teclado, int opcion, Persona usuario) {
+        MainMenu.limpiarConsola();
+        switch(opcion){
+            case 1->usuario.entrenar(teclado);
+            //case 2 -> //mostrado de ejercicios (filtrar y ordenar por nombre y grupo)
+            //case 3 -> //mostrado de rutinas
+            case 4->{
+                return;
+            }
+        }
+        LecturaTeclado.continuar(teclado);
+    }
 
     private static Plantilla elegirPlantilla(Scanner teclado){
         List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
