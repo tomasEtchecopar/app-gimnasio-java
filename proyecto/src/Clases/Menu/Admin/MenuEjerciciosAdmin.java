@@ -1,9 +1,10 @@
 package Clases.Menu.Admin;
 
 import Clases.Gimnasio.Ejercicio;
+import Clases.Gimnasio.GrupoMuscular;
 import Clases.Menu.Utiles.Editores;
+import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.manejoJSON.JSONEjercicio;
-import org.json.JSONException;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -50,6 +51,7 @@ public class MenuEjerciciosAdmin {
         for(Ejercicio ej : ejercicios.values()){
             System.out.println("--------------------\n");
             System.out.println("Nombre: " + ej.getNombre());
+            System.out.println("Grupo muscular:" + ej.getGrupoMuscular());
             System.out.println("Descripcion: " +ej.getDescripcion());
         }
     }
@@ -57,8 +59,16 @@ public class MenuEjerciciosAdmin {
     public static Ejercicio cargarEjercicioPorTeclado(Scanner teclado){
         System.out.println("Ingrese el nombre: ");
         String nombre = teclado.nextLine();
+        System.out.println("Ingrese el grupo muscular:");
+
+        GrupoMuscular[] grupos = GrupoMuscular.values();
+        for (int i = 0; i < grupos.length; i++) {
+            System.out.println((i+1)+") "+grupos[i]);
+        }
+        int elegido = (LecturaTeclado.leerEntero(teclado, 0, grupos.length)) -  1;
+
         System.out.println("Ingrese la descripción: ");
         String descripcion = teclado.nextLine();
-        return new Ejercicio(nombre, descripcion);
+        return new Ejercicio(nombre, grupos[elegido], descripcion);
     }
 }
