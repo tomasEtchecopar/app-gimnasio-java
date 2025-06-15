@@ -3,7 +3,16 @@ package Clases.Menu.Admin;
 import Clases.Gimnasio.Plantilla;
 import Clases.Gimnasio.Rutina;
 import Clases.Menu.MainMenu;
+import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Usuario.Persona;
+import Clases.Usuario.Usuario;
+import Clases.manejoJSON.JSONPersona;
+import org.json.JSONException;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
@@ -27,9 +36,23 @@ public class MenuRutinasAdmin {
         }
     }
 
-    /*private static Rutina cargarRutinaPorTeclado(Scanner teclado){
-        String nombre;
-        System.out.println("Ingrese un nombre para la rutina: ");
-    }*/
+    private static Rutina cargarRutinaPorTeclado(Scanner teclado) throws RuntimeException {
+        int id=0;
+        List<Usuario> usuarios = new ArrayList<>();
+        try{
+            usuarios = JSONPersona.getAllUsuarios();
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        //se le asigna una id a la plantilla
+        usuarios.sort(Comparator.comparing(Persona::getId));
+        System.out.println("Ingrese para que usuario es la rutina: ");
+        System.out.println("0. Todos los usuarios");
+
+        for(Usuario u : usuarios){
+            System.out.println(u.getId() +". " +u.getNombre() +" "+ u.getApellido());
+        }
+        id= LecturaTeclado.leerEntero(teclado, 0, usuarios.getLast().getId());
+    }
 }
 

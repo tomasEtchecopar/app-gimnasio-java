@@ -4,24 +4,21 @@ import Clases.Usuario.Usuario;
 
 /// CLASE PLANTILLA: son las rutinas que el usuario puede elegir. Se almacenan en el JSON 'plantillas.json'.
 public class Plantilla extends Rutina{
-    private Usuario usuario;
+    private int id; // id que indica para qué usuario con la misma id es la rutina. si el id es 0 la rutina es para todos los usuarios.
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getId() {
+        return id;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Plantilla(String nombre, Usuario usuario) {
+    public Plantilla(String nombre, int id) {
         super(nombre);
-        this.usuario = usuario;
+        this.id = id;
     }
 
-    public Plantilla(String nombre) {
-        super(nombre);
-    }
 
     @Override
     public void mostrarRutina(){

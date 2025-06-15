@@ -71,12 +71,10 @@ public class JSONPersona {
         return p;
     }
 
-    public static List<Usuario> getAllUsuarios() throws FileNotFoundException, JSONException, IllegalAccessException {
+    public static List<Usuario> getAllUsuarios() throws  JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         List<Usuario> usuarios = new ArrayList<>();
-        if(tokenerArchivo==null){
-            throw new FileNotFoundException("El archivo no se encuentra en el directorio especificado.");
-        }else{
+        if(!(tokenerArchivo ==null)) {
             JSONArray Jusuarios = new JSONArray(tokenerArchivo);
 
             for (int i = 0; i < Jusuarios.length(); i++) {
