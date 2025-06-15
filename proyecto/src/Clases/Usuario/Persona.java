@@ -2,6 +2,7 @@ package Clases.Usuario;
 
 import Clases.Acciones;
 import Clases.Gimnasio.Entrenamiento;
+import Clases.manejoJSON.JSONPersona;
 
 import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public abstract class Persona implements Acciones {
+    private static int contador = JSONPersona.getMaxID();
+    private int id;
     private String usuario;
     private String contrasenia;
     private String nombre;
@@ -39,6 +42,7 @@ public abstract class Persona implements Acciones {
         this.altura = altura;
         this.premium = premium;
         this.historial = new ArrayList<>();
+        this.id = contador++;
     }
     public Persona(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium, List<Entrenamiento> historial) throws IllegalArgumentException {
         if(usuario==null || contrasenia ==null){
@@ -59,6 +63,8 @@ public abstract class Persona implements Acciones {
         this.altura = altura;
         this.premium = premium;
         this.historial = historial;
+        this.id = contador++;
+
     }
 
     public Persona(String usuario, String contrasenia) throws IllegalArgumentException{
@@ -142,6 +148,14 @@ public abstract class Persona implements Acciones {
 
     public void setPremium(boolean premium) {
         this.premium = premium;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getIMC(){

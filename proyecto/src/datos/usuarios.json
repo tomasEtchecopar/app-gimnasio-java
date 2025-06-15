@@ -1,57 +1,28 @@
 [
     {
-        "premium": false,
-        "peso": 0,
-        "altura": 0,
-        "apellido": null,
-        "historial": null,
+        "premium": true,
+        "contador": 1,
+        "peso": 1,
+        "altura": 1,
+        "apellido": " ",
+        "historial": [],
         "usuario": "admin",
         "contrasenia": "123",
-        "nombre": "Pepito",
-        "edad": 0
-    },
-    {
-        "premium": false,
-        "peso": 102,
-        "altura": 185,
-        "apellido": "Farias",
-        "historial": [],
-        "usuario": "juanseba",
-        "contrasenia": "1234",
-        "nombre": "Juan",
-        "edad": 21
+        "id": 0,
+        "nombre": "admin",
+        "edad": 1
     },
     {
         "premium": true,
-        "peso": 55,
-        "altura": 180,
-        "apellido": "dd",
-        "historial": [],
-        "usuario": "aa",
-        "contrasenia": "bb",
-        "nombre": "cc",
-        "edad": 21
-    },
-    {
-        "premium": true,
-        "peso": 20,
-        "altura": 30,
-        "apellido": "yy",
-        "historial": [],
-        "usuario": "ff",
-        "contrasenia": "qq",
-        "nombre": "ww",
-        "edad": 10
-    },
-    {
-        "premium": true,
-        "peso": 105,
-        "altura": 170,
+        "contador": 2,
+        "peso": 90,
+        "altura": 186,
         "apellido": "Etchecopar",
         "historial": [],
         "usuario": "tomi123",
         "contrasenia": "12345",
+        "id": 1,
         "nombre": "Tomas",
-        "edad": 25
+        "edad": 20
     }
 ]

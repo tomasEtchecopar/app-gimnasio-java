@@ -1,7 +1,24 @@
 package Clases.Gimnasio;
 
+import Clases.Usuario.Usuario;
+
 /// CLASE PLANTILLA: son las rutinas que el usuario puede elegir. Se almacenan en el JSON 'plantillas.json'.
 public class Plantilla extends Rutina{
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Plantilla(String nombre, Usuario usuario) {
+        super(nombre);
+        this.usuario = usuario;
+    }
+
     public Plantilla(String nombre) {
         super(nombre);
     }

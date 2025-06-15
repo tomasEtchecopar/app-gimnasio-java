@@ -160,4 +160,19 @@ public class JSONPersona {
             throw new RuntimeException(e);
         }
     }
+    public static int getMaxID(){
+        List<Usuario> usuarios = new ArrayList<>();
+        int mayorId=0;
+        try{
+            usuarios = getAllUsuarios();
+            for(Usuario usuario: usuarios){
+                if(usuario.getId()>mayorId){
+                    mayorId = usuario.getId();
+                }
+            }
+        } catch (FileNotFoundException | IllegalAccessException | JSONException e) {
+
+        }
+        return mayorId;
+    }
 }

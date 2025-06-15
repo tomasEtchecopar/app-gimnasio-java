@@ -3,6 +3,7 @@ import Clases.Menu.MainMenu;
 import Clases.Menu.RegistroMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Persona;
+import Clases.manejoJSON.JSONPersona;
 
 
 import java.util.Scanner;

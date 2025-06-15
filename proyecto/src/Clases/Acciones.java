@@ -6,20 +6,6 @@ import java.util.Scanner;
 public interface Acciones {
     void entrenar(Scanner teclado);
     void verHistorial();
-        /* funcionalidades premium
-    agregarRutina();
-    borrarRutina();
-    agregarEjercicio();
-    borrarEjercicio();
-    verIMC();
-    ...
-
-    funcionalidades del admin
-    agregarUsuario();
-    borrarUsuario();
-    editarInfoUsuario()
-    ...
-    */
 
 
 }
