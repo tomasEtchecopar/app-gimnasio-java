@@ -23,7 +23,7 @@ public class MenuUsuariosAdmin {
             List<Usuario> usuarios;
             try{
                 usuarios = JSONPersona.getAllUsuarios();
-            } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+            } catch ( JSONException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
 

@@ -2,6 +2,8 @@ package Clases.Gimnasio;
 
 import Clases.Usuario.Usuario;
 
+import java.util.List;
+
 /// CLASE PLANTILLA: son las rutinas que el usuario puede elegir. Se almacenan en el JSON 'plantillas.json'.
 public class Plantilla extends Rutina{
     private int id; // id que indica para qué usuario con la misma id es la rutina. si el id es 0 la rutina es para todos los usuarios.
@@ -14,11 +16,19 @@ public class Plantilla extends Rutina{
         this.id = id;
     }
 
+    public Plantilla() {
+        super();
+    }
+
     public Plantilla(String nombre, int id) {
         super(nombre);
         this.id = id;
     }
 
+    public Plantilla(String nombre, List<Serie> series, int id) {
+        super(nombre, series);
+        this.id = id;
+    }
 
     @Override
     public void mostrarRutina(){

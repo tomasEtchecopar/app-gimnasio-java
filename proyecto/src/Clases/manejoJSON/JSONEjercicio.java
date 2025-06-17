@@ -40,7 +40,7 @@ public class JSONEjercicio{
         }
     }
 
-    private static Map<String, Ejercicio> getFromJSON() throws JSONException, FileNotFoundException {
+    public static Map<String, Ejercicio> getFromJSON() throws JSONException, FileNotFoundException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
 
         if(tokenerArchivo==null){

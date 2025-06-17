@@ -16,7 +16,7 @@ public class AdminMenu implements MenuUsuario {
             System.out.println("=============================");
             System.out.println("\tAPP DE ENTRENAMIENTO ");
             System.out.println("=============================");
-            System.out.println("Bienvenido, ADMIN!");
+            System.out.println("Bienvenido, ENTRENADOR!");
             System.out.println("¿Qué te gustaría hacer hoy?");
             System.out.println("1) Menu ejercicios");
             System.out.println("2) Menu rutinas");
@@ -39,6 +39,7 @@ public class AdminMenu implements MenuUsuario {
     public void menuCaller(Scanner teclado, int opcion, Persona usuario) {
         switch(opcion){
             case 1 -> MenuEjerciciosAdmin.menuEjercicios(teclado);
+            case 2 ->MenuRutinasAdmin.menuRutinas(teclado);
             case 3 -> MenuUsuariosAdmin.menuUsuarios(teclado);
             case 4 -> System.out.printf("Adios!\n\n");
         }

@@ -3,16 +3,16 @@ package Clases.Usuario;
 import java.util.Scanner;
 
 
-public class Admin extends Persona {
-    public Admin(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
+public class Entrenador extends Persona {
+    public Entrenador(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean premium) {
         super(usuario, contrasenia, nombre, apellido, edad, peso, altura, premium);
     }
 
-    public Admin(String usuario, String contrasenia) throws IllegalArgumentException {
+    public Entrenador(String usuario, String contrasenia) throws IllegalArgumentException {
         super(usuario, contrasenia);
     }
 
-    public Admin() {
+    public Entrenador() {
     }
 
     @Override

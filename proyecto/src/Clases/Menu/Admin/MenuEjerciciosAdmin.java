@@ -39,7 +39,6 @@ public class MenuEjerciciosAdmin {
                     System.out.println("\n Ingrese el ejercicio a editar: ");
                     Editores.editarEjercicio(teclado, teclado.nextLine());
                 }
-                default -> System.out.println("\n Ocurrio un error\n\n");
             }
             LecturaTeclado.continuar(teclado);
         }

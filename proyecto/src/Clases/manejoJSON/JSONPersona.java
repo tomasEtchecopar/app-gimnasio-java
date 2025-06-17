@@ -1,8 +1,6 @@
 package Clases.manejoJSON;
 
-import Clases.Gimnasio.Ejercicio;
-import Clases.Gimnasio.Plantilla;
-import Clases.Usuario.Admin;
+import Clases.Usuario.Entrenador;
 import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Excepciones.UsuarioNoExisteException;
@@ -15,7 +13,6 @@ import org.json.JSONTokener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class JSONPersona {
     private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
@@ -57,7 +54,7 @@ public class JSONPersona {
                     String contrasenia = usuario.getString("contrasenia");
                     if(nombreUsuario.equals(persona.getUsuario()) && contrasenia.equals(persona.getContrasenia())){
                         if(nombreUsuario.equalsIgnoreCase("admin")){ //para cargar admins
-                            p = JSONUtiles.jsonObjectToObjeto(usuario, Admin.class);
+                            p = JSONUtiles.jsonObjectToObjeto(usuario, Entrenador.class);
                         }else{
                             p = JSONUtiles.jsonObjectToObjeto(usuario, Usuario.class);
                         }
@@ -133,7 +130,7 @@ public class JSONPersona {
             usuarios.add(usuario); //agrega usuario modificado
 
             sobreescribirJSONUsuarios(usuarios);
-        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+        } catch ( JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
@@ -154,7 +151,7 @@ public class JSONPersona {
 
 
 
-        } catch (FileNotFoundException | IllegalAccessException | JSONException e) {
+        } catch ( IllegalAccessException | JSONException e) {
             throw new RuntimeException(e);
         }
     }
@@ -168,7 +165,7 @@ public class JSONPersona {
                     mayorId = usuario.getId();
                 }
             }
-        } catch (FileNotFoundException | IllegalAccessException | JSONException e) {
+        } catch ( IllegalAccessException | JSONException e) {
 
         }
         return mayorId;

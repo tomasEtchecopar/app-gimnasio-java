@@ -25,7 +25,7 @@ public class JSONPlantilla {
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
-    private static void escribirJSON(Plantilla plantilla) throws JSONException, IllegalAccessException {
+    public static void escribirJSON(Plantilla plantilla) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
             crearArchivo(plantilla);

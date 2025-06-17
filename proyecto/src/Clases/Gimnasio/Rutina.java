@@ -12,10 +12,18 @@ public abstract class Rutina {
     private List<Serie> series; //lista de series
 
     //constructor
+
+    public Rutina() {
+    }
+
     public Rutina(String nombre) {
         this.nombre = nombre;
         this.series = new ArrayList<>(); //Uso de arraylist para mantener el orden de insercion.
+    }
 
+    public Rutina(String nombre, List<Serie> series) {
+        this.nombre = nombre;
+        this.series = series;
     }
 
     //getters y setters
