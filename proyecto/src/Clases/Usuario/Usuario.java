@@ -163,7 +163,7 @@ public class Usuario implements Acciones {
         if(entrenamiento!=null) this.agregarEntrenamiento(entrenamiento);
     }
     public double getIMC(){
-        return this.getPeso()/(this.getAltura()/100);
+        return this.getPeso()/Math.pow(this.getAltura()/100, 2);
     }
     public int tieneSobrepeso(){
         int sobrepeso;
@@ -213,7 +213,7 @@ public class Usuario implements Acciones {
 
     @Override
     public java.lang.String toString() {
-        return "Usuario: " + this.getUsuario() + "\nNombre: " + this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nPeso: "+this.getPeso()+"\nAltura: "+this.getAltura();
+        return "Nombre de usuario: " + this.getUsuario() + "\nNombre: " + this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nPeso: "+this.getPeso()+"\nAltura: "+this.getAltura();
     }
 
 }

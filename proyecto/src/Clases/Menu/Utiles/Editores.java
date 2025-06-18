@@ -74,7 +74,7 @@ public class Editores {
                     return;
                 }
             }
-            JSONUsuario.actualizarUsuario((Usuario) usuario);
+            JSONUsuario.actualizarUsuario(usuario);
         }
     }
 

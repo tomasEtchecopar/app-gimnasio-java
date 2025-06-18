@@ -129,22 +129,39 @@ public class JSONUsuario {
         }
     }
 
-    public static void borrarUsuario(String nombre){
+    public static void borrarUsuarioPorNombre(String nombre){
         try{
             List<Usuario> usuarios = getAllUsuarios();
-            int index=0;
+            int index=-1;
             for(int i=0;i<usuarios.size();i++){
-                System.out.println(usuarios.get(i).getNombre());
                 if(usuarios.get(i).getNombre().equalsIgnoreCase(nombre)){
-                    System.out.println("test");
                     index = i;
                 }
             }
+            if(index!=-1) {
+                usuarios.remove(index);
+                sobreescribirJSONUsuarios(usuarios);
+            }else{
+                System.out.println("No se encontró el usuario.");
+            }
 
-            usuarios.remove(index);
-
-
-
+        } catch ( IllegalAccessException | JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void borrarUsuarioPorId(int id){
+        try{
+            List<Usuario> usuarios = getAllUsuarios();
+            int index=-1;
+            for(int i=0;i<usuarios.size();i++){
+                if(usuarios.get(i).getId() == id){
+                    index = i;
+                }
+            }
+            if(index!=-1) {
+                usuarios.remove(index);
+                sobreescribirJSONUsuarios(usuarios);
+            }
         } catch ( IllegalAccessException | JSONException e) {
             throw new RuntimeException(e);
         }

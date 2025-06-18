@@ -32,7 +32,6 @@ public class Main {
                 case 2 -> RegistroMenu.mostrar(teclado);
                 case 3 -> salir = true;
             }
-            LecturaTeclado.continuar(teclado);
         }
         teclado.close();
     }

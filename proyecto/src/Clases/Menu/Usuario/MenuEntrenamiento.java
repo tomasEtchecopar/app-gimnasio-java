@@ -87,11 +87,11 @@ public class MenuEntrenamiento {
             int repeticiones = serieActual.getRepeticiones();
             double peso = serieActual.getPeso();
 
-            System.out.printf(nombreEjercicio + "\nSERIE "+(i+1)+ "/" + seriesDelEntrenamiento.size());
+            System.out.println("\n--"+nombreEjercicio + "\nSERIE "+(i+1)+ "/" + seriesDelEntrenamiento.size());
             System.out.println("Repeticiones sugeridas: " + repeticiones);
             System.out.println("Peso sugerido: " + peso + " kg");
 
-            System.out.println("Desea ajustar el peso (" + peso + " kg) antes de hacer la serie? (s/n)");
+            System.out.println("\nDesea ajustar el peso (" + peso + " kg) antes de hacer la serie? (s/n)");
 
             if(LecturaTeclado.leerBooleanSN(teclado)) {
                 System.out.println("Ingrese nuevo peso: ");

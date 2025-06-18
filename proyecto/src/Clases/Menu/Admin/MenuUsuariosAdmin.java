@@ -6,8 +6,10 @@ import Clases.Menu.Utiles.Editores;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONUsuario;
+import com.sun.tools.javac.Main;
 import org.json.JSONException;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
@@ -19,6 +21,7 @@ public class MenuUsuariosAdmin {
             List<Usuario> usuarios;
             try{
                 usuarios = JSONUsuario.getAllUsuarios();
+                usuarios.sort(Comparator.comparing(Usuario::getId));
             } catch ( JSONException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
@@ -36,24 +39,49 @@ public class MenuUsuariosAdmin {
             switch (opcion){
                 case 1 -> verUsuarios(usuarios);
                 case 2 -> JSONUsuario.registro(RegistroMenu.formularioRegistro(teclado));
-                case 3 -> {
-                    System.out.printf("\nIngrese el nombre del usuario a eliminar: ");
-                    JSONUsuario.borrarUsuario(teclado.nextLine());
-                }
+                case 3 -> menuBorrarUsuarios(teclado, usuarios);
                 case 4 -> {
                     System.out.printf("\nIngrese el nombre del usuario a editar: ");
                     String nombreUsuario = teclado.nextLine();
                     editar(usuarios, nombreUsuario, teclado);
                 }
-                case 5 -> System.out.printf("Adios!\n");
+                case 5 -> {
+                    return;
+                }
             }
             LecturaTeclado.continuar(teclado);
         }
     }
 
+    private static void menuBorrarUsuarios(Scanner teclado, List<Usuario> usuarios){
+        int opcion=-1;
+        while(opcion!=3){
+            MainMenu.limpiarConsola();
+            System.out.println("1) Borrar por nombre");
+            System.out.println("2) Borrar por id");
+            System.out.println("3) Volver");
+            opcion = LecturaTeclado.leerEntero(teclado, 1, 3);
+            verUsuarios(usuarios);
+            switch(opcion){
+                case 1-> {
+                    System.out.printf("\nIngrese el nombre del usuario a eliminar: ");
+                    JSONUsuario.borrarUsuarioPorNombre(teclado.nextLine());
+                }
+                case 2 -> {
+                    System.out.println("\nIngrese la id del usuario a eliminar: ");
+                    int id = LecturaTeclado.leerEntero(teclado, 1, usuarios.getLast().getId());
+                    JSONUsuario.borrarUsuarioPorId(id);
+                }
+                case 3 ->{
+                    return;
+                }
+            }
+        }
+    }
+
     public static void verUsuarios(List<Usuario> usuarios){
         for(int i=0; i< usuarios.size(); i++){
-            System.out.printf("\nUsuario (" + (i+1) + "): \n"+ usuarios.get(i));
+            System.out.printf("\n\nUsuario (ID: " + usuarios.get(i).getId() + "): \n"+ usuarios.get(i));
         }
     }
 
