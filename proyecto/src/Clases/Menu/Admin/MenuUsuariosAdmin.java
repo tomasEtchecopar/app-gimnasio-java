@@ -85,8 +85,9 @@ public class MenuUsuariosAdmin {
         }
     }
 
-    public static void editar(List<Usuario> usuarios, String nombreUsuario, Scanner teclado){
-        Usuario us = new Usuario();
+    public static void editarPorNombre(List<Usuario> usuarios, String nombreUsuario, Scanner teclado){
+        Usuario us = null;
+
         us.setUsuario(nombreUsuario);
         for(int i=0; i< usuarios.size(); i++){
             if(usuarios.get(i).getUsuario().equalsIgnoreCase(nombreUsuario)){
@@ -94,6 +95,8 @@ public class MenuUsuariosAdmin {
             }
         }
 
-        Editores.menuEdicionDeUsuario(teclado, us);
+        if(us!=null) {
+            Editores.menuEdicionDeUsuario(teclado, us);
+        }
     }
 }
