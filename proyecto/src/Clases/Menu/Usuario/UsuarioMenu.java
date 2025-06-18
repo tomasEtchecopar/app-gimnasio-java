@@ -1,16 +1,16 @@
 package Clases.Menu.Usuario;
 
-import Clases.Menu.Interfaces.MenuUsuario;
+import Clases.Menu.Interfaces.MenuAcciones;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
-import Clases.Usuario.Persona;
+import Clases.Usuario.Usuario;
 import Clases.Menu.Utiles.Editores;
 
 import java.util.Scanner;
 
-public class UsuarioMenu implements MenuUsuario {
+public class UsuarioMenu implements MenuAcciones {
     @Override
-    public void mostrar(Scanner teclado, Persona usuario) {
+    public void mostrar(Scanner teclado, Usuario usuario) {
         int opcion = -1;
         while (opcion != 6) {
             MainMenu.limpiarConsola();
@@ -31,12 +31,12 @@ public class UsuarioMenu implements MenuUsuario {
     }
 
     @Override
-    public int elegirOpcion(Scanner teclado, Persona usuario) {
+    public int elegirOpcion(Scanner teclado, Usuario usuario) {
         return LecturaTeclado.leerEntero(teclado, 1, 6);
     }
 
     @Override
-    public void menuCaller(Scanner teclado, int opcion, Persona usuario) {
+    public void menuCaller(Scanner teclado, int opcion, Usuario usuario) {
         MainMenu.limpiarConsola();
         switch (opcion) {
             case 1 -> MenuEntrenamiento.mostrar(teclado, usuario);
@@ -51,20 +51,17 @@ public class UsuarioMenu implements MenuUsuario {
         LecturaTeclado.continuar(teclado);
     }
 
-    public static void mostrarEstadisticas(Persona usuario) {
+    public static void mostrarEstadisticas(Usuario usuario) {
         System.out.println("--Estadisticas de " + usuario.getNombre());
         System.out.println("Edad: " + usuario.getEdad());
         System.out.println("Peso: " + usuario.getPeso());
         System.out.println("Altura: " + usuario.getAltura());
-        if (usuario.getIMC() == 0) {
-            System.out.println("Para acceder a su indice de masa corporal necesita ser un usuario premium");
-        } else {
-            System.out.println("Indice de masa corporal: " + usuario.getIMC());
-            switch (usuario.tieneSobrepeso()) {
-                case 1 -> System.out.println("Sobrepeso");
-                case 0 -> System.out.println("Peso ideal");
-                case -1 -> System.out.println("Peso bajo");
-            }
+        System.out.println("Indice de masa corporal: " + usuario.getIMC());
+        switch (usuario.tieneSobrepeso()) {
+            case 1 -> System.out.println("Sobrepeso");
+            case 0 -> System.out.println("Peso ideal");
+            case -1 -> System.out.println("Peso bajo");
+        }
         }
     }
-}
+

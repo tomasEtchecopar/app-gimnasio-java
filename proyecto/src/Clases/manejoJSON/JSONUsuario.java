@@ -1,7 +1,5 @@
 package Clases.manejoJSON;
 
-import Clases.Usuario.Entrenador;
-import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Excepciones.UsuarioNoExisteException;
 import Excepciones.UsuarioYaExisteException;
@@ -14,25 +12,25 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONPersona {
+public class JSONUsuario {
     private static final String ARCHIVO = "src/datos/usuarios.json"; //ruta del archivo
 
-    private static void crearArchivo(Persona persona) throws JSONException, IllegalAccessException {
-        JSONObject Jpersona = JSONUtiles.objetoToJSONOBJECT(persona);
+    private static void crearArchivo(Usuario usuario) throws JSONException, IllegalAccessException {
+        JSONObject Jpersona = JSONUtiles.objetoToJSONOBJECT(usuario);
         JSONArray archivo = new JSONArray();
         archivo.put(Jpersona);
 
         JSONUtiles.grabar(archivo, ARCHIVO);
     }
 
-    private static void escribirJSON(Persona persona) throws JSONException, IllegalAccessException {
+    private static void escribirJSON(Usuario usuario) throws JSONException, IllegalAccessException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
-            crearArchivo(persona);
+            crearArchivo(usuario);
         }else{
             JSONArray archivo = new JSONArray(tokenerArchivo);
-            if(!existeUsuario(archivo, persona)) {
-                JSONObject Jpersona = JSONUtiles.objetoToJSONOBJECT(persona);
+            if(!existeUsuario(archivo, usuario)) {
+                JSONObject Jpersona = JSONUtiles.objetoToJSONOBJECT(usuario);
                 archivo.put(Jpersona);
                 JSONUtiles.grabar(archivo, ARCHIVO);
             }else{
@@ -41,9 +39,9 @@ public class JSONPersona {
         }
     }
 
-    private static Persona getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
+    private static Usuario getFromJSON(Usuario persona) throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
-        Persona p = null;
+        Usuario p = null;
         if(tokenerArchivo==null){
             throw new FileNotFoundException("El archivo no se encuentra en el directorio especificado.");
         }else{
@@ -53,11 +51,7 @@ public class JSONPersona {
                     String nombreUsuario = usuario.getString("usuario");
                     String contrasenia = usuario.getString("contrasenia");
                     if(nombreUsuario.equals(persona.getUsuario()) && contrasenia.equals(persona.getContrasenia())){
-                        if(nombreUsuario.equalsIgnoreCase("admin")){ //para cargar admins
-                            p = JSONUtiles.jsonObjectToObjeto(usuario, Entrenador.class);
-                        }else{
-                            p = JSONUtiles.jsonObjectToObjeto(usuario, Usuario.class);
-                        }
+                        p = JSONUtiles.jsonObjectToObjeto(usuario, Usuario.class);
                         break;
                     }
                }
@@ -82,7 +76,7 @@ public class JSONPersona {
         return usuarios;
     }
 
-    public static boolean existeUsuario(JSONArray archivo, Persona persona) throws JSONException {
+    public static boolean existeUsuario(JSONArray archivo, Usuario persona) throws JSONException {
        boolean ret = false;
         for(int i = 0; i<archivo.length();i++){
             JSONObject usuario = archivo.getJSONObject(i);
@@ -105,10 +99,10 @@ public class JSONPersona {
         JSONUtiles.grabar(jUsuarios, ARCHIVO);
     }
 
-    public static Persona iniciarSesion(String nombreUsuario, String contrasenia){
-        Persona usuario=null;
+    public static Usuario iniciarSesion(String nombreUsuario, String contrasenia){
+        Usuario usuario=null;
         try {
-            usuario = JSONPersona.getFromJSON(new Usuario(nombreUsuario, contrasenia));
+            usuario = JSONUsuario.getFromJSON(new Usuario(nombreUsuario, contrasenia));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -117,19 +111,19 @@ public class JSONPersona {
 
     public static void registro(Usuario usuario){
         try {
-            JSONPersona.escribirJSON(usuario);
+            JSONUsuario.escribirJSON(usuario);
         } catch (JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void editarUsuario(Usuario usuario){
+    public static void actualizarUsuario(Usuario usuario){
         try {
             List<Usuario> usuarios = getAllUsuarios();
             usuarios.remove(usuario); //elimina el usuario que contenga el mismo nombre de usuario
             usuarios.add(usuario); //agrega usuario modificado
 
-            sobreescribirJSONUsuarios(usuarios);
+            sobreescribirJSONUsuarios(usuarios); //sobreescribe el json
         } catch ( JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }

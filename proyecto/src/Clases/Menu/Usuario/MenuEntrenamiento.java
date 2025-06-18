@@ -3,18 +3,20 @@ package Clases.Menu.Usuario;
 import Clases.Gimnasio.Entrenamiento;
 import Clases.Gimnasio.Plantilla;
 import Clases.Gimnasio.Serie;
-import Clases.Menu.Interfaces.MenuUsuario;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
-import Clases.Usuario.Persona;
+import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONPlantilla;
+import Clases.manejoJSON.JSONUsuario;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuEntrenamiento {
-    public static void mostrar(Scanner teclado, Persona usuario) {
+    public static void mostrar(Scanner teclado, Usuario usuario) {
         int opcion = -1;
         while (opcion != 4) {
             MainMenu.limpiarConsola();
@@ -30,10 +32,13 @@ public class MenuEntrenamiento {
         }
     }
 
-    private static void menuCaller(Scanner teclado, int opcion, Persona usuario) {
+    private static void menuCaller(Scanner teclado, int opcion, Usuario usuario) {
         MainMenu.limpiarConsola();
         switch(opcion){
-            case 1->usuario.entrenar(teclado);
+            case 1->{
+                usuario.entrenar(teclado);
+                JSONUsuario.actualizarUsuario(usuario);
+            }
             //case 2 -> //mostrado de ejercicios (filtrar y ordenar por nombre y grupo)
             //case 3 -> //mostrado de rutinas
             case 4->{
@@ -73,7 +78,7 @@ public class MenuEntrenamiento {
             return null;
         }
 
-        Entrenamiento entrenamiento = new Entrenamiento(seleccionada.getNombre(), new Date());
+        Entrenamiento entrenamiento = new Entrenamiento(seleccionada.getNombre(), LocalDateTime.now().format( DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
         List<Serie> seriesDelEntrenamiento = seleccionada.getSeries();
 
         for (int i = 0; i < seriesDelEntrenamiento.size(); i++) {
@@ -82,25 +87,27 @@ public class MenuEntrenamiento {
             int repeticiones = serieActual.getRepeticiones();
             double peso = serieActual.getPeso();
 
-            System.out.printf(nombreEjercicio + ": SERIE "+(i+1)+ "/" + seriesDelEntrenamiento.size());
+            System.out.printf(nombreEjercicio + "\nSERIE "+(i+1)+ "/" + seriesDelEntrenamiento.size());
             System.out.println("Repeticiones sugeridas: " + repeticiones);
             System.out.println("Peso sugerido: " + peso + " kg");
 
-            System.out.println("Desea ajustar el peso (" + peso + " kg) antes de hacer la serie?");
+            System.out.println("Desea ajustar el peso (" + peso + " kg) antes de hacer la serie? (s/n)");
 
             if(LecturaTeclado.leerBooleanSN(teclado)) {
+                System.out.println("Ingrese nuevo peso: ");
                 peso = LecturaTeclado.leerDouble(teclado, 0.1, 500.0);
                 serieActual.setPeso(peso);
                 System.out.println("Peso ajustado a " + peso + " kg");
             }
 
-            System.out.println("Desea ajustar las repeticiones ("+repeticiones+")?");
+            System.out.println("Desea ajustar las repeticiones ("+repeticiones+")? (s/n)");
             if(LecturaTeclado.leerBooleanSN(teclado)){
+                System.out.println("Ingrese las repeticiones: ");
                 repeticiones = LecturaTeclado.leerEntero(teclado, 1, 500);
                 serieActual.setRepeticiones(repeticiones);
                 System.out.println("Repeticiones ");
             }
-            System.out.print("Presiona ENTER cuando completes esta serie...");
+            System.out.print("Presiona ENTER para continuar a la siguiente serie...");
             teclado.nextLine();
 
 
@@ -110,7 +117,6 @@ public class MenuEntrenamiento {
         }
         System.out.println("---ENTRENAMIENTO COMPLETO---");
         entrenamiento.mostrarRutina();
-        System.out.println("Fecha de entrenamiento: " + entrenamiento.getFecha());
 
         return entrenamiento;
 

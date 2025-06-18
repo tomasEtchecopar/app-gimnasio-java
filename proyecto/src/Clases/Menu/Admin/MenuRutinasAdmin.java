@@ -3,10 +3,9 @@ package Clases.Menu.Admin;
 import Clases.Gimnasio.*;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
-import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONEjercicio;
-import Clases.manejoJSON.JSONPersona;
+import Clases.manejoJSON.JSONUsuario;
 import Clases.manejoJSON.JSONPlantilla;
 import org.json.JSONException;
 
@@ -51,14 +50,14 @@ public class MenuRutinasAdmin {
         List<Serie> series = new ArrayList<>();
 
         try{
-            usuarios = JSONPersona.getAllUsuarios();
+            usuarios = JSONUsuario.getAllUsuarios();
             ejerciciosDisponibles = JSONEjercicio.getFromJSON();
         } catch (JSONException | IllegalAccessException | FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
         //se le asigna una id a la plantilla
-        usuarios.sort(Comparator.comparing(Persona::getId));
+        usuarios.sort(Comparator.comparing(Usuario::getId));
         usuarios.removeFirst();
         System.out.println("Ingrese para que usuario es la rutina: ");
         System.out.println("0. Todos los usuarios");
@@ -94,8 +93,7 @@ public class MenuRutinasAdmin {
             series.add(serie);
 
             System.out.println("¿Desea agregar otra serie? (s/n):");
-            char respuesta = teclado.nextLine().toLowerCase().charAt(0);
-            agregar = respuesta =='s';
+            agregar = LecturaTeclado.leerBooleanSN(teclado);
         }
 
         return new Plantilla(nombreRutina, series, id);
@@ -109,12 +107,12 @@ public class MenuRutinasAdmin {
         }
         List<Usuario> usuarios = new ArrayList<>();
         try {
-            usuarios = JSONPersona.getAllUsuarios();
+            usuarios = JSONUsuario.getAllUsuarios();
         } catch (JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
 
-        usuarios.sort(Comparator.comparing(Persona::getId));
+        usuarios.sort(Comparator.comparing(Usuario::getId));
         usuarios.removeFirst();
         System.out.println("Seleccione que plantillas desea ver: ");
         System.out.println("0. Todos los usuarios");

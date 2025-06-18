@@ -4,14 +4,10 @@ import Clases.Menu.MainMenu;
 import Clases.Menu.RegistroMenu;
 import Clases.Menu.Utiles.Editores;
 import Clases.Menu.Utiles.LecturaTeclado;
-import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
-import Clases.manejoJSON.JSONPersona;
-import com.sun.tools.javac.Main;
+import Clases.manejoJSON.JSONUsuario;
 import org.json.JSONException;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
@@ -22,7 +18,7 @@ public class MenuUsuariosAdmin {
         while(opcion!=5) {
             List<Usuario> usuarios;
             try{
-                usuarios = JSONPersona.getAllUsuarios();
+                usuarios = JSONUsuario.getAllUsuarios();
             } catch ( JSONException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
@@ -39,10 +35,10 @@ public class MenuUsuariosAdmin {
 
             switch (opcion){
                 case 1 -> verUsuarios(usuarios);
-                case 2 -> JSONPersona.registro(RegistroMenu.formularioRegistro(teclado));
+                case 2 -> JSONUsuario.registro(RegistroMenu.formularioRegistro(teclado));
                 case 3 -> {
                     System.out.printf("\nIngrese el nombre del usuario a eliminar: ");
-                    JSONPersona.borrarUsuario(teclado.nextLine());
+                    JSONUsuario.borrarUsuario(teclado.nextLine());
                 }
                 case 4 -> {
                     System.out.printf("\nIngrese el nombre del usuario a editar: ");

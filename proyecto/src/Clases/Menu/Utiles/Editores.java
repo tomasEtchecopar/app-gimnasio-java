@@ -2,10 +2,9 @@ package Clases.Menu.Utiles;
 
 import Clases.Gimnasio.Ejercicio;
 import Clases.Menu.MainMenu;
-import Clases.Usuario.Persona;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONEjercicio;
-import Clases.manejoJSON.JSONPersona;
+import Clases.manejoJSON.JSONUsuario;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -36,7 +35,7 @@ public class Editores {
         }
         JSONEjercicio.editarEjercicio(ejercicios);
     }
-    public static void menuEdicionDeUsuario(Scanner teclado, Persona usuario){
+    public static void menuEdicionDeUsuario(Scanner teclado, Usuario usuario){
         int opcion=-1;
         while(opcion!=6){
             MainMenu.limpiarConsola();
@@ -75,7 +74,7 @@ public class Editores {
                     return;
                 }
             }
-            JSONPersona.editarUsuario((Usuario) usuario);
+            JSONUsuario.actualizarUsuario((Usuario) usuario);
         }
     }
 

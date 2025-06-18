@@ -2,23 +2,22 @@ package Clases.Menu;
 
 
 import Clases.Menu.Admin.AdminMenu;
-import Clases.Menu.Interfaces.MenuUsuario;
+import Clases.Menu.Interfaces.MenuAcciones;
 import Clases.Menu.Usuario.UsuarioMenu;
-import Clases.Menu.Utiles.LecturaTeclado;
-import Clases.Usuario.Persona;
+import Clases.Usuario.Usuario;
 
 import java.util.Scanner;
 
 public class MainMenu {
 
-    public static void mainMenu(Scanner teclado, Persona usuario) throws IllegalArgumentException{
+    public static void mainMenu(Scanner teclado, Usuario usuario) throws IllegalArgumentException{
         if(usuario==null){
             throw new IllegalArgumentException("El usuario (NULL) no es valido.");
         }
         limpiarConsola();
 
-        MenuUsuario homeMenu = null;
-        if (usuario.getUsuario().equals("admin")){
+        MenuAcciones homeMenu = null;
+        if (usuario.isEntrenador()){
             homeMenu = new AdminMenu();
         }
         else{

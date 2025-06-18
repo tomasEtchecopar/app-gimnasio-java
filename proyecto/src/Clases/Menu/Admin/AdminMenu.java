@@ -1,18 +1,19 @@
 package Clases.Menu.Admin;
 
+import Clases.Menu.Usuario.UsuarioMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
-import Clases.Menu.Interfaces.MenuUsuario;
-import Clases.Usuario.Persona;
+import Clases.Menu.Interfaces.MenuAcciones;
+import Clases.Usuario.Usuario;
 
 
 import java.util.Scanner;
 
-public class AdminMenu implements MenuUsuario {
+public class AdminMenu implements MenuAcciones {
 
     @Override
-    public void mostrar(Scanner teclado, Persona usuario) {
+    public void mostrar(Scanner teclado, Usuario usuario) {
         int opcion=-1;
-        while (opcion != 4) {
+        while (opcion != 5) {
             System.out.println("=============================");
             System.out.println("\tAPP DE ENTRENAMIENTO ");
             System.out.println("=============================");
@@ -21,7 +22,8 @@ public class AdminMenu implements MenuUsuario {
             System.out.println("1) Menu ejercicios");
             System.out.println("2) Menu rutinas");
             System.out.println("3) Menu usuarios");
-            System.out.println("4) Cerrar sesion");
+            System.out.println("4) Acceder a mi menú de entrenamiento");
+            System.out.println("5) Cerrar sesion");
 
             opcion = this.elegirOpcion(teclado, usuario);
             menuCaller(teclado, opcion, usuario);
@@ -31,17 +33,20 @@ public class AdminMenu implements MenuUsuario {
     }
 
     @Override
-    public int elegirOpcion(Scanner teclado, Persona usuario) {
-        return LecturaTeclado.leerEntero(teclado, 1, 4);
+    public int elegirOpcion(Scanner teclado, Usuario usuario) {
+        return LecturaTeclado.leerEntero(teclado, 1, 5);
     }
 
     @Override
-    public void menuCaller(Scanner teclado, int opcion, Persona usuario) {
+    public void menuCaller(Scanner teclado, int opcion, Usuario usuario) {
         switch(opcion){
             case 1 -> MenuEjerciciosAdmin.menuEjercicios(teclado);
             case 2 ->MenuRutinasAdmin.menuRutinas(teclado);
             case 3 -> MenuUsuariosAdmin.menuUsuarios(teclado);
-            case 4 -> System.out.printf("Adios!\n\n");
+            case 4->   new UsuarioMenu().mostrar(teclado, usuario);
+            case 5 ->{
+                return;
+            }
         }
     }
     }
