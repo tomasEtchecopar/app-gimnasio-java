@@ -159,7 +159,7 @@ public class Usuario implements Acciones {
     }
     @Override
     public void entrenar(Scanner teclado){
-        Entrenamiento entrenamiento = MenuEntrenamiento.entrenarPorConsola(teclado);
+        Entrenamiento entrenamiento = MenuEntrenamiento.entrenarPorConsola(teclado, this);
         if(entrenamiento!=null) this.agregarEntrenamiento(entrenamiento);
     }
     public double getIMC(){

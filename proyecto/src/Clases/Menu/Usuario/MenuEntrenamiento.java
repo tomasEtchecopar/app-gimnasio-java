@@ -48,13 +48,14 @@ public class MenuEntrenamiento {
         LecturaTeclado.continuar(teclado);
     }
 
-    private static Plantilla elegirPlantilla(Scanner teclado){
+    private static Plantilla elegirPlantilla(Scanner teclado, Usuario usuario){
         List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
 
         if (plantillas.isEmpty()) {
             System.out.println("No hay plantillas disponibles actualmente.");
             return null;
         }
+        plantillas.removeIf(p -> p.getId() != usuario.getId() && p.getId() != 0);
 
         System.out.println("----- ELIGE UNA PLANTILLA PARA TU ENTRENAMIENTO -----");
         for (int i = 0; i < plantillas.size(); i++) {
@@ -65,15 +66,14 @@ public class MenuEntrenamiento {
         int numeroElegido = LecturaTeclado.leerEntero(teclado, 1, plantillas.size());
         Plantilla seleccionada = plantillas.get(numeroElegido-1);
 
-        System.out.println("Has elegido la plantilla: " + seleccionada.getNombre());
-        System.out.println("Detalle de la plantilla:");
+        System.out.println("Has elegido la plantilla: ");
         seleccionada.mostrarRutina();
 
         return seleccionada;
     }
 
-    public static Entrenamiento entrenarPorConsola(Scanner teclado){
-        Plantilla seleccionada = elegirPlantilla(teclado);
+    public static Entrenamiento entrenarPorConsola(Scanner teclado, Usuario usuario){
+        Plantilla seleccionada = elegirPlantilla(teclado, usuario);
         if(seleccionada==null){
             return null;
         }

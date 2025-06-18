@@ -58,7 +58,6 @@ public class MenuRutinasAdmin {
 
         //se le asigna una id a la plantilla
         usuarios.sort(Comparator.comparing(Usuario::getId));
-        usuarios.removeFirst();
         System.out.println("Ingrese para que usuario es la rutina: ");
         System.out.println("0. Todos los usuarios");
 
@@ -113,7 +112,6 @@ public class MenuRutinasAdmin {
         }
 
         usuarios.sort(Comparator.comparing(Usuario::getId));
-        usuarios.removeFirst();
         System.out.println("Seleccione que plantillas desea ver: ");
         System.out.println("0. Todos los usuarios");
 

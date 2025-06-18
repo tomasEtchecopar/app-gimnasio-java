@@ -21,7 +21,7 @@ public class MenuUsuariosAdmin {
             List<Usuario> usuarios;
             try{
                 usuarios = JSONUsuario.getAllUsuarios();
-                usuarios.remove(usuario);
+                usuarios.remove(usuario); //para no borrarse a si mismo
                 usuarios.sort(Comparator.comparing(Usuario::getId));
             } catch ( JSONException | IllegalAccessException e) {
                 throw new RuntimeException(e);

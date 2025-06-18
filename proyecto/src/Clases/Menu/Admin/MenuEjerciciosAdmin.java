@@ -53,7 +53,7 @@ public class MenuEjerciciosAdmin {
         for(Ejercicio ej : ejercicios.values()){
             System.out.println("--------------------\n");
             System.out.println("Nombre: " + ej.getNombre());
-            System.out.println("Grupo muscular:" + ej.getGrupoMuscular());
+            System.out.println("Grupo muscular: " + ej.getGrupoMuscular());
             System.out.println("Descripcion: " +ej.getDescripcion());
         }
     }
