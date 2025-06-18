@@ -15,12 +15,13 @@ import java.util.Scanner;
 import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
 
 public class MenuUsuariosAdmin {
-    public static void menuUsuarios(Scanner teclado){
+    public static void menuUsuarios(Scanner teclado, Usuario usuario){
         int opcion=-1;
         while(opcion!=5) {
             List<Usuario> usuarios;
             try{
                 usuarios = JSONUsuario.getAllUsuarios();
+                usuarios.remove(usuario);
                 usuarios.sort(Comparator.comparing(Usuario::getId));
             } catch ( JSONException | IllegalAccessException e) {
                 throw new RuntimeException(e);
@@ -41,9 +42,10 @@ public class MenuUsuariosAdmin {
                 case 2 -> JSONUsuario.registro(RegistroMenu.formularioRegistro(teclado));
                 case 3 -> menuBorrarUsuarios(teclado, usuarios);
                 case 4 -> {
-                    System.out.printf("\nIngrese el nombre del usuario a editar: ");
-                    String nombreUsuario = teclado.nextLine();
-                    editar(usuarios, nombreUsuario, teclado);
+                    verUsuarios(usuarios);
+                    System.out.printf("\nIngrese la id del usuario a editar: ");
+                    int id = LecturaTeclado.leerEntero(teclado, usuarios.getFirst().getId(), usuarios.getLast().getId());
+                    editar(usuarios, id, teclado);
                 }
                 case 5 -> {
                     return;
@@ -61,16 +63,27 @@ public class MenuUsuariosAdmin {
             System.out.println("2) Borrar por id");
             System.out.println("3) Volver");
             opcion = LecturaTeclado.leerEntero(teclado, 1, 3);
-            verUsuarios(usuarios);
+
             switch(opcion){
                 case 1-> {
+                    verUsuarios(usuarios);
                     System.out.printf("\nIngrese el nombre del usuario a eliminar: ");
-                    JSONUsuario.borrarUsuarioPorNombre(teclado.nextLine());
+                    String nombre = teclado.nextLine();
+                    for(Usuario u : usuarios){
+                        if(u.getUsuario().equalsIgnoreCase(nombre)){
+                            JSONUsuario.borrarUsuario(u);
+                        }
+                    }
                 }
                 case 2 -> {
+                    verUsuarios(usuarios);
                     System.out.println("\nIngrese la id del usuario a eliminar: ");
-                    int id = LecturaTeclado.leerEntero(teclado, 1, usuarios.getLast().getId());
-                    JSONUsuario.borrarUsuarioPorId(id);
+                    int id = LecturaTeclado.leerEntero(teclado, usuarios.getFirst().getId(), usuarios.getLast().getId());
+                    for(Usuario u :usuarios){
+                        if(u.getId()==id){
+                            JSONUsuario.borrarUsuario(u);
+                        }
+                    }
                 }
                 case 3 ->{
                     return;
@@ -85,13 +98,12 @@ public class MenuUsuariosAdmin {
         }
     }
 
-    public static void editarPorNombre(List<Usuario> usuarios, String nombreUsuario, Scanner teclado){
+    public static void editar(List<Usuario> usuarios, int id, Scanner teclado){
         Usuario us = null;
 
-        us.setUsuario(nombreUsuario);
-        for(int i=0; i< usuarios.size(); i++){
-            if(usuarios.get(i).getUsuario().equalsIgnoreCase(nombreUsuario)){
-                us = usuarios.get(i);
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == id) {
+                us = usuario;
             }
         }
 

@@ -129,43 +129,28 @@ public class JSONUsuario {
         }
     }
 
-    public static void borrarUsuarioPorNombre(String nombre){
-        try{
+    public static void borrarUsuario(Usuario usuario) {
+        try {
             List<Usuario> usuarios = getAllUsuarios();
-            int index=-1;
-            for(int i=0;i<usuarios.size();i++){
-                if(usuarios.get(i).getNombre().equalsIgnoreCase(nombre)){
+            int index = -1;
+            for (int i = 0; i < usuarios.size(); i++) {
+                if (usuarios.get(i) == usuario) {
                     index = i;
                 }
             }
-            if(index!=-1) {
+            if (index != -1) {
                 usuarios.remove(index);
                 sobreescribirJSONUsuarios(usuarios);
-            }else{
+            }
+            else{
                 System.out.println("No se encontró el usuario.");
             }
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+}
 
-        } catch ( IllegalAccessException | JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public static void borrarUsuarioPorId(int id){
-        try{
-            List<Usuario> usuarios = getAllUsuarios();
-            int index=-1;
-            for(int i=0;i<usuarios.size();i++){
-                if(usuarios.get(i).getId() == id){
-                    index = i;
-                }
-            }
-            if(index!=-1) {
-                usuarios.remove(index);
-                sobreescribirJSONUsuarios(usuarios);
-            }
-        } catch ( IllegalAccessException | JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     public static int getMaxID(){
         List<Usuario> usuarios = new ArrayList<>();
         int mayorId=0;

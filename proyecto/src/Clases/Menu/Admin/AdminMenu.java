@@ -42,7 +42,7 @@ public class AdminMenu implements MenuAcciones {
         switch(opcion){
             case 1 -> MenuEjerciciosAdmin.menuEjercicios(teclado);
             case 2 ->MenuRutinasAdmin.menuRutinas(teclado);
-            case 3 -> MenuUsuariosAdmin.menuUsuarios(teclado);
+            case 3 -> MenuUsuariosAdmin.menuUsuarios(teclado, usuario);
             case 4->   new UsuarioMenu().mostrar(teclado, usuario);
             case 5 ->{
                 return;
