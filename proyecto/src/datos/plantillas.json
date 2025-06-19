@@ -2,128 +2,116 @@
     {
         "series": [
             {
-                "peso": 100,
+                "peso": 10,
                 "repeticiones": 12,
                 "ejercicio": {
-                    "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
-                    "grupoMuscular": "PECHO",
-                    "nombre": "Press de Banca"
+                    "descripcion": "Dar un paso para adelante y bajar el cuerpo hasta que ambas rodillas esten a 90 grados.",
+                    "grupoMuscular": "CUADRICEPS",
+                    "nombre": "Lunges"
                 }
             },
             {
-                "peso": 70,
-                "repeticiones": 10,
+                "peso": 10,
+                "repeticiones": 12,
                 "ejercicio": {
-                    "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                    "descripcion": "Dar un paso para adelante y bajar el cuerpo hasta que ambas rodillas esten a 90 grados.",
                     "grupoMuscular": "CUADRICEPS",
-                    "nombre": "Sentadilla"
+                    "nombre": "Lunges"
+                }
+            },
+            {
+                "peso": 10,
+                "repeticiones": 12,
+                "ejercicio": {
+                    "descripcion": "Dar un paso para adelante y bajar el cuerpo hasta que ambas rodillas esten a 90 grados.",
+                    "grupoMuscular": "CUADRICEPS",
+                    "nombre": "Lunges"
                 }
             },
             {
                 "peso": 80,
                 "repeticiones": 8,
                 "ejercicio": {
-                    "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                    "descripcion": "Con o sin peso, flexionar las rodillas bajando la cadera.",
                     "grupoMuscular": "CUADRICEPS",
-                    "nombre": "Sentadilla"
+                    "nombre": "Squats"
                 }
             },
             {
-                "peso": 90,
-                "repeticiones": 6,
+                "peso": 80,
+                "repeticiones": 8,
                 "ejercicio": {
-                    "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                    "descripcion": "Con o sin peso, flexionar las rodillas bajando la cadera.",
                     "grupoMuscular": "CUADRICEPS",
-                    "nombre": "Sentadilla"
+                    "nombre": "Squats"
+                }
+            },
+            {
+                "peso": 50,
+                "repeticiones": 10,
+                "ejercicio": {
+                    "descripcion": "De pie, subir y bajar los talones para trabajar la parte posterior de la pierna.",
+                    "grupoMuscular": "GEMELOS",
+                    "nombre": "Elevacion de talones"
+                }
+            },
+            {
+                "peso": 50,
+                "repeticiones": 10,
+                "ejercicio": {
+                    "descripcion": "De pie, subir y bajar los talones para trabajar la parte posterior de la pierna.",
+                    "grupoMuscular": "GEMELOS",
+                    "nombre": "Elevacion de talones"
                 }
             }
         ],
         "id": 0,
-        "nombre": "Dia de pecho"
+        "nombre": "Rutina 1"
     },
     {
         "series": [{
-            "peso": 5,
-            "repeticiones": 4,
+            "peso": 10,
+            "repeticiones": 12,
             "ejercicio": {
-                "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
-                "grupoMuscular": "TRICEPS",
-                "nombre": "Fondos en paralelas"
-            }
-        }],
-        "id": 2,
-        "nombre": "hola"
-    },
-    {
-        "series": [{
-            "peso": 100,
-            "repeticiones": 55,
-            "ejercicio": {
-                "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
+                "descripcion": "Usando barras paralelas, bajar el cuerpo flexionando los codos y luego extendelos para volver a subir.",
                 "grupoMuscular": "TRICEPS",
                 "nombre": "Fondos en paralelas"
             }
         }],
         "id": 3,
-        "nombre": "uu"
-    },
-    {
-        "series": [{
-            "peso": 1,
-            "repeticiones": 2,
-            "ejercicio": {
-                "descripcion": "Sentado, tirar de la barra hasta el pecho manteniendo la espalda recta.",
-                "grupoMuscular": "ESPALDA",
-                "nombre": "Jalón al pecho "
-            }
-        }],
-        "id": 2,
-        "nombre": "asd"
+        "nombre": "Rutina 2"
     },
     {
         "series": [
             {
-                "peso": 11,
-                "repeticiones": 33,
+                "peso": 0,
+                "repeticiones": 12,
                 "ejercicio": {
-                    "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
-                    "grupoMuscular": "PECHO",
-                    "nombre": "Press de Banca"
-                }
-            },
-            {
-                "peso": 99,
-                "repeticiones": 77,
-                "ejercicio": {
-                    "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
-                    "grupoMuscular": "PECHO",
-                    "nombre": "Press de Banca"
+                    "descripcion": "Agarrarse a una barra y elevar el cuerpo hasta que el mentón pase la misma.",
+                    "grupoMuscular": "ESPALDA",
+                    "nombre": "Pull-ups"
                 }
             },
             {
                 "peso": 0,
+                "repeticiones": 8,
+                "ejercicio": {
+                    "descripcion": "Agarrarse a una barra y elevar el cuerpo hasta que el mentón pase la misma.",
+                    "grupoMuscular": "ESPALDA",
+                    "nombre": "Pull-ups"
+                }
+            },
+            {
+                "peso": 100,
                 "repeticiones": 12,
                 "ejercicio": {
-                    "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
-                    "grupoMuscular": "TRICEPS",
-                    "nombre": "Fondos en paralelas"
+                    "descripcion": "Con una barra o mancuernas, bajar el torso manteniendo la espalda recta y las piernas apenas flexionadas.",
+                    "grupoMuscular": "FEMORALES",
+                    "nombre": "Peso muerto"
                 }
             }
         ],
-        "id": 2,
-        "nombre": "prueba"
-    },
-    {
-        "series": [{
-            "peso": 22,
-            "repeticiones": 12,
-            "ejercicio": {
-                "descripcion": "De pie, elevar los brazos lateralmente hasta la altura de los hombros.",
-                "grupoMuscular": "HOMBROS",
-                "nombre": "Elevaciones laterales con mancuernas"
-            }
-        }],
-        "id": 0,
-        "nombre": "TODOS"
+        "id": 4,
+        "nombre": "Rutina 3"
     }
 ]
