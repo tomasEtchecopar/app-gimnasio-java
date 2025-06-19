@@ -76,7 +76,9 @@ public class JSONUtiles {
                     }
 
                     json.put(campo.getName(), jsonArray);
-                } else if (esTipoPrimitivo(valor.getClass())) {
+                }  else if(valor.getClass().isEnum()) {
+                    json.put(campo.getName(), valor.toString());
+                }else if (esTipoPrimitivo(valor.getClass())) {
                     json.put(campo.getName(), valor);
                 } else {
                     json.put(campo.getName(), objetoToJSONOBJECT(valor));
@@ -130,7 +132,15 @@ public class JSONUtiles {
 
                     campo.set(instancia, lista);
 
-                } else {
+                } else if (tipoCampo.isEnum()) {
+                    String valorEnum = json.getString(nombreCampo);
+                    try {
+                        Object valor = Enum.valueOf((Class<Enum>) tipoCampo, valorEnum);
+                        campo.set(instancia, valor);
+                    } catch (IllegalArgumentException e) {
+                        throw new JSONException("Valor inválido para el enum " + tipoCampo.getName() + ": " + valorEnum);
+                    }
+                }else {
                     // si es una clase compuesta
                     JSONObject subJson = json.getJSONObject(nombreCampo);
                     Object subObjeto = jsonObjectToObjeto(subJson, tipoCampo);

@@ -38,5 +38,10 @@ public class LecturaTeclado {
         return opcion;
     }
 
+    public static void continuar(Scanner teclado){
+        System.out.println("\nSi desea continuar presione ENTER");
+        teclado.nextLine();
+    }
+
 
 }

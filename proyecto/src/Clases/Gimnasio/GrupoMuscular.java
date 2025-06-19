@@ -1,0 +1,5 @@
+package Clases.Gimnasio;
+
+public enum GrupoMuscular {
+    BICEPS, TRICEPS, PECHO, ESPALDA, HOMBROS, CUADRICEPS, FEMORALES, GLUTEOS, GEMELOS, ABDOMINALES,
+}

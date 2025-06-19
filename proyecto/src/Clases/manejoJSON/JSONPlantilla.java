@@ -1,6 +1,7 @@
 package Clases.manejoJSON;
 
 import Clases.Gimnasio.Plantilla;
+import Excepciones.RutinaNoExisteException;
 import Excepciones.RutinaYaExisteException;
 import Excepciones.UsuarioNoExisteException;
 import org.json.JSONArray;
@@ -17,7 +18,7 @@ import java.util.List;
 public class JSONPlantilla {
     private static final String ARCHIVO = "src/datos/plantillas.json"; //ruta del archivo
 
-    public static void crearArchivo(Plantilla plantilla) throws JSONException, IllegalAccessException {
+    private static void crearArchivo(Plantilla plantilla) throws JSONException, IllegalAccessException {
         JSONObject Jplantilla = JSONUtiles.objetoToJSONOBJECT(plantilla);
         JSONArray archivo = new JSONArray();
         archivo.put(Jplantilla);
@@ -36,13 +37,13 @@ public class JSONPlantilla {
                 archivo.put(Jplantilla);
                 JSONUtiles.grabar(archivo, ARCHIVO);
             }else{
-                throw new RutinaYaExisteException("Ya existe una rutina con el mismo nombre.");
+                throw new RutinaYaExisteException("El usuario ya tiene una rutina con el mismo nombre.");
             }
         }
 
     }
 
-    public static List<Plantilla> getFromJSON() throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
+    private static List<Plantilla> getFromJSON() throws FileNotFoundException, JSONException, IllegalAccessException, UsuarioNoExisteException {
         JSONTokener tokenerArchivo = JSONUtiles.leer(ARCHIVO);
         if(tokenerArchivo==null){
             throw new FileNotFoundException("El archivo no se encuntra en el directorio especificado");
@@ -61,16 +62,62 @@ public class JSONPlantilla {
         return plantillas;
     }
 
-    public static boolean existePlantilla(JSONArray archivo, Plantilla plantilla) throws JSONException {
+    private static boolean existePlantilla(JSONArray archivo, Plantilla plantilla) throws JSONException {
         boolean ret = false;
         for(int i = 0; i<archivo.length();i++){
             JSONObject p = archivo.getJSONObject(i);
-            String nombrePlantilla = p.getString("nombre");
-            if (nombrePlantilla.equals(plantilla.getNombre())){
+            String nombrePlantillaEnArchivo = p.getString("nombre");
+            int idPlantillaEnArchivo = p.getInt("id");
+            if (nombrePlantillaEnArchivo.equals(plantilla.getNombre()) && idPlantillaEnArchivo==plantilla.getId()){
                 ret=true;
                 break;
             }
         }
         return ret;
+    }
+
+    public static List<Plantilla> leerPlantillas(){
+        List<Plantilla> plantillas = new ArrayList<>();
+        try {
+            plantillas = JSONPlantilla.getFromJSON();
+        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+            System.out.println(e.getMessage());
+        }
+        return plantillas;
+    }
+
+    public static void sobrecargarPlantillas(List<Plantilla> lista) throws JSONException, IllegalAccessException {
+        JSONArray jPlantilla = new JSONArray();
+
+        for(Plantilla p : lista){
+            jPlantilla.put(JSONUtiles.objetoToJSONOBJECT(p));
+        }
+
+        JSONUtiles.grabar(jPlantilla, ARCHIVO);
+    }
+
+    public static void borrarPlantillasPorId(int id){
+        List<Plantilla> plantillas;
+        try {
+            plantillas = JSONPlantilla.getFromJSON();
+            plantillas.removeIf(p -> p.getId() == id);
+            sobrecargarPlantillas(plantillas);
+
+        } catch (RuntimeException | FileNotFoundException | JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void borrarPlantilla(String nombre, int id){
+        List<Plantilla> plantillas;
+        try{
+            plantillas = getFromJSON();
+            if(plantillas.removeIf(p -> p.getId() == id && p.getNombre().equalsIgnoreCase(nombre))) {
+                sobrecargarPlantillas(plantillas);
+            }else{
+                throw new RutinaNoExisteException("La rutina no se encontró");
+            }
+        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

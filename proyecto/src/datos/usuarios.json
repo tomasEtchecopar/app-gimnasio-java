@@ -1,35 +1,126 @@
 [
     {
-        "premium": false,
-        "peso": 0,
-        "altura": 0,
-        "apellido": null,
-        "historial": null,
-        "usuario": "admin",
+        "entrenador": false,
+        "contador": 4,
+        "peso": 12,
+        "altura": 12,
+        "apellido": "Perez",
+        "historial": [],
+        "usuario": "jorge123",
         "contrasenia": "123",
-        "nombre": null,
-        "edad": 0
+        "id": 4,
+        "nombre": "Jorge",
+        "edad": 20
     },
     {
-        "premium": true,
+        "entrenador": true,
+        "contador": 4,
         "peso": 90,
         "altura": 186,
         "apellido": "Etchecopar",
-        "historial": [],
-        "usuario": "tomi123",
-        "contrasenia": "12345",
+        "historial": [
+            {
+                "fecha": "18/06/2025 16:21",
+                "series": [
+                    {
+                        "peso": 100,
+                        "repeticiones": 12,
+                        "ejercicio": {
+                            "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
+                            "grupoMuscular": "PECHO",
+                            "nombre": "Press de Banca"
+                        }
+                    },
+                    {
+                        "peso": 70,
+                        "repeticiones": 10,
+                        "ejercicio": {
+                            "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                            "grupoMuscular": "CUADRICEPS",
+                            "nombre": "Sentadilla"
+                        }
+                    },
+                    {
+                        "peso": 80,
+                        "repeticiones": 8,
+                        "ejercicio": {
+                            "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                            "grupoMuscular": "CUADRICEPS",
+                            "nombre": "Sentadilla"
+                        }
+                    },
+                    {
+                        "peso": 90,
+                        "repeticiones": 6,
+                        "ejercicio": {
+                            "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                            "grupoMuscular": "CUADRICEPS",
+                            "nombre": "Sentadilla"
+                        }
+                    }
+                ],
+                "nombre": "Dia de pecho"
+            },
+            {
+                "fecha": "18/06/2025 16:57",
+                "series": [
+                    {
+                        "peso": 100,
+                        "repeticiones": 12,
+                        "ejercicio": {
+                            "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
+                            "grupoMuscular": "PECHO",
+                            "nombre": "Press de Banca"
+                        }
+                    },
+                    {
+                        "peso": 70,
+                        "repeticiones": 10,
+                        "ejercicio": {
+                            "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                            "grupoMuscular": "CUADRICEPS",
+                            "nombre": "Sentadilla"
+                        }
+                    },
+                    {
+                        "peso": 80,
+                        "repeticiones": 8,
+                        "ejercicio": {
+                            "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                            "grupoMuscular": "CUADRICEPS",
+                            "nombre": "Sentadilla"
+                        }
+                    },
+                    {
+                        "peso": 90,
+                        "repeticiones": 6,
+                        "ejercicio": {
+                            "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                            "grupoMuscular": "CUADRICEPS",
+                            "nombre": "Sentadilla"
+                        }
+                    }
+                ],
+                "nombre": "Dia de pecho"
+            }
+        ],
+        "usuario": "tomas123",
+        "contrasenia": "123",
+        "id": 5,
         "nombre": "Tomas",
         "edad": 20
     },
     {
-        "premium": false,
-        "peso": 102,
-        "altura": 185,
-        "apellido": "Farias",
+        "entrenador": false,
+        "contador": 4,
+        "peso": 65,
+        "altura": 176,
+        "apellido": "Juarez",
         "historial": [],
-        "usuario": "juanseba",
-        "contrasenia": "1234",
-        "nombre": "Juan",
-        "edad": 21
+        "usuario": "pepe123",
+        "contrasenia": "123",
+        "id": 3,
+        "nombre": "Pepe",
+        "edad": 20
     }
 ]

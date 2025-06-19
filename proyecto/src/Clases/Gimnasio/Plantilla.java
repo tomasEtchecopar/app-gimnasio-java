@@ -1,9 +1,31 @@
 package Clases.Gimnasio;
 
+import java.util.List;
+
 /// CLASE PLANTILLA: son las rutinas que el usuario puede elegir. Se almacenan en el JSON 'plantillas.json'.
 public class Plantilla extends Rutina{
-    public Plantilla(String nombre) {
+    private int id; // id que indica para qué usuario con la misma id es la rutina. si el id es 0 la rutina es para todos los usuarios.
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Plantilla() {
+        super();
+    }
+
+    public Plantilla(String nombre, int id) {
         super(nombre);
+        this.id = id;
+    }
+
+    public Plantilla(String nombre, List<Serie> series, int id) {
+        super(nombre, series);
+        this.id = id;
     }
 
     @Override
@@ -18,8 +40,9 @@ public class Plantilla extends Rutina{
             System.out.println("La rutina está vacía.");
         }else {
             String ejercicioAnterior = "";
-
+            int contador=0;
             for (Serie serie : this.getSeries()) {
+                contador++;
                 String nombreEjercicio = serie.getEjercicio().getNombre();
 
                 if (!nombreEjercicio.equals(ejercicioAnterior)) {
@@ -27,7 +50,7 @@ public class Plantilla extends Rutina{
                     ejercicioAnterior = nombreEjercicio;
                 }
 
-                System.out.println(serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
+                System.out.println(contador+") "+serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
             }
         }
 

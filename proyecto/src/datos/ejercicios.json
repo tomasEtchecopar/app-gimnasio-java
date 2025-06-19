@@ -1,0 +1,72 @@
+[
+    {
+        "descripcion": "Acostarse en un banco, bajar la barra hasta el pecho y empujarla hacia arriba extendiendo los brazos.",
+        "grupoMuscular": "PECHO",
+        "nombre": "Press de banca"
+    },
+    {
+        "descripcion": "Usando barras paralelas, bajar el cuerpo flexionando los codos y luego extendelos para volver a subir.",
+        "grupoMuscular": "TRICEPS",
+        "nombre": "Fondos en paralelas"
+    },
+    {
+        "descripcion": "Con una barra o mancuernas, bajar el torso manteniendo la espalda recta y las piernas apenas flexionadas.",
+        "grupoMuscular": "FEMORALES",
+        "nombre": "Peso muerto"
+    },
+    {
+        "descripcion": "Acostado boca abajo en la máquina, flexionar las piernas llevando los talones hacia la cola.",
+        "grupoMuscular": "FEMORALES",
+        "nombre": "Curl de piernas en maquina"
+    },
+    {
+        "descripcion": "Con o sin peso, flexionar las rodillas bajando la cadera.",
+        "grupoMuscular": "CUADRICEPS",
+        "nombre": "Squats"
+    },
+    {
+        "descripcion": "Agarrarse a una barra y elevar el cuerpo hasta que el mentón pase la misma.",
+        "grupoMuscular": "ESPALDA",
+        "nombre": "Pull-ups"
+    },
+    {
+        "descripcion": "Apoyando la parte alta de la espalda en un banco, elevar las caderas con una barra sobre la pelvis.",
+        "grupoMuscular": "GLUTEOS",
+        "nombre": "Hip thrust"
+    },
+    {
+        "descripcion": "Sentado o de pie, empujar las mancuernas desde los hombros para arriba hasta estirar los brazos.",
+        "grupoMuscular": "HOMBROS",
+        "nombre": "Press militar con mancuernas"
+    },
+    {
+        "descripcion": "De pie, subir y bajar los talones para trabajar la parte posterior de la pierna.",
+        "grupoMuscular": "GEMELOS",
+        "nombre": "Elevacion de talones"
+    },
+    {
+        "descripcion": "Acostado boca arriba, elevar el torso flexionando el abdomen.",
+        "grupoMuscular": "ABDOMINALES",
+        "nombre": "Crunch abdominal"
+    },
+    {
+        "descripcion": "Sentado en la máquina, bajar la barra hacia el pecho manteniendo la espalda recta.",
+        "grupoMuscular": "ESPALDA",
+        "nombre": "Lat pulldown"
+    },
+    {
+        "descripcion": "Acostado en un banco, bajar una barra o mancuerna desde arriba de la cabeza hacia la frente y volver a subir.",
+        "grupoMuscular": "TRICEPS",
+        "nombre": "Press frances"
+    },
+    {
+        "descripcion": "Dar un paso para adelante y bajar el cuerpo hasta que ambas rodillas esten a 90 grados.",
+        "grupoMuscular": "CUADRICEPS",
+        "nombre": "Lunges"
+    },
+    {
+        "descripcion": "De pie, levantar las mancuernas hacia los lados hasta la altura de los hombors.",
+        "grupoMuscular": "HOMBROS",
+        "nombre": "Elevaciones laterales"
+    }
+]

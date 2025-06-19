@@ -5,6 +5,9 @@ public class Serie {
     private int repeticiones;
     private double peso; // en kg
 
+    public Serie() {
+    }
+
     public Serie(Ejercicio ejercicio, int repeticiones, double peso) {
         this.ejercicio = ejercicio;
         this.repeticiones = repeticiones;
