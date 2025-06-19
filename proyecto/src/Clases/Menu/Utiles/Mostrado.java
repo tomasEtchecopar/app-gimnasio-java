@@ -11,6 +11,7 @@ import java.util.*;
 public class Mostrado {
     public static String mostrarPlantillas(Scanner teclado, List<Plantilla> plantillas){
         if(plantillas.isEmpty()){
+            System.out.println("No hay plantillas disponibles");
             return null;
         }
         System.out.println("Seleccione plantilla: ");

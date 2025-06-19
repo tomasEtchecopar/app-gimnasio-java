@@ -112,5 +112,18 @@
         ],
         "id": 2,
         "nombre": "prueba"
+    },
+    {
+        "series": [{
+            "peso": 22,
+            "repeticiones": 12,
+            "ejercicio": {
+                "descripcion": "De pie, elevar los brazos lateralmente hasta la altura de los hombros.",
+                "grupoMuscular": "HOMBROS",
+                "nombre": "Elevaciones laterales con mancuernas"
+            }
+        }],
+        "id": 0,
+        "nombre": "TODOS"
     }
 ]

@@ -217,7 +217,7 @@ public class MenuRutinasAdmin {
 
         return LecturaTeclado.leerEntero(teclado, 0, usuarios.getLast().getId());
     }
-    private static String mostrarPlantillasPorUsuario(Scanner teclado, int id) throws RutinaNoExisteException{
+    public static String mostrarPlantillasPorUsuario(Scanner teclado, int id) throws RutinaNoExisteException{
         List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
         if(plantillas.isEmpty()){
             throw new RutinaNoExisteException("No hay plantillas disponibles");

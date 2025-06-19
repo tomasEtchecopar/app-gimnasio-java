@@ -4,6 +4,7 @@ import Clases.Gimnasio.Entrenamiento;
 import Clases.Gimnasio.Plantilla;
 import Clases.Gimnasio.Serie;
 
+import Clases.Menu.Admin.MenuRutinasAdmin;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Menu.Utiles.Mostrado;
@@ -40,7 +41,23 @@ public class MenuEntrenamiento {
                 JSONUsuario.actualizarUsuario(usuario);
             }
             case 2 -> Mostrado.verEjercicios(teclado);
-            case 3 -> Mostrado.mostrarPlantillas(teclado, JSONPlantilla.leerPlantillas());
+            case 3 -> {
+                System.out.println("Elije una opcion: ");
+                System.out.println("1) Ver plantillas disponibles para todos los usuarios");
+                System.out.println("2) Ver plantillas disponibles para "+usuario.getUsuario());
+                System.out.println("3) Volver");
+                int eleccion = LecturaTeclado.leerEntero(teclado, 1, 3);
+                switch(eleccion) {
+                    case 1-> {
+                        System.out.println("Plantillas disponibles para todos los usuarios: ");
+                        MenuRutinasAdmin.mostrarPlantillasPorUsuario(teclado, 0);
+                    }
+                    case 2-> {
+                        System.out.println("Plantillas disponibles para " + usuario.getUsuario() + ": ");
+                        MenuRutinasAdmin.mostrarPlantillasPorUsuario(teclado, usuario.getId());
+                    }
+                    }
+                }
             case 4->{
                 return;
             }
