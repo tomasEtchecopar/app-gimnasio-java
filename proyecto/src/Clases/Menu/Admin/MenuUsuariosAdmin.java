@@ -42,7 +42,7 @@ public class MenuUsuariosAdmin {
                 case 3 -> menuBorrarUsuarios(teclado, usuarios);
                 case 4 -> {
                     verUsuarios(usuarios);
-                    System.out.printf("\nIngrese la id del usuario a editar: ");
+                    System.out.print("\nIngrese la id del usuario a editar: ");
                     int id = LecturaTeclado.leerEntero(teclado, usuarios.getFirst().getId(), usuarios.getLast().getId());
                     editar(usuarios, id, teclado);
                 }

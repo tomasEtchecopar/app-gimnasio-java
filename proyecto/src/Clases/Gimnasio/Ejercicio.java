@@ -35,6 +35,7 @@ public class Ejercicio {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
     public GrupoMuscular getGrupoMuscular() {
         return grupoMuscular;
     }

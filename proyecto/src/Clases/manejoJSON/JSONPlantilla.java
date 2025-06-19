@@ -95,7 +95,7 @@ public class JSONPlantilla {
         JSONUtiles.grabar(jPlantilla, ARCHIVO);
     }
 
-    public static void borrarPlantilla(int id){
+    public static void borrarPlantillasPorId(int id){
         List<Plantilla> plantillas;
         try {
             plantillas = JSONPlantilla.getFromJSON();
@@ -103,6 +103,16 @@ public class JSONPlantilla {
             sobrecargarPlantillas(plantillas);
 
         } catch (RuntimeException | FileNotFoundException | JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void borrarPlantilla(String nombre, int id){
+        List<Plantilla> plantillas;
+        try{
+            plantillas = getFromJSON();
+            plantillas.removeIf(p-> p.getId() ==id && p.getNombre().equalsIgnoreCase(nombre));
+            sobrecargarPlantillas(plantillas);
+        } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

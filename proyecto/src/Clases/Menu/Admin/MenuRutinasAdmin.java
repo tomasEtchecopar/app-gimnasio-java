@@ -21,33 +21,56 @@ public class MenuRutinasAdmin {
         int opcion=-1;
         while(opcion!=5){
             MainMenu.limpiarConsola();
-            System.out.println("--RUTINAS--");
-            System.out.println("1) Ver rutinas");
-            System.out.println("2) Agregar rutina");
-            System.out.println("3) Borrar rutina");
-            System.out.println("4) Editar rutina");
+            System.out.println("--PLANTILLAS--");
+            System.out.println("1) Ver plantillas");
+            System.out.println("2) Agregar plantillas");
+            System.out.println("3) Borrar plantillas");
+            System.out.println("4) Editar plantillas");
             System.out.println("5) Salir");
 
             opcion = leerEntero(teclado, 1, 5);
             MainMenu.limpiarConsola();
             switch(opcion){
-                case 1 -> mostrarPlantillasPorUsuario(teclado);
+                case 1 -> mostrarPlantillasPorUsuario(teclado, seleccionarUsuarioPorId(teclado));
                 case 2-> {
                     Plantilla plantilla = cargarRutinaPorTeclado(teclado);
                     try {
                         JSONPlantilla.escribirJSON(plantilla);
                     } catch(RutinaYaExisteException e){
-                        System.out.println("-----ERROR: "+e.getMessage());
+                        System.out.println("-----ERROR: " + e.getMessage());
                     } catch(JSONException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }
                 }
                 case 3 -> {
-                    System.out.printf("Ingrese la ID del usuario cuyas rutinas desea eliminar: ");
-                    JSONPlantilla.borrarPlantilla(teclado.nextInt());
+                    menuBorrarRutinas(teclado);
+                }
+                case 4 ->{
+
                 }
             }
             LecturaTeclado.continuar(teclado);
+        }
+    }
+    
+
+    private static void menuBorrarRutinas(Scanner teclado){
+        System.out.println("Ingrese una opcion: ");
+        System.out.println("1) Borrar todas las plantillas de un usuario");
+        System.out.println("2) Borrar una plantilla específica");
+        System.out.println("3) Volver");
+        int opcion=LecturaTeclado.leerEntero(teclado, 1,3 );
+        switch(opcion) {
+            case 1 -> {
+                JSONPlantilla.borrarPlantillasPorId(seleccionarUsuarioPorId(teclado));
+            }
+            case 2 -> {
+                int id=seleccionarUsuarioPorId(teclado);
+                mostrarPlantillasPorUsuario(teclado, id);
+                System.out.println("Ingrese el nombre de la plantilla que desea borrar: ");
+                String nombre = teclado.nextLine();
+                JSONPlantilla.borrarPlantilla(nombre, id);
+            }
         }
     }
 
@@ -106,12 +129,7 @@ public class MenuRutinasAdmin {
         return new Plantilla(nombreRutina, series, id);
     }
 
-    private static void mostrarPlantillasPorUsuario(Scanner teclado){
-        List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
-        if(plantillas.isEmpty()){
-            System.out.println("No hay plantillas disponibles");
-            return;
-        }
+    private static int seleccionarUsuarioPorId(Scanner teclado){
         List<Usuario> usuarios = new ArrayList<>();
         try {
             usuarios = JSONUsuario.getAllUsuarios();
@@ -127,7 +145,14 @@ public class MenuRutinasAdmin {
             System.out.println(u.getId() +". " +u.getNombre() +" "+ u.getApellido());
         }
 
-        int id= LecturaTeclado.leerEntero(teclado, 0, usuarios.getLast().getId());
+        return LecturaTeclado.leerEntero(teclado, 0, usuarios.getLast().getId());
+    }
+    private static void mostrarPlantillasPorUsuario(Scanner teclado, int id){
+        List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
+        if(plantillas.isEmpty()){
+            System.out.println("No hay plantillas disponibles");
+            return;
+        }
 
         List<Plantilla> plantillasAMostrar = new ArrayList<>();
         for(Plantilla p : plantillas){
@@ -137,5 +162,7 @@ public class MenuRutinasAdmin {
         }
         Mostrado.mostrarPlantillas(teclado, plantillasAMostrar);
     }
+
+
 }
 
