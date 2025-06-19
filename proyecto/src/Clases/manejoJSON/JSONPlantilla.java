@@ -1,6 +1,7 @@
 package Clases.manejoJSON;
 
 import Clases.Gimnasio.Plantilla;
+import Excepciones.RutinaNoExisteException;
 import Excepciones.RutinaYaExisteException;
 import Excepciones.UsuarioNoExisteException;
 import org.json.JSONArray;
@@ -110,8 +111,11 @@ public class JSONPlantilla {
         List<Plantilla> plantillas;
         try{
             plantillas = getFromJSON();
-            plantillas.removeIf(p-> p.getId() ==id && p.getNombre().equalsIgnoreCase(nombre));
-            sobrecargarPlantillas(plantillas);
+            if(plantillas.removeIf(p -> p.getId() == id && p.getNombre().equalsIgnoreCase(nombre))) {
+                sobrecargarPlantillas(plantillas);
+            }else{
+                throw new RutinaNoExisteException("La rutina no se encontró");
+            }
         } catch (FileNotFoundException | JSONException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }

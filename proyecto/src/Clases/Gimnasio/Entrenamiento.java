@@ -45,11 +45,12 @@ public class Entrenamiento extends Rutina{
                 String nombreEjercicio = serie.getEjercicio().getNombre();
 
                 if (!nombreEjercicio.equals(ejercicioAnterior)) {
+                    System.out.print("\n");
                     System.out.println("Ejercicio: " + nombreEjercicio);
                     ejercicioAnterior = nombreEjercicio;
                 }
 
-                System.out.println(serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
+                System.out.println( serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
             }
         }
     }

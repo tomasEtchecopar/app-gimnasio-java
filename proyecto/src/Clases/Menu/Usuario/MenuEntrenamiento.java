@@ -106,9 +106,9 @@ public class MenuEntrenamiento {
                 System.out.println("Ingrese las repeticiones: ");
                 repeticiones = LecturaTeclado.leerEntero(teclado, 1, 500);
                 serieActual.setRepeticiones(repeticiones);
-                System.out.println("Repeticiones ");
+                System.out.println("Repeticiones ajustadas a "+ repeticiones);
             }
-            System.out.print("Presiona ENTER para continuar a la siguiente serie...");
+            System.out.print("\nPresiona ENTER para continuar a la siguiente serie...");
             teclado.nextLine();
 
 

@@ -40,8 +40,9 @@ public class Plantilla extends Rutina{
             System.out.println("La rutina está vacía.");
         }else {
             String ejercicioAnterior = "";
-
+            int contador=0;
             for (Serie serie : this.getSeries()) {
+                contador++;
                 String nombreEjercicio = serie.getEjercicio().getNombre();
 
                 if (!nombreEjercicio.equals(ejercicioAnterior)) {
@@ -49,7 +50,7 @@ public class Plantilla extends Rutina{
                     ejercicioAnterior = nombreEjercicio;
                 }
 
-                System.out.println(serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
+                System.out.println(contador+") "+serie.getPeso() + " KG" + " x " + serie.getRepeticiones());
             }
         }
 

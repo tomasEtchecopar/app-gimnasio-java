@@ -51,13 +51,13 @@
                 "nombre": "Fondos en paralelas"
             }
         }],
-        "id": 5,
-        "nombre": "uu"
+        "id": 2,
+        "nombre": "hola"
     },
     {
         "series": [{
-            "peso": 5,
-            "repeticiones": 4,
+            "peso": 100,
+            "repeticiones": 55,
             "ejercicio": {
                 "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
                 "grupoMuscular": "TRICEPS",
@@ -66,5 +66,51 @@
         }],
         "id": 3,
         "nombre": "uu"
+    },
+    {
+        "series": [{
+            "peso": 1,
+            "repeticiones": 2,
+            "ejercicio": {
+                "descripcion": "Sentado, tirar de la barra hasta el pecho manteniendo la espalda recta.",
+                "grupoMuscular": "ESPALDA",
+                "nombre": "Jalón al pecho "
+            }
+        }],
+        "id": 2,
+        "nombre": "asd"
+    },
+    {
+        "series": [
+            {
+                "peso": 11,
+                "repeticiones": 33,
+                "ejercicio": {
+                    "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
+                    "grupoMuscular": "PECHO",
+                    "nombre": "Press de Banca"
+                }
+            },
+            {
+                "peso": 99,
+                "repeticiones": 77,
+                "ejercicio": {
+                    "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
+                    "grupoMuscular": "PECHO",
+                    "nombre": "Press de Banca"
+                }
+            },
+            {
+                "peso": 0,
+                "repeticiones": 12,
+                "ejercicio": {
+                    "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
+                    "grupoMuscular": "TRICEPS",
+                    "nombre": "Fondos en paralelas"
+                }
+            }
+        ],
+        "id": 2,
+        "nombre": "prueba"
     }
 ]
