@@ -9,16 +9,18 @@ import Clases.manejoJSON.JSONEjercicio;
 import java.util.*;
 
 public class Mostrado {
-    public static void mostrarPlantillas(Scanner teclado, List<Plantilla> plantillas){
+    public static String mostrarPlantillas(Scanner teclado, List<Plantilla> plantillas){
         if(plantillas.isEmpty()){
-            return;
+            System.out.println("No hay plantillas disponibles");
+            return null;
         }
-        System.out.println("Seleccione que plantilla desea ver: ");
+        System.out.println("Seleccione plantilla: ");
         for (int i = 0; i < plantillas.size(); i++) {
             System.out.println(i+". "+plantillas.get(i).getNombre());
         }
         int seleccion = LecturaTeclado.leerEntero(teclado, 0, plantillas.size()-1);
         plantillas.get(seleccion).mostrarRutina();
+        return plantillas.get(seleccion).getNombre();
     }
     public static void verEjercicios(Scanner teclado){
         int opcion=-1;

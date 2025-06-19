@@ -8,7 +8,9 @@ import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONEjercicio;
 import Clases.manejoJSON.JSONUsuario;
 import Clases.manejoJSON.JSONPlantilla;
+import Excepciones.RutinaNoExisteException;
 import Excepciones.RutinaYaExisteException;
+import com.sun.tools.javac.Main;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
@@ -42,18 +44,83 @@ public class MenuRutinasAdmin {
                         throw new RuntimeException(e);
                     }
                 }
-                case 3 -> {
-                    menuBorrarRutinas(teclado);
-                }
+                case 3 -> menuBorrarRutinas(teclado);
                 case 4 ->{
-
+                    try{
+                        menuEditarRutinas(teclado);
+                    }catch (RutinaNoExisteException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 5->{
+                    return;
                 }
             }
             LecturaTeclado.continuar(teclado);
         }
     }
-    
 
+    private static void menuEditarRutinas(Scanner teclado) throws RutinaNoExisteException{
+        List<Plantilla> plantillas = JSONPlantilla.leerPlantillas(); //cargo plantillas
+        int id = seleccionarUsuarioPorId(teclado); //selecciono de que usuario quiero ver rutinas
+
+        if(plantillas.stream().noneMatch(p->p.getId()==id)){
+            throw new RutinaNoExisteException("No hay plantillas para ese usuario.");
+        }
+
+        String nombre = mostrarPlantillasPorUsuario(teclado, id);
+
+        Plantilla plantillaEditada =null;
+        for(Plantilla planti : plantillas){
+            if(planti.getNombre().equalsIgnoreCase(nombre) && planti.getId()==id){
+                plantillaEditada = planti;
+
+            }
+        }
+
+        if(plantillaEditada==null){
+            System.out.println("No se pudo encontrar la plantilla.");
+            return;
+        }
+
+        plantillas.remove(plantillaEditada);
+
+        System.out.println("Ingrese que desea editar:");
+        System.out.println("1) Nombre");
+        System.out.println("2) ID (Trasladar hacia otro usuario)");
+        System.out.println("3) Series");
+        int opcion= LecturaTeclado.leerEntero(teclado, 1, 3);
+        MainMenu.limpiarConsola();
+        switch(opcion){
+            case 1->{
+                System.out.println("Ingrese nuevo nombre: ");
+                String nombreNuevo = teclado.nextLine();
+                plantillaEditada.setNombre(nombreNuevo);
+            }
+            case 2->{
+                System.out.println("Ingrese a qué usuario desea trasladar la rutina");
+                int idNueva= seleccionarUsuarioPorId(teclado);
+                plantillaEditada.setId(idNueva);
+            }
+            case 3->{
+                List<Serie> series = plantillaEditada.getSeries();
+                plantillaEditada.mostrarRutina();
+                System.out.println("Ingrese que serie desea editar: ");
+                int indiceSerie = LecturaTeclado.leerEntero(teclado, 1, series.size()) - 1;
+                System.out.println("Ingrese nuevo peso: ");
+                series.get(indiceSerie).setPeso(LecturaTeclado.leerDouble(teclado, 0, 1000));
+                System.out.println("Ingrese nuevas repeticiones: ");
+                series.get(indiceSerie).setRepeticiones(LecturaTeclado.leerEntero(teclado, 0, 1000));
+            }
+        }
+
+        plantillas.add(plantillaEditada);
+        try {
+            JSONPlantilla.sobrecargarPlantillas(plantillas);
+        } catch (JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
     private static void menuBorrarRutinas(Scanner teclado){
         System.out.println("Ingrese una opcion: ");
         System.out.println("1) Borrar todas las plantillas de un usuario");
@@ -66,10 +133,12 @@ public class MenuRutinasAdmin {
             }
             case 2 -> {
                 int id=seleccionarUsuarioPorId(teclado);
-                mostrarPlantillasPorUsuario(teclado, id);
-                System.out.println("Ingrese el nombre de la plantilla que desea borrar: ");
-                String nombre = teclado.nextLine();
-                JSONPlantilla.borrarPlantilla(nombre, id);
+                try {
+                    String nombre = mostrarPlantillasPorUsuario(teclado, id);
+                    JSONPlantilla.borrarPlantilla(nombre, id);
+                }catch (RutinaNoExisteException e){
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }
@@ -138,6 +207,7 @@ public class MenuRutinasAdmin {
         }
 
         usuarios.sort(Comparator.comparing(Usuario::getId));
+        MainMenu.limpiarConsola();
         System.out.println("Seleccione un usuario: ");
         System.out.println("0. Todos los usuarios");
 
@@ -147,11 +217,10 @@ public class MenuRutinasAdmin {
 
         return LecturaTeclado.leerEntero(teclado, 0, usuarios.getLast().getId());
     }
-    private static void mostrarPlantillasPorUsuario(Scanner teclado, int id){
+    public static String mostrarPlantillasPorUsuario(Scanner teclado, int id) throws RutinaNoExisteException{
         List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();
         if(plantillas.isEmpty()){
-            System.out.println("No hay plantillas disponibles");
-            return;
+            throw new RutinaNoExisteException("No hay plantillas disponibles");
         }
 
         List<Plantilla> plantillasAMostrar = new ArrayList<>();
@@ -160,7 +229,7 @@ public class MenuRutinasAdmin {
                 plantillasAMostrar.add(p);
             }
         }
-        Mostrado.mostrarPlantillas(teclado, plantillasAMostrar);
+        return Mostrado.mostrarPlantillas(teclado, plantillasAMostrar);
     }
 
 
