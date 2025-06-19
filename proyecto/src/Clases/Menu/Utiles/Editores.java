@@ -27,7 +27,7 @@ public class Editores {
                     }
                     case 2 -> {
                         System.out.println("\nIngrese la nueva descripcion: ");
-                        ejercicioEntry.getValue().setNombre(teclado.nextLine());
+                        ejercicioEntry.getValue().setDescripcion(teclado.nextLine());
                     }
                 }
 

@@ -45,13 +45,8 @@
         "nombre": "Curl de bíceps con barra"
     },
     {
-        "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+        "descripcion": "aaaaaa",
         "grupoMuscular": "CUADRICEPS",
         "nombre": "Sentadilla"
-    },
-    {
-        "descripcion": "De pie o sentado, empujar la barra o mancuernas desde los hombros hacia arriba.",
-        "grupoMuscular": "HOMBROS",
-        "nombre": "Press militar"
     }
 ]

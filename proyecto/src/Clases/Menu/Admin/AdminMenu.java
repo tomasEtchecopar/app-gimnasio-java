@@ -45,7 +45,7 @@ public class AdminMenu implements MenuAcciones {
             case 3 -> MenuUsuariosAdmin.menuUsuarios(teclado, usuario);
             case 4->   new UsuarioMenu().mostrar(teclado, usuario);
             case 5 ->{
-                return;
+                System.out.println("Hasta luego!");;
             }
         }
     }

@@ -120,7 +120,7 @@ public class JSONUsuario {
     public static void actualizarUsuario(Usuario usuario){
         try {
             List<Usuario> usuarios = getAllUsuarios();
-            usuarios.remove(usuario); //elimina el usuario que contenga el mismo nombre de usuario
+            usuarios.remove(usuario); //el usuario sin modificar se encuentra en la lista, se elimina usando equals() que compara el nombre
             usuarios.add(usuario); //agrega usuario modificado
 
             sobreescribirJSONUsuarios(usuarios); //sobreescribe el json

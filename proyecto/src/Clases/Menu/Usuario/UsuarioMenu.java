@@ -46,7 +46,7 @@ public class UsuarioMenu implements MenuAcciones {
             case 4 -> System.out.println(usuario);
             case 5 -> Editores.menuEdicionDeUsuario(teclado, usuario);
             case 6 -> {
-                return;
+                System.out.println("Hasta luego!");;
             }
         }
         LecturaTeclado.continuar(teclado);

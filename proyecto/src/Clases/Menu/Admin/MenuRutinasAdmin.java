@@ -87,10 +87,10 @@ public class MenuRutinasAdmin {
             Ejercicio ejercicio = ejerciciosDisponibles.get(nombresEjercicios.get(seleccion));
 
             System.out.println("Ingrese la cantidad de repeticiones:");
-            int repeticiones = Integer.parseInt(teclado.nextLine());
+            int repeticiones = LecturaTeclado.leerEntero(teclado, 0, 999);
 
             System.out.println("Ingrese el peso en kg:");
-            double peso = Double.parseDouble(teclado.nextLine());
+            double peso = LecturaTeclado.leerDouble(teclado, 0, 999);
 
             Serie serie = new Serie(ejercicio, repeticiones, peso);
             series.add(serie);
@@ -133,8 +133,5 @@ public class MenuRutinasAdmin {
         }
         Mostrado.mostrarPlantillas(teclado, plantillasAMostrar);
     }
-
-
-
 }
 
