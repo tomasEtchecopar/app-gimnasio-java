@@ -94,8 +94,10 @@ public class JSONEjercicio{
         Map<String, Ejercicio> ejercicios = new HashMap<>();
         try {
              ejercicios = getFromJSON();
-        } catch (JSONException | FileNotFoundException e) {
+        } catch (JSONException e ){
             throw new RuntimeException(e);
+        }catch(FileNotFoundException e){
+            System.out.println("No hay ejercicios cargados.");
         }
         return ejercicios;
     }

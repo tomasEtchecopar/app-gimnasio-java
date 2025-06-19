@@ -16,16 +16,23 @@ public class MenuEjerciciosAdmin {
     public static void menuEjercicios(Scanner teclado){
         int opcion=-1;
         while(opcion!=5){
-            List<Ejercicio> ejercicios = JSONEjercicio.leerEjercicios().values().stream().toList(); // para mostrar
+
             MainMenu.limpiarConsola();
             System.out.println("--EJERCICIOS--");
             System.out.println("1) Ver ejercicios");
             System.out.println("2) Agregar Ejercicio");
-            System.out.println("3) Borrar Ejercicio");
-            System.out.println("4) Editar Ejercicio");
-            System.out.println("5) Salir");
+            System.out.println("3) Salir");
+            List<Ejercicio> ejercicios = JSONEjercicio.leerEjercicios().values().stream().toList();
+            if(!ejercicios.isEmpty()) {
+                System.out.println("4) Editar Ejercicio");
+                System.out.println("5) Borrar Ejercicio");
+                opcion = leerEntero(teclado, 1, 5);
+            }else{
+                opcion=leerEntero(teclado, 1 , 3);
+            }
 
-            opcion = leerEntero(teclado, 1, 5);
+
+
             switch(opcion){
                 case 1 -> Mostrado.verEjercicios(teclado);
                 case 2 -> {
@@ -33,12 +40,7 @@ public class MenuEjerciciosAdmin {
                     JSONEjercicio.guardarEjercicio(ejercicioNuevo);
                 }
                 case 3 -> {
-                    for (int i = 0; i < ejercicios.size(); i++) {
-                        System.out.println(i+". "+ejercicios.get(i));
-                    }
-                    System.out.println("\n Ingrese el ejercicio a borrar: ");
-                    int index = LecturaTeclado.leerEntero(teclado, 0, ejercicios.size()-1);
-                    JSONEjercicio.borrarEjercicio(ejercicios.get(index).getNombre());
+                    return;
                 }
                 case 4 -> {
                     for (int i = 0; i < ejercicios.size(); i++) {
@@ -48,6 +50,12 @@ public class MenuEjerciciosAdmin {
                     int index = LecturaTeclado.leerEntero(teclado, 0, ejercicios.size()-1);
                     Editores.editarEjercicio(teclado, ejercicios.get(index).getNombre());
                 }
+                case 5->{for (int i = 0; i < ejercicios.size(); i++) {
+                    System.out.println(i+". "+ejercicios.get(i));
+                }
+                    System.out.println("\n Ingrese el ejercicio a borrar: ");
+                    int index = LecturaTeclado.leerEntero(teclado, 0, ejercicios.size()-1);
+                    JSONEjercicio.borrarEjercicio(ejercicios.get(index).getNombre());}
             }
             LecturaTeclado.continuar(teclado);
         }
