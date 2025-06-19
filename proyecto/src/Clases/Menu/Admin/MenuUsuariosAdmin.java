@@ -90,6 +90,7 @@ public class MenuUsuariosAdmin {
                             System.out.println("Esta seguro que desea eliminarlo? (s/n)");
                             if(LecturaTeclado.leerBooleanSN(teclado)) {
                                 JSONUsuario.borrarUsuario(u);
+
                             }
                         }
                     }

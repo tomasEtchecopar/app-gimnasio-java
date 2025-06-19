@@ -33,15 +33,20 @@ public class MenuEjerciciosAdmin {
                     JSONEjercicio.guardarEjercicio(ejercicioNuevo);
                 }
                 case 3 -> {
-                    for(Ejercicio e : ejercicios){
-
+                    for (int i = 0; i < ejercicios.size(); i++) {
+                        System.out.println(i+". "+ejercicios.get(i));
                     }
                     System.out.println("\n Ingrese el ejercicio a borrar: ");
-                    JSONEjercicio.borrarEjercicio(teclado.nextLine());
+                    int index = LecturaTeclado.leerEntero(teclado, 0, ejercicios.size()-1);
+                    JSONEjercicio.borrarEjercicio(ejercicios.get(index).getNombre());
                 }
                 case 4 -> {
+                    for (int i = 0; i < ejercicios.size(); i++) {
+                        System.out.println(i+". "+ejercicios.get(i));
+                    }
                     System.out.println("\n Ingrese el ejercicio a editar: ");
-                    Editores.editarEjercicio(teclado, teclado.nextLine());
+                    int index = LecturaTeclado.leerEntero(teclado, 0, ejercicios.size()-1);
+                    Editores.editarEjercicio(teclado, ejercicios.get(index).getNombre());
                 }
             }
             LecturaTeclado.continuar(teclado);
