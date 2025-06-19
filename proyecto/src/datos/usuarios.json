@@ -1,31 +1,5 @@
 [
     {
-        "entrenador": true,
-        "contador": 4,
-        "peso": 80,
-        "altura": 186,
-        "apellido": "Farias",
-        "historial": [],
-        "usuario": "juan123",
-        "contrasenia": "123",
-        "id": 2,
-        "nombre": "Juan Sebastian",
-        "edad": 21
-    },
-    {
-        "entrenador": false,
-        "contador": 4,
-        "peso": 20,
-        "altura": 176,
-        "apellido": "Juarez",
-        "historial": [],
-        "usuario": "pepe123",
-        "contrasenia": "123",
-        "id": 3,
-        "nombre": "Pepe",
-        "edad": 20
-    },
-    {
         "entrenador": false,
         "contador": 4,
         "peso": 12,
@@ -134,6 +108,73 @@
         "contrasenia": "123",
         "id": 5,
         "nombre": "Tomas",
+        "edad": 20
+    },
+    {
+        "entrenador": true,
+        "contador": 4,
+        "peso": 80,
+        "altura": 186,
+        "apellido": "Farias",
+        "historial": [{
+            "fecha": "19/06/2025 15:37",
+            "series": [
+                {
+                    "peso": 100,
+                    "repeticiones": 12,
+                    "ejercicio": {
+                        "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
+                        "grupoMuscular": "PECHO",
+                        "nombre": "Press de Banca"
+                    }
+                },
+                {
+                    "peso": 70,
+                    "repeticiones": 10,
+                    "ejercicio": {
+                        "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                        "grupoMuscular": "CUADRICEPS",
+                        "nombre": "Sentadilla"
+                    }
+                },
+                {
+                    "peso": 80,
+                    "repeticiones": 5,
+                    "ejercicio": {
+                        "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                        "grupoMuscular": "CUADRICEPS",
+                        "nombre": "Sentadilla"
+                    }
+                },
+                {
+                    "peso": 90,
+                    "repeticiones": 6,
+                    "ejercicio": {
+                        "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+                        "grupoMuscular": "CUADRICEPS",
+                        "nombre": "Sentadilla"
+                    }
+                }
+            ],
+            "nombre": "Dia de pecho"
+        }],
+        "usuario": "juan123",
+        "contrasenia": "123",
+        "id": 2,
+        "nombre": "Juan Sebastian",
+        "edad": 21
+    },
+    {
+        "entrenador": false,
+        "contador": 4,
+        "peso": 65,
+        "altura": 176,
+        "apellido": "Juarez",
+        "historial": [],
+        "usuario": "pepe123",
+        "contrasenia": "123",
+        "id": 3,
+        "nombre": "Pepe",
         "edad": 20
     }
 ]

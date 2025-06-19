@@ -27,7 +27,6 @@ public class AdminMenu implements MenuAcciones {
 
             opcion = this.elegirOpcion(teclado, usuario);
             menuCaller(teclado, opcion, usuario);
-            LecturaTeclado.continuar(teclado);
         }
 
     }
