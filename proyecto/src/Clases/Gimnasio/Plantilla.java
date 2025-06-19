@@ -1,7 +1,5 @@
 package Clases.Gimnasio;
 
-import Clases.Usuario.Usuario;
-
 import java.util.List;
 
 /// CLASE PLANTILLA: son las rutinas que el usuario puede elegir. Se almacenan en el JSON 'plantillas.json'.

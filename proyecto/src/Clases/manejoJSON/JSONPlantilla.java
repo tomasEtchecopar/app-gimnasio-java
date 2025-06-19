@@ -36,7 +36,7 @@ public class JSONPlantilla {
                 archivo.put(Jplantilla);
                 JSONUtiles.grabar(archivo, ARCHIVO);
             }else{
-                throw new RutinaYaExisteException("Ya existe una rutina con el mismo nombre.");
+                throw new RutinaYaExisteException("El usuario ya tiene una rutina con el mismo nombre.");
             }
         }
 
@@ -65,8 +65,9 @@ public class JSONPlantilla {
         boolean ret = false;
         for(int i = 0; i<archivo.length();i++){
             JSONObject p = archivo.getJSONObject(i);
-            String nombrePlantilla = p.getString("nombre");
-            if (nombrePlantilla.equals(plantilla.getNombre())){
+            String nombrePlantillaEnArchivo = p.getString("nombre");
+            int idPlantillaEnArchivo = p.getInt("id");
+            if (nombrePlantillaEnArchivo.equals(plantilla.getNombre()) && idPlantillaEnArchivo==plantilla.getId()){
                 ret=true;
                 break;
             }

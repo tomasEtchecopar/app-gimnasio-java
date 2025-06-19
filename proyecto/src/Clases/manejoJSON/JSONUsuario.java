@@ -134,13 +134,14 @@ public class JSONUsuario {
             List<Usuario> usuarios = getAllUsuarios();
             int index = -1;
             for (int i = 0; i < usuarios.size(); i++) {
-                if (usuarios.get(i) == usuario) {
+                if (usuarios.get(i).equals(usuario)) {
                     index = i;
                 }
             }
             if (index != -1) {
                 usuarios.remove(index);
                 sobreescribirJSONUsuarios(usuarios);
+                System.out.println("Usuario eliminado exitosamente.");
             }
             else{
                 System.out.println("No se encontró el usuario.");

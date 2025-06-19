@@ -1,13 +1,10 @@
 package Clases.Gimnasio;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 /// CLASE ENTRENAMIENTO: es la que se almacena en el historial del usuario. Tiene un atributo fecha que le facilita la busqueda de entrenamientos al usuario
 public class Entrenamiento extends Rutina{
     public String fecha;
 
-    //constructor
+    //constructores
 
     public Entrenamiento() {
     }

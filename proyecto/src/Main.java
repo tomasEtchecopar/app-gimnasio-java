@@ -21,12 +21,14 @@ public class Main {
             System.out.println("3. Salir");
             int opcion =  LecturaTeclado.leerEntero(teclado, 1, 3);
 
-
+            MainMenu.limpiarConsola();
             switch (opcion) {
                 case 1 -> {
                     usuario = LogInMenu.mostrar(teclado);
                     if(usuario!=null) {
                         MainMenu.mainMenu(teclado, usuario);
+                    }else{
+                        LecturaTeclado.continuar(teclado);
                     }
                 }
                 case 2 -> RegistroMenu.mostrar(teclado);

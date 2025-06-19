@@ -3,10 +3,12 @@ package Clases.Menu.Admin;
 import Clases.Gimnasio.*;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Menu.Utiles.Mostrado;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONEjercicio;
 import Clases.manejoJSON.JSONUsuario;
 import Clases.manejoJSON.JSONPlantilla;
+import Excepciones.RutinaYaExisteException;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
@@ -34,7 +36,9 @@ public class MenuRutinasAdmin {
                     Plantilla plantilla = cargarRutinaPorTeclado(teclado);
                     try {
                         JSONPlantilla.escribirJSON(plantilla);
-                    } catch (JSONException | IllegalAccessException e) {
+                    } catch(RutinaYaExisteException e){
+                        System.out.println("-----ERROR: "+e.getMessage());
+                    } catch(JSONException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }
                 }
@@ -112,7 +116,7 @@ public class MenuRutinasAdmin {
         }
 
         usuarios.sort(Comparator.comparing(Usuario::getId));
-        System.out.println("Seleccione que plantillas desea ver: ");
+        System.out.println("Seleccione un usuario: ");
         System.out.println("0. Todos los usuarios");
 
         for(Usuario u : usuarios){
@@ -127,20 +131,10 @@ public class MenuRutinasAdmin {
                 plantillasAMostrar.add(p);
             }
         }
-        mostrarPlantillas(teclado, plantillasAMostrar);
+        Mostrado.mostrarPlantillas(teclado, plantillasAMostrar);
     }
 
-    private static void mostrarPlantillas(Scanner teclado, List<Plantilla> plantillas){
-        if(plantillas.isEmpty()){
-            return;
-        }
-        System.out.println("Seleccione que plantilla desea ver: ");
-        for (int i = 0; i < plantillas.size(); i++) {
-            System.out.println(i+". "+plantillas.get(i).getNombre());
-        }
-        int seleccion = LecturaTeclado.leerEntero(teclado, 0, plantillas.size()-1);
-        plantillas.get(seleccion).mostrarRutina();
-    }
+
 
 }
 

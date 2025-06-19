@@ -5,10 +5,10 @@ import Clases.Gimnasio.GrupoMuscular;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.Editores;
 import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Menu.Utiles.Mostrado;
 import Clases.manejoJSON.JSONEjercicio;
 
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 import static Clases.Menu.Utiles.LecturaTeclado.leerEntero;
 
@@ -16,6 +16,7 @@ public class MenuEjerciciosAdmin {
     public static void menuEjercicios(Scanner teclado){
         int opcion=-1;
         while(opcion!=5){
+            List<Ejercicio> ejercicios = JSONEjercicio.leerEjercicios().values().stream().toList(); // para mostrar
             MainMenu.limpiarConsola();
             System.out.println("--EJERCICIOS--");
             System.out.println("1) Ver ejercicios");
@@ -26,12 +27,15 @@ public class MenuEjerciciosAdmin {
 
             opcion = leerEntero(teclado, 1, 5);
             switch(opcion){
-                case 1 -> mostrarEjercicios();
+                case 1 -> Mostrado.verEjercicios(teclado);
                 case 2 -> {
                     Ejercicio ejercicioNuevo = cargarEjercicioPorTeclado(teclado);
                     JSONEjercicio.guardarEjercicio(ejercicioNuevo);
                 }
                 case 3 -> {
+                    for(Ejercicio e : ejercicios){
+
+                    }
                     System.out.println("\n Ingrese el ejercicio a borrar: ");
                     JSONEjercicio.borrarEjercicio(teclado.nextLine());
                 }
@@ -44,19 +48,7 @@ public class MenuEjerciciosAdmin {
         }
     }
 
-    public static void mostrarEjercicios(){
-        Map<String, Ejercicio> ejercicios = JSONEjercicio.leerEjercicios();
-        if(ejercicios.isEmpty()){
-            System.out.println("No hay ejercicios en ejercicios.json");
-            return;
-        }
-        for(Ejercicio ej : ejercicios.values()){
-            System.out.println("--------------------\n");
-            System.out.println("Nombre: " + ej.getNombre());
-            System.out.println("Grupo muscular: " + ej.getGrupoMuscular());
-            System.out.println("Descripcion: " +ej.getDescripcion());
-        }
-    }
+
 
     public static Ejercicio cargarEjercicioPorTeclado(Scanner teclado){
         System.out.println("Ingrese el nombre: ");

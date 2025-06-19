@@ -1,8 +1,13 @@
 [
     {
-        "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
-        "grupoMuscular": "CUADRICEPS",
-        "nombre": "Sentadilla"
+        "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
+        "grupoMuscular": "PECHO",
+        "nombre": "Press de Banca"
+    },
+    {
+        "descripcion": "Sentado, tirar de la barra hasta el pecho manteniendo la espalda recta.",
+        "grupoMuscular": "ESPALDA",
+        "nombre": "Jalón al pecho "
     },
     {
         "descripcion": "Con una barra en el suelo, agáchate con espalda recta y agarra la barra con las manos separadas al ancho de los hombros. Levanta la barra extendiendo caderas y rodillas, manteniendo el peso cerca del cuerpo. Baja controladamente.",
@@ -10,9 +15,9 @@
         "nombre": "Peso Muerto"
     },
     {
-        "descripcion": "Acuéstate en un banco plano, agarra la barra con las manos ligeramente más anchas que los hombros. Baja la barra al pecho de forma controlada y empújala hacia arriba hasta extender los brazos.",
-        "grupoMuscular": "PECHO",
-        "nombre": "Press de Banca"
+        "descripcion": "Inclinarse hacia adelante con espalda recta, tirar de la barra hacia el abdomen.",
+        "grupoMuscular": "ESPALDA",
+        "nombre": "Remo con barra"
     },
     {
         "descripcion": "Colgarse de una barra con agarre pronado y subir hasta que el mentón pase la barra.",
@@ -20,29 +25,9 @@
         "nombre": "Dominadas"
     },
     {
-        "descripcion": "De pie o sentado, empujar la barra o mancuernas desde los hombros hacia arriba.",
-        "grupoMuscular": "HOMBROS",
-        "nombre": "Press militar"
-    },
-    {
-        "descripcion": "Inclinarse hacia adelante con espalda recta, tirar de la barra hacia el abdomen.",
-        "grupoMuscular": "ESPALDA",
-        "nombre": "Remo con barra"
-    },
-    {
-        "descripcion": "De pie, sostener la barra con agarre supino y flexionar los codos.",
-        "grupoMuscular": "BICEPS",
-        "nombre": "Curl de bíceps con barra"
-    },
-    {
         "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
         "grupoMuscular": "TRICEPS",
         "nombre": "Fondos en paralelas"
-    },
-    {
-        "descripcion": "Paso largo hacia adelante, bajar hasta que ambas rodillas estén a 90°, volver.",
-        "grupoMuscular": "GLUTEOS",
-        "nombre": "Estocadas"
     },
     {
         "descripcion": "De pie, elevar los brazos lateralmente hasta la altura de los hombros.",
@@ -50,8 +35,23 @@
         "nombre": "Elevaciones laterales con mancuernas"
     },
     {
-        "descripcion": "Sentado, tirar de la barra hasta el pecho manteniendo la espalda recta.",
-        "grupoMuscular": "ESPALDA",
-        "nombre": "Jalón al pecho "
+        "descripcion": "Paso largo hacia adelante, bajar hasta que ambas rodillas estén a 90°, volver.",
+        "grupoMuscular": "GLUTEOS",
+        "nombre": "Estocadas"
+    },
+    {
+        "descripcion": "De pie, sostener la barra con agarre supino y flexionar los codos.",
+        "grupoMuscular": "BICEPS",
+        "nombre": "Curl de bíceps con barra"
+    },
+    {
+        "descripcion": "Ponte de pie con los pies a la anchura de los hombros, espalda recta. Baja el cuerpo flexionando rodillas y caderas, manteniendo los talones en el suelo, hasta que los muslos estén paralelos al suelo. Sube empujando con los talones.",
+        "grupoMuscular": "CUADRICEPS",
+        "nombre": "Sentadilla"
+    },
+    {
+        "descripcion": "De pie o sentado, empujar la barra o mancuernas desde los hombros hacia arriba.",
+        "grupoMuscular": "HOMBROS",
+        "nombre": "Press militar"
     }
 ]

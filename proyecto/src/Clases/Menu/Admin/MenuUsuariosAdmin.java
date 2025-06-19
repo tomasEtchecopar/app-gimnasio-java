@@ -6,7 +6,6 @@ import Clases.Menu.Utiles.Editores;
 import Clases.Menu.Utiles.LecturaTeclado;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONUsuario;
-import com.sun.tools.javac.Main;
 import org.json.JSONException;
 
 import java.util.Comparator;
@@ -68,10 +67,15 @@ public class MenuUsuariosAdmin {
                 case 1-> {
                     verUsuarios(usuarios);
                     System.out.printf("\nIngrese el nombre del usuario a eliminar: ");
-                    String nombre = teclado.nextLine();
+                    String nombreDeUsuario = teclado.nextLine();
                     for(Usuario u : usuarios){
-                        if(u.getUsuario().equalsIgnoreCase(nombre)){
-                            JSONUsuario.borrarUsuario(u);
+                        if(u.getUsuario().equalsIgnoreCase(nombreDeUsuario)){
+                            System.out.println("Mostrando informacion de " +nombreDeUsuario+".");
+                            System.out.println(u);
+                            System.out.println("Esta seguro que desea eliminarlo? (s/n)");
+                            if(LecturaTeclado.leerBooleanSN(teclado)) {
+                                JSONUsuario.borrarUsuario(u);
+                            }
                         }
                     }
                 }
@@ -81,7 +85,12 @@ public class MenuUsuariosAdmin {
                     int id = LecturaTeclado.leerEntero(teclado, usuarios.getFirst().getId(), usuarios.getLast().getId());
                     for(Usuario u :usuarios){
                         if(u.getId()==id){
-                            JSONUsuario.borrarUsuario(u);
+                            System.out.println("Mostrando informacion de " + u.getUsuario()+".");
+                            System.out.println(u);
+                            System.out.println("Esta seguro que desea eliminarlo? (s/n)");
+                            if(LecturaTeclado.leerBooleanSN(teclado)) {
+                                JSONUsuario.borrarUsuario(u);
+                            }
                         }
                     }
                 }
@@ -89,8 +98,10 @@ public class MenuUsuariosAdmin {
                     return;
                 }
             }
+            LecturaTeclado.continuar(teclado);
         }
     }
+
 
     public static void verUsuarios(List<Usuario> usuarios){
         for(int i=0; i< usuarios.size(); i++){

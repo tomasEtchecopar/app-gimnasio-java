@@ -42,7 +42,8 @@ public class Usuario implements Acciones {
         this.altura = altura;
         this.entrenador = false;
         this.historial = new ArrayList<>();
-        this.id = contador+1;
+        contador++;
+        this.id = contador;
     }
     public Usuario(String usuario, String contrasenia, String nombre, String apellido, int edad, double peso, double altura, boolean entrenador, List<Entrenamiento> historial) throws IllegalArgumentException {
         if(usuario==null || contrasenia ==null){

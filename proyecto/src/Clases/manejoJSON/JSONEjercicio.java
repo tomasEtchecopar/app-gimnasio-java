@@ -10,7 +10,6 @@ import org.json.JSONTokener;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class JSONEjercicio{
     private static final String ARCHIVO = "src/datos/ejercicios.json";

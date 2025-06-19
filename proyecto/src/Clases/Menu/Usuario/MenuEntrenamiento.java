@@ -3,17 +3,17 @@ package Clases.Menu.Usuario;
 import Clases.Gimnasio.Entrenamiento;
 import Clases.Gimnasio.Plantilla;
 import Clases.Gimnasio.Serie;
+
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Menu.Utiles.Mostrado;
 import Clases.Usuario.Usuario;
 import Clases.manejoJSON.JSONPlantilla;
 import Clases.manejoJSON.JSONUsuario;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MenuEntrenamiento {
     public static void mostrar(Scanner teclado, Usuario usuario) {
@@ -39,14 +39,15 @@ public class MenuEntrenamiento {
                 usuario.entrenar(teclado);
                 JSONUsuario.actualizarUsuario(usuario);
             }
-            //case 2 -> //mostrado de ejercicios (filtrar y ordenar por nombre y grupo)
-            //case 3 -> //mostrado de rutinas
+            case 2 -> Mostrado.verEjercicios(teclado);
+            case 3 -> Mostrado.mostrarPlantillas(teclado, JSONPlantilla.leerPlantillas());
             case 4->{
                 return;
             }
         }
         LecturaTeclado.continuar(teclado);
     }
+
 
     private static Plantilla elegirPlantilla(Scanner teclado, Usuario usuario){
         List<Plantilla> plantillas = JSONPlantilla.leerPlantillas();

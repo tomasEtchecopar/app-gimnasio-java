@@ -3,6 +3,7 @@ package Clases.Menu.Usuario;
 import Clases.Menu.Interfaces.MenuAcciones;
 import Clases.Menu.MainMenu;
 import Clases.Menu.Utiles.LecturaTeclado;
+import Clases.Menu.Utiles.Mostrado;
 import Clases.Usuario.Usuario;
 import Clases.Menu.Utiles.Editores;
 
@@ -41,7 +42,7 @@ public class UsuarioMenu implements MenuAcciones {
         switch (opcion) {
             case 1 -> MenuEntrenamiento.mostrar(teclado, usuario);
             case 2 -> usuario.verHistorial();
-            case 3 -> mostrarEstadisticas(usuario);
+            case 3 -> Mostrado.mostrarEstadisticas(usuario);
             case 4 -> System.out.println(usuario);
             case 5 -> Editores.menuEdicionDeUsuario(teclado, usuario);
             case 6 -> {
@@ -51,17 +52,6 @@ public class UsuarioMenu implements MenuAcciones {
         LecturaTeclado.continuar(teclado);
     }
 
-    public static void mostrarEstadisticas(Usuario usuario) {
-        System.out.println("--Estadisticas de " + usuario.getNombre());
-        System.out.println("Edad: " + usuario.getEdad());
-        System.out.println("Peso: " + usuario.getPeso());
-        System.out.println("Altura: " + usuario.getAltura());
-        System.out.println("Indice de masa corporal: " + usuario.getIMC());
-        switch (usuario.tieneSobrepeso()) {
-            case 1 -> System.out.println("Sobrepeso");
-            case 0 -> System.out.println("Peso ideal");
-            case -1 -> System.out.println("Peso bajo");
-        }
-        }
+
     }
 
