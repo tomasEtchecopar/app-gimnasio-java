@@ -42,6 +42,10 @@ public class MenuRutinasAdmin {
                         throw new RuntimeException(e);
                     }
                 }
+                case 3 -> {
+                    System.out.printf("Ingrese la ID del usuario cuyas rutinas desea eliminar: ");
+                    JSONPlantilla.borrarPlantilla(teclado.nextInt());
+                }
             }
             LecturaTeclado.continuar(teclado);
         }

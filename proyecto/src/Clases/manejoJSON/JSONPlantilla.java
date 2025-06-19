@@ -84,4 +84,26 @@ public class JSONPlantilla {
         }
         return plantillas;
     }
+
+    public static void sobrecargarPlantillas(List<Plantilla> lista) throws JSONException, IllegalAccessException {
+        JSONArray jPlantilla = new JSONArray();
+
+        for(Plantilla p : lista){
+            jPlantilla.put(JSONUtiles.objetoToJSONOBJECT(p));
+        }
+
+        JSONUtiles.grabar(jPlantilla, ARCHIVO);
+    }
+
+    public static void borrarPlantilla(int id){
+        List<Plantilla> plantillas;
+        try {
+            plantillas = JSONPlantilla.getFromJSON();
+            plantillas.removeIf(p -> p.getId() == id);
+            sobrecargarPlantillas(plantillas);
+
+        } catch (RuntimeException | FileNotFoundException | JSONException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

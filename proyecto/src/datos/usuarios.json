@@ -1,6 +1,6 @@
 [
     {
-        "entrenador": false,
+        "entrenador": true,
         "contador": 4,
         "peso": 80,
         "altura": 186,
