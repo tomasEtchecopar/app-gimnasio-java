@@ -45,14 +45,15 @@ public class Editores {
             System.out.println("3) Edad");
             System.out.println("4) Peso");
             System.out.println("5) Altura");
-            System.out.println("6) Volver");
-            opcion = LecturaTeclado.leerEntero(teclado, 1, 6);
+            System.out.println("6) Nombre de Usuario");
+            System.out.println("7) Contraseña");
+            System.out.println("8) Volver");
+            opcion = LecturaTeclado.leerEntero(teclado, 1, 8);
 
             switch(opcion){
                 case 1 ->{
                     System.out.println("Ingrese nuevo nombre: ");
                     usuario.setNombre(teclado.nextLine());
-
                 }
                 case 2 ->{
                     System.out.println("Ingrese nuevo apellido: ");
@@ -70,7 +71,15 @@ public class Editores {
                     System.out.println("Ingrese nueva altura (cm): ");
                     usuario.setAltura(LecturaTeclado.leerDouble(teclado, 0, 250));
                 }
-                case 6->{
+                case 6 ->{
+                    System.out.println("Ingrese nuevo nombre de usuario: ");
+                    usuario.setUsuario(teclado.nextLine());
+                }
+                case 7 ->{
+                    System.out.println("Ingrese la nueva contraseña: ");
+                    usuario.setContrasenia(teclado.nextLine());
+                }
+                case 8->{
                     return;
                 }
             }
