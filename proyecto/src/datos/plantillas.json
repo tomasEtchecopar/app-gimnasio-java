@@ -59,6 +59,32 @@
             "peso": 5,
             "repeticiones": 4,
             "ejercicio": {
+                "descripcion": "Basdasdndo los codos y empujar hacia arriba.",
+                "grupoMuscular": "TRICEPS",
+                "nombre": "Fondos en paasfas"
+            }
+        }],
+        "id": 5,
+        "nombre": "aaaaa"
+    },
+    {
+        "series": [{
+            "peso": 5,
+            "repeticiones": 4,
+            "ejercicio": {
+                "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
+                "grupoMuscular": "TRICEPS",
+                "nombre": "Fondos en paralelas"
+            }
+        }],
+        "id": 5,
+        "nombre": "uu"
+    },
+    {
+        "series": [{
+            "peso": 5,
+            "repeticiones": 4,
+            "ejercicio": {
                 "descripcion": "Bajar el cuerpo con control flexionando los codos y empujar hacia arriba.",
                 "grupoMuscular": "TRICEPS",
                 "nombre": "Fondos en paralelas"
