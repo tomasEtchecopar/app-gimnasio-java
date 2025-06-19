@@ -33,7 +33,13 @@ public class MenuRutinasAdmin {
             opcion = leerEntero(teclado, 1, 5);
             MainMenu.limpiarConsola();
             switch(opcion){
-                case 1 -> mostrarPlantillasPorUsuario(teclado, seleccionarUsuarioPorId(teclado));
+                case 1 -> {
+                    try {
+                        mostrarPlantillasPorUsuario(teclado, seleccionarUsuarioPorId(teclado));
+                    } catch (RutinaNoExisteException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
                 case 2-> {
                     Plantilla plantilla = cargarRutinaPorTeclado(teclado);
                     try {
