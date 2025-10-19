@@ -1,6 +1,7 @@
 # app-gimnasio-java
 
 **Trabajo Práctico Final Laboratorio 3**
+
 *Universidad Tecnológica Nacional de Mar del Plata*
 
 Aplicación de consola en Java que permite a los usuarios registrarse y gestionar su rutina de entrenamiento.  
