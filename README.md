@@ -1,6 +1,6 @@
 # app-gimnasio-java
 
-[Español](#-descripción-en-español) | [English](#-english-description)
+[Español](#-descripción-en-español) | [English](#english-description)
 
 ---
 
@@ -36,7 +36,7 @@ Los datos se **guardan de forma persistente en archivos JSON**, conservando la i
 1. Iniciar sesion o registrarse a traves del menu de Log In.
 2. Seguir las instrucciones de los menus para su uso.
 
-## English description
+##English description
 
 Console-based **Java application** that allows users to register and manage their workout routines.  
 Each user can create and edit their profile, log exercises, and record training sessions.  
